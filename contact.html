@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Nexus Digital</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="/" class="logo"><span class="logo-icon">&#9671;</span><span class="logo-text">Nexus<span class="accent">.</span></span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/team">Team</a></li>
+        <li><a href="/contact" class="active">Contact</a></li>
+      </ul>
+      <a href="/contact" class="btn btn-primary nav-cta">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-tag reveal">Get In Touch</div>
+      <h1 class="page-title reveal">Let's Build Something <span class="gradient-text">Remarkable</span></h1>
+      <p class="page-sub reveal">Tell us about your goals and we'll craft a custom strategy to get you there.</p>
+    </div>
+  </section>
+
+  <section class="contact-section section">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <h2>Get in <span class="gradient-text">Touch</span></h2>
+        <p>We'd love to hear from you. Whether you have a project in mind or just want to explore possibilities, our team is ready.</p>
+        <div class="contact-detail">
+          <div class="cd-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div><strong>Email Us</strong><p>hello@nexusdigital.io</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon"><i class="fa-solid fa-phone"></i></div>
+          <div><strong>Call Us</strong><p>+91 98765 43210</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div><strong>Visit Us</strong><p>C-Scheme, Jaipur, Rajasthan 302001</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="cd-icon"><i class="fa-solid fa-clock"></i></div>
+          <div><strong>Working Hours</strong><p>Mon–Sat: 9:00 AM – 7:00 PM IST</p></div>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Rahul" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Sharma" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="rahul@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service">
+              <option value="">Select a service...</option>
+              <option>SEO</option>
+              <option>Paid Advertising</option>
+              <option>Social Media</option>
+              <option>Branding</option>
+              <option>Web Design</option>
+              <option>Email Marketing</option>
+              <option>Full Package</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" rows="5" placeholder="Tell us about your project or goals..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg w-full">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><a href="/" class="logo"><span class="logo-icon">&#9671;</span><span class="logo-text">Nexus<span class="accent">.</span></span></a><p>Growth-driven digital marketing for ambitious brands.</p><div class="social-links"><a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
+      <div class="footer-links"><h4>Pages</h4><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/team">Team</a></li><li><a href="/contact">Contact</a></li></ul></div>
+      <div class="footer-links"><h4>Services</h4><ul><li><a href="/services">SEO</a></li><li><a href="/services">Paid Ads</a></li><li><a href="/services">Social Media</a></li><li><a href="/services">Branding</a></li><li><a href="/services">Web Design</a></li></ul></div>
+      <div class="footer-contact"><h4>Contact</h4><p><i class="fa-solid fa-envelope"></i> hello@nexusdigital.io</p><p><i class="fa-solid fa-phone"></i> +91 98765 43210</p><p><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</p></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Nexus Digital. All rights reserved.</p></div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
