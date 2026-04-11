@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
   <!-- NAV -->
   <nav class="navbar" id="navbar">
     <div class="container nav-inner">
@@ -34,39 +39,92 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
     </div>
-    <div class="container hero-inner">
-      <div class="hero-badge reveal">&#128640; Trusted by 200+ brands worldwide</div>
-      <h1 class="hero-title reveal">We Turn <span class="gradient-text">Digital Noise</span><br/>Into Real Growth</h1>
-      <p class="hero-sub reveal">Nexus Digital is a full-service digital marketing agency that blends data, creativity, and technology to scale your brand to new heights.</p>
-      <div class="hero-actions reveal">
-        <a href="/services" class="btn btn-primary btn-lg">Explore Services</a>
-        <a href="/about" class="btn btn-ghost btn-lg">Our Story <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="hero-stats reveal">
-        <div class="stat">
-          <span class="stat-num" data-target="200">0</span><span class="stat-plus">+</span>
-          <span class="stat-label">Brands Scaled</span>
+    <div class="container">
+      <div class="hero-grid">
+        <!-- LEFT -->
+        <div class="hero-left">
+          <div class="hero-badge reveal">
+            <span class="badge-dot"></span>
+            Trusted by 200+ brands worldwide
+          </div>
+          <h1 class="hero-title reveal">We Turn <span class="gradient-text"><span id="typed"></span><span class="typed-cursor">|</span></span><br/>Into Real Growth</h1>
+          <p class="hero-sub reveal">Nexus Digital is a full-service digital marketing agency that blends data, creativity, and technology to scale your brand to new heights.</p>
+          <div class="hero-actions reveal">
+            <a href="/services" class="btn btn-primary btn-lg">Explore Services</a>
+            <a href="/about" class="btn btn-ghost btn-lg">Our Story <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="hero-stats reveal">
+            <div class="stat">
+              <div class="stat-val"><span class="stat-num" data-target="200">0</span><span>+</span></div>
+              <span class="stat-label">Brands Scaled</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <div class="stat-val"><span class="stat-num" data-target="98">0</span><span>%</span></div>
+              <span class="stat-label">Client Retention</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <div class="stat-val"><span class="stat-num" data-target="12">0</span><span>x</span></div>
+              <span class="stat-label">Average ROI</span>
+            </div>
+          </div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num" data-target="98">0</span><span class="stat-plus">%</span>
-          <span class="stat-label">Client Retention</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num" data-target="12">0</span><span class="stat-plus">x</span>
-          <span class="stat-label">Average ROI</span>
+
+        <!-- RIGHT CARD -->
+        <div class="hero-right reveal">
+          <div class="hero-card">
+            <div class="hero-card-title">Campaign Performance &mdash; Q1 2026</div>
+            <div class="hero-card-metrics">
+              <div class="metric-row">
+                <span class="metric-label">Organic Traffic</span>
+                <div class="metric-bar"><div class="metric-fill" style="width:88%"></div></div>
+                <span class="metric-val">+88%</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Conversion Rate</span>
+                <div class="metric-bar"><div class="metric-fill" style="width:74%"></div></div>
+                <span class="metric-val">+74%</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Lead Quality</span>
+                <div class="metric-bar"><div class="metric-fill" style="width:92%"></div></div>
+                <span class="metric-val">+92%</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Brand Awareness</span>
+                <div class="metric-bar"><div class="metric-fill" style="width:65%"></div></div>
+                <span class="metric-val">+65%</span>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <div>
+                <div class="hcf-label">Total Revenue Impact</div>
+                <div class="hcf-val">&#8377;2.4 Cr</div>
+              </div>
+              <div class="hcf-badge">+12x ROI</div>
+            </div>
+          </div>
+          <div class="hero-float-badge hfb-1">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <span>+340% Traffic</span>
+          </div>
+          <div class="hero-float-badge hfb-2">
+            <i class="fa-solid fa-star"></i>
+            <span>4.9 / 5 Rating</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="hero-scroll-hint">
+
+    <div class="hero-scroll">
       <span>Scroll</span>
-      <div class="scroll-line"></div>
+      <div class="scroll-dot"></div>
     </div>
   </section>
 
@@ -174,7 +232,7 @@
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>"Nexus completely transformed our online presence. Our organic traffic grew 340% in just 4 months. Absolutely phenomenal team."</p>
           <div class="testi-author">
-            <img src="https://i.pravatar.cc/48?img=11" alt="Priya Sharma" loading="lazy" />
+            <img src="https://i.pravatar.cc/48?img=11" alt="Priya Sharma" loading="lazy" width="46" height="46" />
             <div>
               <strong>Priya Sharma</strong>
               <span>CMO, TechBridge India</span>
@@ -185,7 +243,7 @@
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>"Their PPC campaigns consistently deliver a 10x ROAS. They're not just an agency — they're a growth partner."</p>
           <div class="testi-author">
-            <img src="https://i.pravatar.cc/48?img=32" alt="Arjun Mehta" loading="lazy" />
+            <img src="https://i.pravatar.cc/48?img=32" alt="Arjun Mehta" loading="lazy" width="46" height="46" />
             <div>
               <strong>Arjun Mehta</strong>
               <span>Founder, UrbanNest Decor</span>
@@ -196,7 +254,7 @@
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p>"From brand identity to full social strategy — Nexus delivered beyond our expectations. Highly recommend to any serious business."</p>
           <div class="testi-author">
-            <img src="https://i.pravatar.cc/48?img=54" alt="Sofia Andrade" loading="lazy" />
+            <img src="https://i.pravatar.cc/48?img=54" alt="Sofia Andrade" loading="lazy" width="46" height="46" />
             <div>
               <strong>Sofia Andrade</strong>
               <span>CEO, Lumina Wellness</span>
