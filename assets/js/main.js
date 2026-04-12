@@ -68,7 +68,7 @@ if(form) form.addEventListener('submit',e=>{
   const dl2 = new THREE.DirectionalLight(0x5b5ef4,0.8); dl2.position.set(-5,-3,2); scene.add(dl2);
   const dl3 = new THREE.DirectionalLight(0xf43f5e,0.4); dl3.position.set(3,-5,-3); scene.add(dl3);
 
-  // Floating shapes around the center
+  // Floating shapes
   const shapes = [];
   const geometries = [
     new THREE.BoxGeometry(0.8,0.8,0.8),
@@ -98,8 +98,10 @@ if(form) form.addEventListener('submit',e=>{
     });
   });
 
-  // Load Eye GLB at center
+  // Load Eye GLB at center — sirf float, no rotation
   let eyeModel = null;
+  let eyeBaseY = 0;
+  const eyeFloatOffset = Math.random() * Math.PI * 2;
   const LoaderClass = (typeof GLTFLoader!=='undefined') ? GLTFLoader
                     : (typeof THREE.GLTFLoader!=='undefined') ? THREE.GLTFLoader
                     : null;
@@ -107,19 +109,18 @@ if(form) form.addEventListener('submit',e=>{
     const loader = new LoaderClass();
     loader.load('./assets/3d/blue_eyeball_free.glb', function(gltf){
       eyeModel = gltf.scene;
-      // Auto-scale to fit nicely at center
       const box = new THREE.Box3().setFromObject(eyeModel);
       const size = new THREE.Vector3(); box.getSize(size);
       const scale = 2.2 / Math.max(size.x, size.y, size.z);
       eyeModel.scale.setScalar(scale);
       const center = new THREE.Vector3(); box.getCenter(center);
       eyeModel.position.copy(center.multiplyScalar(-scale));
+      eyeBaseY = eyeModel.position.y;
       scene.add(eyeModel);
       console.log('%c Eye loaded in hero!', 'color:#5b5ef4;font-weight:bold');
     }, undefined, err=>console.warn('GLB load error:', err));
   }
 
-  // Mouse parallax
   let mx=0, my=0;
   window.addEventListener('mousemove',e=>{
     mx=(e.clientX/window.innerWidth-.5)*.6;
@@ -135,11 +136,9 @@ if(form) form.addEventListener('submit',e=>{
       s.mesh.rotation.y += s.speed.y;
       s.mesh.position.y += Math.sin(t+s.float.offset)*0.002*s.float.amp*5;
     });
-    // Eye slow rotation + gentle float at center
+    // Eye: sirf upar neeche float — bilkul shapes jaise, no rotation
     if(eyeModel){
-      eyeModel.rotation.y = t * 0.4;
-      eyeModel.rotation.x = Math.sin(t*0.3)*0.15;
-      eyeModel.position.y = Math.sin(t*0.7)*0.2;
+      eyeModel.position.y = eyeBaseY + Math.sin(t + eyeFloatOffset) * 0.15;
     }
     camera.position.x += (mx - camera.position.x)*0.04;
     camera.position.y += (-my - camera.position.y)*0.04;
@@ -167,7 +166,6 @@ if(form) form.addEventListener('submit',e=>{
   const camera = new THREE.PerspectiveCamera(60,w/h,0.1,200);
   camera.position.set(0,0,30);
 
-  // Particle sphere
   const count=280;
   const pos=new Float32Array(count*3);
   for(let i=0;i<count;i++){
