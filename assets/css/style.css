@@ -31,7 +31,6 @@ body { font-family: 'Inter', sans-serif; background: #f9f8f5; color: #1a1a2e; ov
 .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 .eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); margin-bottom: 0.9rem; }
 .section-title { font-family: 'Inter', sans-serif; font-size: clamp(1.9rem, 3.2vw, 2.75rem); font-weight: 700; line-height: 1.18; color: var(--text); margin-bottom: 1rem; }
-.section-vertical-label { font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; writing-mode: vertical-rl; color: var(--faint); }
 .section-sub { font-size: 1rem; color: var(--muted); max-width: 500px; line-height: 1.75; margin-bottom: 3rem; }
 .section-head { margin-bottom: 3.5rem; }
 
@@ -96,6 +95,7 @@ body { font-family: 'Inter', sans-serif; background: #f9f8f5; color: #1a1a2e; ov
 .services { padding: 6rem 0; background: var(--bg); }
 .services-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 
+/* Card base */
 .sb-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -110,7 +110,27 @@ body { font-family: 'Inter', sans-serif; background: #f9f8f5; color: #1a1a2e; ov
 .sb-large { grid-column: span 2; }
 .sb-wide  { grid-column: span 2; }
 
-/* Jagged crack SVG — top-right corner, 30% wide, 50% tall */
+/* Background image — fills top-right 30% x 50% area */
+.sb-img-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 50%;
+  background-size: cover;
+  background-position: center top;
+  z-index: 0;
+  /* clip to the crown shape so no square corner shows */
+  clip-path: polygon(0% 100%, 0% 55%, 25% 100%, 50% 25%, 75% 100%, 100% 50%, 100% 0%, 100% 0%, 0% 0%);
+}
+
+/* For wide/large cards: 3-spike clip */
+.sb-large .sb-img-bg,
+.sb-wide  .sb-img-bg {
+  clip-path: polygon(0% 100%, 0% 60%, 16% 100%, 33% 30%, 50% 100%, 66% 45%, 83% 100%, 100% 55%, 100% 0%, 0% 0%);
+}
+
+/* Crown SVG — sits on top of image, same position */
 .sb-crack {
   position: absolute;
   top: 0;
@@ -118,18 +138,18 @@ body { font-family: 'Inter', sans-serif; background: #f9f8f5; color: #1a1a2e; ov
   width: 30%;
   height: 50%;
   pointer-events: none;
-  z-index: 0;
-  border-top-right-radius: var(--r-lg);
-  overflow: hidden;
+  z-index: 1;
+  overflow: visible;
 }
 
+/* Card content */
 .sb-content {
   padding: 2rem 1.75rem 1.75rem;
   display: flex;
   flex-direction: column;
   flex: 1;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .sb-icon { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; background: var(--primary-light); border-radius: var(--r-sm); color: var(--primary); font-size: .95rem; margin-bottom: .85rem; }
 .sb-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; color: var(--text); }
