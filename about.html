@@ -1,120 +1,736 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Nexus Digital</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+
+    /* ---- shared ---- */
+    .breadcrumb{font-size:.78rem;color:var(--faint);display:flex;align-items:center;gap:.4rem;margin-bottom:1.2rem}
+    .breadcrumb a{color:var(--faint);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--primary)}
+    .breadcrumb i{font-size:.6rem}
+    .gradient-text{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .center-head{text-align:center;max-width:600px;margin:0 auto}
+
+    /* ============================
+       S1 — HERO
+    ============================ */
+    .ab-hero{padding:9rem 2rem 5rem;background:var(--bg);position:relative;overflow:hidden}
+    .ab-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .ab-sh{position:absolute;border-radius:50%;filter:blur(90px)}
+    .ab-sh-1{width:520px;height:520px;background:var(--primary);opacity:.13;top:-200px;right:-120px}
+    .ab-sh-2{width:300px;height:300px;background:#f43f5e;opacity:.1;bottom:-80px;left:-60px}
+    .ab-sh-3{width:200px;height:200px;background:#10b981;opacity:.1;top:55%;left:42%}
+    .ab-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .ab-hero-copy h1{font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:1.1rem}
+    .ab-hero-copy p{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;max-width:500px}
+    .ab-hero-copy .cta-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+    .ab-hero-stats{display:flex;gap:2rem;flex-wrap:wrap}
+    .ab-hstat{display:flex;flex-direction:column;gap:.2rem}
+    .ab-hstat strong{font-size:1.8rem;font-weight:800;color:var(--text);line-height:1}
+    .ab-hstat span{font-size:.76rem;color:var(--faint)}
+    /* hero visual — floating cards */
+    .ab-hero-visual{display:flex;flex-direction:column;gap:1.1rem;position:relative;z-index:1}
+    .ab-float-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem 1.4rem;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:1.1rem;animation:abFloat 4s ease-in-out infinite}
+    .ab-float-card:nth-child(2){margin-left:1.8rem;animation-delay:.5s}
+    .ab-float-card:nth-child(3){margin-left:3.4rem;animation-delay:1s}
+    .ab-float-card:nth-child(4){margin-left:1.8rem;animation-delay:1.5s}
+    @keyframes abFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+    .ab-fc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .ab-fc-body strong{display:block;font-size:.9rem;font-weight:700;color:var(--text);line-height:1.2}
+    .ab-fc-body span{font-size:.76rem;color:var(--muted)}
+
+    /* ============================
+       S2 — OUR STORY
+    ============================ */
+    .ab-story{padding:6rem 0;background:var(--surface)}
+    .ab-story-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .ab-story-img{position:relative}
+    .ab-story-img-wrap{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3.2}
+    .ab-story-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+    .ab-story-img:hover .ab-story-img-wrap img{transform:scale(1.04)}
+    .ab-story-badge{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:.7rem 1.1rem;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:.55rem;font-size:.8rem;font-weight:600;color:var(--text);white-space:nowrap}
+    .ab-story-badge.bl{bottom:-1rem;left:-1.4rem}
+    .ab-story-badge.tr{top:-1rem;right:-1.4rem}
+    .ab-story-badge i{color:var(--primary)}
+    .ab-blob{position:absolute;border-radius:50%;filter:blur(55px);z-index:-1;pointer-events:none}
+    .ab-story-copy .section-head{text-align:left}
+    .ab-story-copy p{font-size:.93rem;color:var(--muted);line-height:1.85;margin-bottom:1rem}
+    .ab-story-copy p+p{margin-top:.2rem}
+    .ab-story-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin:1.4rem 0 1.8rem}
+    .ab-story-list li{display:flex;align-items:flex-start;gap:.65rem;font-size:.88rem;color:var(--muted)}
+    .ab-story-list li i{color:var(--primary);background:var(--primary-light);border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:.66rem;flex-shrink:0;margin-top:.15rem}
+
+    /* ============================
+       S3 — NUMBERS
+    ============================ */
+    .ab-numbers{padding:5.5rem 0;background:var(--bg);position:relative;overflow:hidden}
+    .ab-numbers::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(91,94,244,.05) 0%,transparent 70%);pointer-events:none}
+    .ab-numbers-grid{max-width:1100px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem}
+    .ab-num-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+    .ab-num-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+    .ab-num-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--nc,var(--primary))}
+    .ab-num-icon{width:46px;height:46px;border-radius:12px;background:var(--ni-bg,rgba(91,94,244,.1));color:var(--ni-c,var(--primary));display:flex;align-items:center;justify-content:center;font-size:1rem;margin:0 auto .9rem}
+    .ab-num-big{font-size:2.5rem;font-weight:800;color:var(--text);line-height:1}
+    .ab-num-suf{font-size:1.4rem;color:var(--primary)}
+    .ab-num-label{font-size:.8rem;color:var(--muted);margin-top:.4rem;line-height:1.4}
+    .ab-num-bar{margin-top:1.1rem;height:3px;background:var(--border);border-radius:99px;overflow:hidden}
+    .ab-num-bar-fill{height:100%;border-radius:99px;background:var(--nc,var(--primary));width:0;transition:width 1.3s ease}
+
+    /* ============================
+       S4 — VALUES
+    ============================ */
+    .ab-values{padding:6rem 0;background:var(--surface2)}
+    .ab-values-grid{max-width:1100px;margin:3.5rem auto 0;padding:0 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .ab-val-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem 1.6rem;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+    .ab-val-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+    .ab-val-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--vc,var(--primary))}
+    .ab-val-icon{width:50px;height:50px;border-radius:14px;background:var(--vi-bg,rgba(91,94,244,.1));color:var(--vi-c,var(--primary));display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:1.1rem}
+    .ab-val-card h3{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.55rem}
+    .ab-val-card p{font-size:.84rem;color:var(--muted);line-height:1.75}
+    .ab-val-num{position:absolute;bottom:1rem;right:1.2rem;font-size:3.5rem;font-weight:800;color:var(--border);line-height:1;font-family:'Syne',sans-serif}
+
+    /* ============================
+       S5 — TIMELINE
+    ============================ */
+    .ab-timeline{padding:6rem 0;background:var(--bg)}
+    .ab-timeline-wrap{max-width:900px;margin:3.5rem auto 0;padding:0 2rem;position:relative}
+    .ab-timeline-wrap::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--border);transform:translateX(-50%)}
+    .ab-tl-item{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3rem;position:relative}
+    .ab-tl-item:nth-child(odd) .ab-tl-content{grid-column:1;text-align:right}
+    .ab-tl-item:nth-child(odd) .ab-tl-year{grid-column:2;text-align:left}
+    .ab-tl-item:nth-child(even) .ab-tl-content{grid-column:2;text-align:left;order:2}
+    .ab-tl-item:nth-child(even) .ab-tl-year{grid-column:1;text-align:right;order:1}
+    .ab-tl-dot{position:absolute;left:50%;top:1.1rem;width:14px;height:14px;border-radius:50%;background:var(--primary);border:3px solid var(--bg);transform:translateX(-50%);z-index:1;transition:transform .3s,box-shadow .3s}
+    .ab-tl-item:hover .ab-tl-dot{transform:translateX(-50%) scale(1.5);box-shadow:0 0 0 6px rgba(91,94,244,.15)}
+    .ab-tl-year{padding-top:.7rem}
+    .ab-tl-year span{display:inline-block;font-size:1.6rem;font-weight:800;color:var(--primary);font-family:'Syne',sans-serif;line-height:1}
+    .ab-tl-content{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.3rem 1.5rem;box-shadow:var(--shadow-sm);transition:box-shadow .25s,transform .25s}
+    .ab-tl-item:hover .ab-tl-content{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+    .ab-tl-content .tl-tag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:.4rem;display:block}
+    .ab-tl-content h4{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+    .ab-tl-content p{font-size:.82rem;color:var(--muted);line-height:1.65}
+
+    /* ============================
+       S6 — CLIENTS / LOGOS
+    ============================ */
+    .ab-clients{padding:5.5rem 0;background:var(--surface)}
+    .ab-clients .center-head{margin-bottom:3rem}
+    .ab-logo-grid{max-width:1100px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+    .ab-logo-cell{background:var(--surface);display:flex;align-items:center;justify-content:center;padding:2rem 1.5rem;transition:background .2s}
+    .ab-logo-cell:hover{background:var(--surface2)}
+    .ab-logo-text{font-size:1.05rem;font-weight:800;color:var(--text);opacity:.35;letter-spacing:-.02em;font-family:'Syne',sans-serif;transition:opacity .2s}
+    .ab-logo-cell:hover .ab-logo-text{opacity:.7}
+
+    /* ============================
+       S7 — AWARDS
+    ============================ */
+    .ab-awards{padding:6rem 0;background:var(--bg)}
+    .ab-awards-grid{max-width:1100px;margin:3.5rem auto 0;padding:0 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .ab-award-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem 1.6rem;display:flex;flex-direction:column;gap:.7rem;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+    .ab-award-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+    .ab-award-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(91,94,244,.04),transparent 60%);pointer-events:none}
+    .ab-award-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+    .ab-award-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+    .ab-award-year{font-size:.72rem;font-weight:700;color:var(--faint);background:var(--surface2);border:1px solid var(--border);border-radius:999px;padding:.2rem .65rem}
+    .ab-award-card h4{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.35}
+    .ab-award-card span{font-size:.78rem;color:var(--muted)}
+
+    /* ============================
+       S8 — PRESS
+    ============================ */
+    .ab-press{padding:5.5rem 0;background:var(--surface2);overflow:hidden}
+    .ab-press .center-head{margin-bottom:3rem}
+    .ab-press-scroll{position:relative;overflow:hidden;-webkit-mask:linear-gradient(to right,transparent,black 8%,black 92%,transparent);mask:linear-gradient(to right,transparent,black 8%,black 92%,transparent)}
+    .ab-press-track{display:flex;gap:1.5rem;width:max-content;animation:pressScroll 35s linear infinite}
+    .ab-press-track:hover{animation-play-state:paused}
+    @keyframes pressScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ab-press-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.6rem 1.8rem;width:320px;flex-shrink:0;box-shadow:var(--shadow-sm)}
+    .ab-press-pub{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+    .ab-press-pub-logo{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#fff;flex-shrink:0}
+    .ab-press-pub strong{font-size:.8rem;font-weight:700;color:var(--text)}
+    .ab-press-pub span{font-size:.72rem;color:var(--faint)}
+    .ab-press-card blockquote{font-size:.88rem;color:var(--muted);line-height:1.75;font-style:italic;position:relative}
+    .ab-press-card blockquote::before{content:'\201C';font-size:2.8rem;color:var(--primary);opacity:.2;position:absolute;top:-.8rem;left:-.3rem;font-family:Georgia,serif;line-height:1}
+
+    /* ============================
+       S9 — CTA
+    ============================ */
+    .ab-cta{padding:7rem 2rem;background:var(--bg);position:relative;overflow:hidden;text-align:center}
+    .ab-cta-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .ab-cta-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+    .ab-cta-inner h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;color:var(--text);margin-bottom:1rem}
+    .ab-cta-inner p{color:var(--muted);font-size:1rem;line-height:1.75;margin-bottom:2rem;max-width:520px;margin-left:auto;margin-right:auto}
+    .ab-cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+    .ab-cta-trust{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+    .ab-trust-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted)}
+    .ab-trust-item i{color:var(--primary);font-size:.8rem}
+
+    /* ---- responsive ---- */
+    @media(max-width:960px){
+      .ab-hero-inner{grid-template-columns:1fr;gap:3rem}
+      .ab-story-inner{grid-template-columns:1fr;gap:3rem}
+      .ab-numbers-grid{grid-template-columns:repeat(2,1fr)}
+      .ab-values-grid{grid-template-columns:repeat(2,1fr)}
+      .ab-timeline-wrap::before{left:20px}
+      .ab-tl-item{grid-template-columns:32px 1fr;gap:1.5rem}
+      .ab-tl-item:nth-child(n) .ab-tl-content{grid-column:2;text-align:left;order:2}
+      .ab-tl-item:nth-child(n) .ab-tl-year{grid-column:2;text-align:left;order:1}
+      .ab-tl-dot{left:20px}
+      .ab-logo-grid{grid-template-columns:repeat(3,1fr)}
+      .ab-awards-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .ab-hero{padding:7rem 1.5rem 4rem}
+      .ab-numbers-grid{grid-template-columns:1fr 1fr;padding:0 1.5rem}
+      .ab-values-grid{grid-template-columns:1fr;padding:0 1.5rem}
+      .ab-awards-grid{grid-template-columns:1fr;padding:0 1.5rem}
+      .ab-logo-grid{grid-template-columns:repeat(2,1fr)}
+      .ab-tl-item{grid-template-columns:24px 1fr}
+      .ab-tl-dot{left:16px}
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="/" class="logo">
-        <span class="logo-icon">&#9671;</span>
-        <span class="logo-text">Nexus<span class="accent">.</span></span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about" class="active">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/team">Team</a></li>
-        <li><a href="/contact">Contact</a></li>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+        <rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+        <rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+        <rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+      </svg>
+      <span class="logo-text">Nexus<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="about.html" style="color:var(--primary)">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="contact.html" class="nav-btn">Get a Proposal</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== S1: HERO ====== -->
+<section class="ab-hero">
+  <div class="ab-shapes">
+    <div class="ab-sh ab-sh-1"></div>
+    <div class="ab-sh ab-sh-2"></div>
+    <div class="ab-sh ab-sh-3"></div>
+  </div>
+  <div class="ab-hero-inner">
+    <div class="ab-hero-copy reveal">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>About</span>
+      </div>
+      <span class="eyebrow">Our Story</span>
+      <h1>Built for brands<br>that <span class="gradient-text">dare to grow.</span></h1>
+      <p>Since 2017, Nexus Digital has been the silent engine behind India's fastest-growing digital brands. 40+ people. One obsession: your growth.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn-solid">Work With Us <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="work.html" class="btn-outline">See Our Work</a>
+      </div>
+      <div class="ab-hero-stats">
+        <div class="ab-hstat"><strong>200+</strong><span>Brands helped</span></div>
+        <div class="ab-hstat"><strong>9 yr</strong><span>In business</span></div>
+        <div class="ab-hstat"><strong>40+</strong><span>Specialists</span></div>
+        <div class="ab-hstat"><strong>15+</strong><span>Countries</span></div>
+      </div>
+    </div>
+    <div class="ab-hero-visual reveal">
+      <div class="ab-float-card">
+        <div class="ab-fc-icon" style="background:rgba(91,94,244,.1);color:#5b5ef4"><i class="fa-solid fa-rocket"></i></div>
+        <div class="ab-fc-body"><strong>200+ Brands Scaled</strong><span>Across 15 countries worldwide</span></div>
+      </div>
+      <div class="ab-float-card">
+        <div class="ab-fc-icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="ab-fc-body"><strong>$40M+ Revenue Generated</strong><span>For clients in last 12 months</span></div>
+      </div>
+      <div class="ab-float-card">
+        <div class="ab-fc-icon" style="background:rgba(244,63,94,.1);color:#f43f5e"><i class="fa-solid fa-trophy"></i></div>
+        <div class="ab-fc-body"><strong>Best Agency 2025</strong><span>India Marketing Summit</span></div>
+      </div>
+      <div class="ab-float-card">
+        <div class="ab-fc-icon" style="background:rgba(245,158,11,.1);color:#f59e0b"><i class="fa-solid fa-star"></i></div>
+        <div class="ab-fc-body"><strong>4.9 / 5 Average Rating</strong><span>Across 200+ client reviews</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== S2: OUR STORY ====== -->
+<section class="ab-story">
+  <div class="ab-story-inner">
+    <div class="ab-story-img reveal">
+      <div class="ab-story-img-wrap">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Nexus Digital team" loading="lazy"/>
+      </div>
+      <div class="ab-story-badge bl"><i class="fa-solid fa-calendar"></i> Est. 2017 — Jaipur, India</div>
+      <div class="ab-story-badge tr"><i class="fa-solid fa-users"></i> 40+ Team Members</div>
+      <div class="ab-blob" style="width:280px;height:280px;background:var(--primary);bottom:-50px;right:-30px;opacity:.07"></div>
+    </div>
+    <div class="ab-story-copy reveal">
+      <div class="section-head">
+        <span class="eyebrow">Who We Are</span>
+        <h2 class="section-title">From a 2-person studio<br>to a <span class="gradient-text">global agency.</span></h2>
+      </div>
+      <p>Nexus Digital was born out of frustration. Our founders Rahul and Anika were tired of watching great brands get mediocre results from agencies that treated them like ticket numbers. In 2017, they set out to build something different.</p>
+      <p>Today we're a 40+ person team spanning engineering, design, strategy, and growth — with clients across India, UAE, UK, and Singapore. We don't just execute campaigns. We embed ourselves in your business, understand your customer deeply, and build systems that compound.</p>
+      <ul class="ab-story-list">
+        <li><i class="fa-solid fa-check"></i> Full-service — strategy, design, engineering, and growth under one roof</li>
+        <li><i class="fa-solid fa-check"></i> No account managers. You talk directly to the people doing the work</li>
+        <li><i class="fa-solid fa-check"></i> Every project gets a dedicated team, not a shared resource pool</li>
+        <li><i class="fa-solid fa-check"></i> We only take on clients we believe we can genuinely help</li>
       </ul>
-      <a href="/contact" class="btn btn-primary nav-cta">Get Started</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <a href="team.html" class="btn-solid">Meet the Team <i class="fa-solid fa-arrow-right"></i></a>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="section-tag reveal">Our Story</div>
-      <h1 class="page-title reveal">Built for Brands That <span class="gradient-text">Dare to Grow</span></h1>
-      <p class="page-sub reveal">Since 2018, Nexus Digital has been the silent engine behind some of India's fastest-growing digital brands.</p>
+<!-- ====== S3: NUMBERS ====== -->
+<section class="ab-numbers">
+  <div class="center-head">
+    <span class="eyebrow">By the Numbers</span>
+    <h2 class="section-title">Nine years of work,<br>distilled into four numbers.</h2>
+  </div>
+  <div class="ab-numbers-grid">
+    <div class="ab-num-card reveal" style="--nc:#5b5ef4;--ni-bg:rgba(91,94,244,.1);--ni-c:#5b5ef4">
+      <div class="ab-num-icon"><i class="fa-solid fa-rocket"></i></div>
+      <div class="ab-num-big"><span class="ab-count" data-target="200">0</span><span class="ab-num-suf">+</span></div>
+      <div class="ab-num-label">Brands scaled globally</div>
+      <div class="ab-num-bar"><div class="ab-num-bar-fill" data-w="92"></div></div>
     </div>
-  </section>
+    <div class="ab-num-card reveal" style="--nc:#f43f5e;--ni-bg:rgba(244,63,94,.1);--ni-c:#f43f5e">
+      <div class="ab-num-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+      <div class="ab-num-big">$<span class="ab-count" data-target="40">0</span><span class="ab-num-suf">M+</span></div>
+      <div class="ab-num-label">Revenue generated for clients</div>
+      <div class="ab-num-bar"><div class="ab-num-bar-fill" data-w="80"></div></div>
+    </div>
+    <div class="ab-num-card reveal" style="--nc:#10b981;--ni-bg:rgba(16,185,129,.1);--ni-c:#10b981">
+      <div class="ab-num-icon"><i class="fa-solid fa-heart"></i></div>
+      <div class="ab-num-big"><span class="ab-count" data-target="98">0</span><span class="ab-num-suf">%</span></div>
+      <div class="ab-num-label">Client retention rate</div>
+      <div class="ab-num-bar"><div class="ab-num-bar-fill" data-w="98"></div></div>
+    </div>
+    <div class="ab-num-card reveal" style="--nc:#a78bfa;--ni-bg:rgba(167,139,250,.1);--ni-c:#a78bfa">
+      <div class="ab-num-icon"><i class="fa-solid fa-globe"></i></div>
+      <div class="ab-num-big"><span class="ab-count" data-target="15">0</span><span class="ab-num-suf">+</span></div>
+      <div class="ab-num-label">Countries served worldwide</div>
+      <div class="ab-num-bar"><div class="ab-num-bar-fill" data-w="55"></div></div>
+    </div>
+  </div>
+</section>
 
-  <section class="about-story section">
-    <div class="container about-grid">
-      <div class="about-image reveal">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=640&q=80&auto=format&fit=crop" alt="Nexus Digital Team" loading="lazy" />
-        <div class="image-badge">Est. 2018</div>
-      </div>
-      <div class="about-text reveal">
-        <h2>From a Small Studio to a <span class="gradient-text">Full-Scale Agency</span></h2>
-        <p>Nexus Digital was founded with a single mission: help brands connect with their audience in meaningful, measurable ways. What started as a two-person consultancy in Jaipur has grown into a 40+ team agency operating across three continents.</p>
-        <p>We combine left-brain analytics with right-brain creativity — because sustainable growth requires both. Our integrated approach ensures that every rupee you invest generates maximum return.</p>
-        <div class="about-values">
-          <div class="value-item"><i class="fa-solid fa-check-circle"></i> Radical Transparency</div>
-          <div class="value-item"><i class="fa-solid fa-check-circle"></i> Performance Obsession</div>
-          <div class="value-item"><i class="fa-solid fa-check-circle"></i> Creative Innovation</div>
-          <div class="value-item"><i class="fa-solid fa-check-circle"></i> Long-term Partnership</div>
-        </div>
-        <a href="/contact" class="btn btn-primary">Work With Us</a>
-      </div>
+<!-- ====== S4: VALUES ====== -->
+<section class="ab-values">
+  <div class="center-head">
+    <span class="eyebrow">What We Stand For</span>
+    <h2 class="section-title">Six principles that<br>guide every decision.</h2>
+    <p class="section-sub" style="max-width:500px;margin:.6rem auto 0">Not a mission statement on a wall. These are the values we actually get held accountable to, every day.</p>
+  </div>
+  <div class="ab-values-grid">
+    <div class="ab-val-card reveal" style="--vc:#5b5ef4;--vi-bg:rgba(91,94,244,.1);--vi-c:#5b5ef4">
+      <div class="ab-val-icon"><i class="fa-solid fa-bullseye"></i></div>
+      <h3>Results First</h3>
+      <p>We don't celebrate effort, we celebrate outcomes. Every decision we make is filtered through one question: will this move the needle for our client?</p>
+      <div class="ab-val-num">01</div>
     </div>
-  </section>
+    <div class="ab-val-card reveal" style="--vc:#f43f5e;--vi-bg:rgba(244,63,94,.1);--vi-c:#f43f5e">
+      <div class="ab-val-icon"><i class="fa-solid fa-eye"></i></div>
+      <h3>Radical Transparency</h3>
+      <p>No smoke, no mirrors. We share real data, real timelines, and honest opinions — even when it's not what a client wants to hear.</p>
+      <div class="ab-val-num">02</div>
+    </div>
+    <div class="ab-val-card reveal" style="--vc:#10b981;--vi-bg:rgba(16,185,129,.1);--vi-c:#10b981">
+      <div class="ab-val-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+      <h3>Craft Over Speed</h3>
+      <p>We move fast but never at the expense of quality. Every pixel, word, and line of code is deliberate. Good enough is never good enough.</p>
+      <div class="ab-val-num">03</div>
+    </div>
+    <div class="ab-val-card reveal" style="--vc:#a78bfa;--vi-bg:rgba(167,139,250,.1);--vi-c:#a78bfa">
+      <div class="ab-val-icon"><i class="fa-solid fa-handshake"></i></div>
+      <h3>Long-term Thinking</h3>
+      <p>We optimise for years, not quarters. We'd rather lose a short-term win than damage a client's long-term trust and brand equity.</p>
+      <div class="ab-val-num">04</div>
+    </div>
+    <div class="ab-val-card reveal" style="--vc:#f59e0b;--vi-bg:rgba(245,158,11,.1);--vi-c:#f59e0b">
+      <div class="ab-val-icon"><i class="fa-solid fa-lightbulb"></i></div>
+      <h3>Curiosity Always</h3>
+      <p>The digital world changes faster than any playbook. We stay permanently curious — testing, learning, and never assuming we know best.</p>
+      <div class="ab-val-num">05</div>
+    </div>
+    <div class="ab-val-card reveal" style="--vc:#06b6d4;--vi-bg:rgba(6,182,212,.1);--vi-c:#06b6d4">
+      <div class="ab-val-icon"><i class="fa-solid fa-people-group"></i></div>
+      <h3>Team Over Ego</h3>
+      <p>No rock stars, no silos. The best work happens when great people collaborate without ego. We build teams, not pyramids.</p>
+      <div class="ab-val-num">06</div>
+    </div>
+  </div>
+</section>
 
-  <section class="milestones section">
-    <div class="container">
-      <div class="section-tag reveal">Timeline</div>
-      <h2 class="section-title reveal">Our <span class="gradient-text">Journey</span></h2>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-year">2018</div>
-          <div class="timeline-content"><h4>Founded</h4><p>Started with 2 founders and a dream to redefine digital marketing in India.</p></div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-year">2019</div>
-          <div class="timeline-content"><h4>First 50 Clients</h4><p>Crossed 50 active clients and expanded the team to 10 specialists.</p></div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-year">2021</div>
-          <div class="timeline-content"><h4>International Expansion</h4><p>Opened operations in Dubai and Singapore to serve global brands.</p></div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-year">2023</div>
-          <div class="timeline-content"><h4>Award Recognition</h4><p>Won Best Digital Agency of the Year at the India Marketing Summit.</p></div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-year">2026</div>
-          <div class="timeline-content"><h4>200+ Brands</h4><p>Now partnered with over 200 brands across 12 industries worldwide.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ====== S5: TIMELINE ====== -->
+<section class="ab-timeline">
+  <div class="center-head">
+    <span class="eyebrow">Our Journey</span>
+    <h2 class="section-title">Nine years, one chapter<br>at a time.</h2>
+  </div>
+  <div class="ab-timeline-wrap">
 
-  <section class="cta-banner section">
-    <div class="container">
-      <div class="cta-inner reveal">
-        <h2>Let's Write the Next <span class="gradient-text">Chapter Together</span></h2>
-        <p>We're more than an agency — we're your growth partner.</p>
-        <a href="/contact" class="btn btn-primary btn-lg">Get In Touch</a>
+    <div class="ab-tl-item reveal">
+      <div class="ab-tl-content">
+        <span class="tl-tag">The Beginning</span>
+        <h4>Founded in Jaipur</h4>
+        <p>Two founders, one laptop, and a shared frustration with mediocre agencies. Nexus Digital opens its doors with 3 founding clients.</p>
       </div>
+      <div class="ab-tl-year"><span>2017</span></div>
+      <div class="ab-tl-dot"></div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="/" class="logo"><span class="logo-icon">&#9671;</span><span class="logo-text">Nexus<span class="accent">.</span></span></a>
-        <p>Growth-driven digital marketing for ambitious brands.</p>
-        <div class="social-links">
-          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        </div>
+    <div class="ab-tl-item reveal">
+      <div class="ab-tl-content">
+        <span class="tl-tag">First Milestone</span>
+        <h4>50 Clients &amp; 10 People</h4>
+        <p>Crossed 50 active retainer clients and expanded the team to 10 specialists across SEO, paid ads, and design.</p>
       </div>
-      <div class="footer-links"><h4>Pages</h4><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/team">Team</a></li><li><a href="/contact">Contact</a></li></ul></div>
-      <div class="footer-links"><h4>Services</h4><ul><li><a href="/services">SEO</a></li><li><a href="/services">Paid Ads</a></li><li><a href="/services">Social Media</a></li><li><a href="/services">Branding</a></li><li><a href="/services">Web Design</a></li></ul></div>
-      <div class="footer-contact"><h4>Contact</h4><p><i class="fa-solid fa-envelope"></i> hello@nexusdigital.io</p><p><i class="fa-solid fa-phone"></i> +91 98765 43210</p><p><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</p></div>
+      <div class="ab-tl-year"><span>2019</span></div>
+      <div class="ab-tl-dot"></div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 Nexus Digital. All rights reserved.</p></div>
-  </footer>
-  <script src="assets/js/main.js"></script>
+
+    <div class="ab-tl-item reveal">
+      <div class="ab-tl-content">
+        <span class="tl-tag">Product Launch</span>
+        <h4>Web &amp; App Division Opens</h4>
+        <p>Launched our engineering division. Hired our first 6 developers. First React Native app shipped to the App Store within 90 days.</p>
+      </div>
+      <div class="ab-tl-year"><span>2020</span></div>
+      <div class="ab-tl-dot"></div>
+    </div>
+
+    <div class="ab-tl-item reveal">
+      <div class="ab-tl-content">
+        <span class="tl-tag">Going Global</span>
+        <h4>International Expansion</h4>
+        <p>Opened remote operations in Dubai and Singapore. First Fortune 500 client onboarded. Team crossed 25 people.</p>
+      </div>
+      <div class="ab-tl-year"><span>2021</span></div>
+      <div class="ab-tl-dot"></div>
+    </div>
+
+    <div class="ab-tl-item reveal">
+      <div class="ab-tl-content">
+        <span class="tl-tag">Recognition</span>
+        <h4>Best Digital Agency Award</h4>
+        <p>Won Best Digital Agency of the Year at the India Marketing Summit. Featured in Forbes India &amp; Inc42 in the same month.</p>
+      </div>
+      <div class="ab-tl-year"><span>2023</span></div>
+      <div class="ab-tl-dot"></div>
+    </div>
+
+    <div class="ab-tl-item reveal">
+      <div class="ab-tl-content">
+        <span class="tl-tag">AI Era</span>
+        <h4>AI Integration Division</h4>
+        <p>Launched our dedicated AI &amp; Automation practice. Built RAG pipelines, LLM-powered tools, and workflow automation for 30+ clients.</p>
+      </div>
+      <div class="ab-tl-year"><span>2024</span></div>
+      <div class="ab-tl-dot"></div>
+    </div>
+
+    <div class="ab-tl-item reveal">
+      <div class="ab-tl-content">
+        <span class="tl-tag">Today</span>
+        <h4>200+ Brands, 40+ People</h4>
+        <p>Now serving 200+ brands across 15 countries. A full-stack digital agency — strategy, design, engineering, AI, and growth under one roof.</p>
+      </div>
+      <div class="ab-tl-year"><span>2026</span></div>
+      <div class="ab-tl-dot" style="background:#10b981"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== S6: CLIENTS ====== -->
+<section class="ab-clients">
+  <div class="center-head">
+    <span class="eyebrow">Trusted By</span>
+    <h2 class="section-title">Brands that trust<br>us with their growth.</h2>
+    <p class="section-sub" style="max-width:460px;margin:.6rem auto 0">From bootstrapped startups to listed enterprises — across every major industry.</p>
+  </div>
+  <div class="ab-logo-grid" style="max-width:1100px;margin:3rem auto 0">
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">ZESTO</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">FinTrack</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">EduLeap</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">PropVault</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">NovaMind</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">GlowUp</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">SparkPay</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">WellPath</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">LunaWear</span></div>
+    <div class="ab-logo-cell reveal"><span class="ab-logo-text">RetailMart</span></div>
+  </div>
+</section>
+
+<!-- ====== S7: AWARDS ====== -->
+<section class="ab-awards">
+  <div class="center-head">
+    <span class="eyebrow">Recognition</span>
+    <h2 class="section-title">The industry has<br>noticed.</h2>
+  </div>
+  <div class="ab-awards-grid">
+    <div class="ab-award-card reveal">
+      <div class="ab-award-top">
+        <div class="ab-award-icon" style="background:rgba(245,158,11,.12);color:#f59e0b"><i class="fa-solid fa-trophy"></i></div>
+        <span class="ab-award-year">2023</span>
+      </div>
+      <h4>Best Digital Agency of the Year</h4>
+      <span>India Marketing Summit — New Delhi</span>
+    </div>
+    <div class="ab-award-card reveal">
+      <div class="ab-award-top">
+        <div class="ab-award-icon" style="background:rgba(91,94,244,.12);color:#5b5ef4"><i class="fa-solid fa-medal"></i></div>
+        <span class="ab-award-year">2023</span>
+      </div>
+      <h4>Top 50 Creative Agencies in India</h4>
+      <span>Creative Abby — Advertising Club of India</span>
+    </div>
+    <div class="ab-award-card reveal">
+      <div class="ab-award-top">
+        <div class="ab-award-icon" style="background:rgba(16,185,129,.12);color:#10b981"><i class="fa-solid fa-star"></i></div>
+        <span class="ab-award-year">2024</span>
+      </div>
+      <h4>Best Place to Work — Startups</h4>
+      <span>AmbitionBox Employer Awards 2024</span>
+    </div>
+    <div class="ab-award-card reveal">
+      <div class="ab-award-top">
+        <div class="ab-award-icon" style="background:rgba(244,63,94,.12);color:#f43f5e"><i class="fa-solid fa-award"></i></div>
+        <span class="ab-award-year">2024</span>
+      </div>
+      <h4>Google Premier Partner</h4>
+      <span>Top 3% of all Google Partners in India</span>
+    </div>
+    <div class="ab-award-card reveal">
+      <div class="ab-award-top">
+        <div class="ab-award-icon" style="background:rgba(167,139,250,.12);color:#a78bfa"><i class="fa-solid fa-gem"></i></div>
+        <span class="ab-award-year">2025</span>
+      </div>
+      <h4>Meta Business Partner — Elite</h4>
+      <span>Recognised for exceptional ad performance &amp; client growth</span>
+    </div>
+    <div class="ab-award-card reveal">
+      <div class="ab-award-top">
+        <div class="ab-award-icon" style="background:rgba(6,182,212,.12);color:#06b6d4"><i class="fa-solid fa-rocket"></i></div>
+        <span class="ab-award-year">2025</span>
+      </div>
+      <h4>Fastest Growing Agency — India</h4>
+      <span>Inc42 — D2C &amp; Digital Services Report 2025</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== S8: PRESS ====== -->
+<section class="ab-press">
+  <div class="center-head">
+    <span class="eyebrow">Press &amp; Media</span>
+    <h2 class="section-title">What the press<br>says about us.</h2>
+  </div>
+  <div class="ab-press-scroll">
+    <div class="ab-press-track">
+      <!-- 6 cards x2 for loop -->
+      <div class="ab-press-card">
+        <div class="ab-press-pub">
+          <div class="ab-press-pub-logo" style="background:#e8242d">INC</div>
+          <div><strong>Inc42</strong><span>March 2025</span></div>
+        </div>
+        <blockquote>"Nexus Digital is the rare agency that actually understands both the creative and technical sides of digital growth — a combination most companies only dream of."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub">
+          <div class="ab-press-pub-logo" style="background:#007bff">F</div>
+          <div><strong>Forbes India</strong><span>Nov 2023</span></div>
+        </div>
+        <blockquote>"Among the new wave of Indian digital agencies, Nexus stands out for their obsessive focus on measurable outcomes rather than vanity metrics."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub">
+          <div class="ab-press-pub-logo" style="background:#1a1a2e">YS</div>
+          <div><strong>YourStory</strong><span>Jan 2024</span></div>
+        </div>
+        <blockquote>"From Jaipur to the global stage — how Nexus Digital is quietly becoming one of India's most trusted full-stack digital partners."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub">
+          <div class="ab-press-pub-logo" style="background:#ff6600">ET</div>
+          <div><strong>Economic Times</strong><span>Sep 2024</span></div>
+        </div>
+        <blockquote>"Nexus Digital's AI integration division is pioneering a new standard for how agencies embed machine learning into client workflows."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub">
+          <div class="ab-press-pub-logo" style="background:#0f9d58">BW</div>
+          <div><strong>BusinessWorld</strong><span>Feb 2025</span></div>
+        </div>
+        <blockquote>"The agency model is broken — except at places like Nexus, where the founders still personally review every major campaign."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub">
+          <div class="ab-press-pub-logo" style="background:#6b21a8">DW</div>
+          <div><strong>Digital Week</strong><span>Apr 2025</span></div>
+        </div>
+        <blockquote>"Nexus Digital was named one of the top 10 agencies redefining the future of brand-building in the AI era. And rightly so."</blockquote>
+      </div>
+      <!-- duplicate for infinite scroll -->
+      <div class="ab-press-card">
+        <div class="ab-press-pub"><div class="ab-press-pub-logo" style="background:#e8242d">INC</div><div><strong>Inc42</strong><span>March 2025</span></div></div>
+        <blockquote>"Nexus Digital is the rare agency that actually understands both the creative and technical sides of digital growth."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub"><div class="ab-press-pub-logo" style="background:#007bff">F</div><div><strong>Forbes India</strong><span>Nov 2023</span></div></div>
+        <blockquote>"Among the new wave of Indian digital agencies, Nexus stands out for their obsessive focus on measurable outcomes rather than vanity metrics."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub"><div class="ab-press-pub-logo" style="background:#1a1a2e">YS</div><div><strong>YourStory</strong><span>Jan 2024</span></div></div>
+        <blockquote>"From Jaipur to the global stage — how Nexus Digital is quietly becoming one of India's most trusted full-stack digital partners."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub"><div class="ab-press-pub-logo" style="background:#ff6600">ET</div><div><strong>Economic Times</strong><span>Sep 2024</span></div></div>
+        <blockquote>"Nexus Digital's AI integration division is pioneering a new standard for how agencies embed machine learning into client workflows."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub"><div class="ab-press-pub-logo" style="background:#0f9d58">BW</div><div><strong>BusinessWorld</strong><span>Feb 2025</span></div></div>
+        <blockquote>"The agency model is broken — except at places like Nexus, where the founders still personally review every major campaign."</blockquote>
+      </div>
+      <div class="ab-press-card">
+        <div class="ab-press-pub"><div class="ab-press-pub-logo" style="background:#6b21a8">DW</div><div><strong>Digital Week</strong><span>Apr 2025</span></div></div>
+        <blockquote>"Nexus Digital was named one of the top 10 agencies redefining the future of brand-building in the AI era."</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== S9: CTA ====== -->
+<section class="ab-cta">
+  <div class="ab-cta-shapes">
+    <div class="ab-sh ab-sh-1" style="opacity:.08"></div>
+    <div class="ab-sh ab-sh-2" style="opacity:.08"></div>
+  </div>
+  <div class="ab-cta-inner reveal">
+    <span class="eyebrow">Let's Connect</span>
+    <h2>Ready to write your<br><span class="gradient-text">next chapter</span> with us?</h2>
+    <p>Every great project starts with a single conversation. Tell us your vision — we'll come back within 24 hours with a tailored proposal, no strings attached.</p>
+    <div class="ab-cta-btns">
+      <a href="contact.html" class="btn-solid">Start a Conversation <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="work.html" class="btn-outline">See Our Work First</a>
+    </div>
+    <div class="ab-cta-trust">
+      <div class="ab-trust-item"><i class="fa-solid fa-circle-check"></i> No commitment required</div>
+      <div class="ab-trust-item"><i class="fa-solid fa-circle-check"></i> Proposal in 24 hours</div>
+      <div class="ab-trust-item"><i class="fa-solid fa-circle-check"></i> Free strategy call included</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+          <rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+          <rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+          <rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+        </svg>
+        <span class="logo-text">Nexus<span class="dot">.</span></span>
+      </a>
+      <p>Building brands that convert since 2017.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+      </div>
+    </div>
+    <div class="footer-nav">
+      <div>
+        <h5>Services</h5>
+        <a href="services.html">Brand Identity</a>
+        <a href="services.html">Web Development</a>
+        <a href="services.html">Mobile Apps</a>
+        <a href="services.html">Growth Marketing</a>
+        <a href="services.html">AI Integration</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
+        <a href="work.html">Our Work</a>
+        <a href="contact.html">Contact</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="return-policy.html">Return Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="sitemap.html">Sitemap</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Nexus Digital. All rights reserved.</p>
+    <div><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookie-policy.html">Cookies</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // navbar
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+  // burger
+  const burger=document.getElementById('burger'),nl=document.getElementById('navLinks');
+  if(burger) burger.addEventListener('click',()=>nl.classList.toggle('open'));
+  // reveal
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  // count-up
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target;
+      const target=+el.dataset.target,step=target/60;
+      let cur=0;
+      const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=Math.floor(cur);if(cur>=target)clearInterval(t);},20);
+      // fill bars
+      el.closest('.ab-num-card')?.querySelectorAll('.ab-num-bar-fill').forEach(b=>{
+        b.style.width=b.dataset.w+'%';
+      });
+      cObs.unobserve(el);
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.ab-count').forEach(el=>cObs.observe(el));
+})();
+</script>
 </body>
 </html>
