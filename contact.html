@@ -1,109 +1,521 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Nexus Digital</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+
+    .gradient-text{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .breadcrumb{font-size:.78rem;color:var(--faint);display:flex;align-items:center;gap:.4rem;margin-bottom:1.2rem}
+    .breadcrumb a{color:var(--faint);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--primary)}
+    .breadcrumb i{font-size:.6rem}
+
+    /* ==============================
+       S1 — HERO
+    ============================== */
+    .ct-hero{padding:9rem 2rem 5.5rem;background:var(--bg);position:relative;overflow:hidden;text-align:center}
+    .ct-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .ct-sh{position:absolute;border-radius:50%;filter:blur(90px)}
+    .ct-sh-1{width:500px;height:500px;background:var(--primary);opacity:.13;top:-180px;left:50%;transform:translateX(-50%)}
+    .ct-sh-2{width:260px;height:260px;background:#f43f5e;opacity:.1;bottom:-80px;left:5%}
+    .ct-sh-3{width:220px;height:220px;background:#10b981;opacity:.1;bottom:-60px;right:5%}
+    .ct-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+    .ct-hero-inner h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:1rem}
+    .ct-hero-inner p{font-size:1rem;color:var(--muted);line-height:1.8;max-width:500px;margin:0 auto 2.2rem}
+    /* trust row */
+    .ct-trust{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;margin-top:.4rem}
+    .ct-trust-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted)}
+    .ct-trust-item i{color:var(--primary)}
+    /* response badge */
+    .ct-resp-badge{display:inline-flex;align-items:center;gap:.55rem;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:.4rem 1rem .4rem .6rem;font-size:.78rem;font-weight:600;color:var(--text);margin-bottom:1.6rem;box-shadow:var(--shadow-sm)}
+    .ct-resp-dot{width:8px;height:8px;border-radius:50%;background:#10b981;flex-shrink:0;box-shadow:0 0 0 3px rgba(16,185,129,.2)}
+
+    /* ==============================
+       S2 — CONTACT MAIN
+    ============================== */
+    .ct-main{padding:5.5rem 0 6rem;background:var(--surface)}
+    .ct-main-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1.55fr;gap:3.5rem;align-items:start}
+
+    /* --- LEFT INFO PANEL --- */
+    .ct-info{display:flex;flex-direction:column;gap:1rem}
+    .ct-info-head{margin-bottom:.6rem}
+    .ct-info-head h2{font-size:1.6rem;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:.5rem}
+    .ct-info-head p{font-size:.88rem;color:var(--muted);line-height:1.75}
+    /* detail cards */
+    .ct-detail{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.1rem 1.3rem;display:flex;align-items:center;gap:1rem;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .ct-detail:hover{transform:translateX(4px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+    .ct-detail-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:.92rem;flex-shrink:0}
+    .ct-detail-body strong{display:block;font-size:.85rem;font-weight:700;color:var(--text)}
+    .ct-detail-body span{font-size:.8rem;color:var(--muted)}
+    /* social row */
+    .ct-social-row{display:flex;gap:.55rem;margin-top:.4rem}
+    .ct-soc-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--muted);text-decoration:none;transition:all .2s}
+    .ct-soc-btn:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+    /* mini map card */
+    .ct-map{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:.4rem}
+    .ct-map-img{width:100%;height:130px;object-fit:cover;display:block;filter:saturate(.7) brightness(.95)}
+    .ct-map-footer{padding:.7rem 1rem;font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.45rem}
+    .ct-map-footer i{color:var(--primary)}
+
+    /* --- RIGHT FORM --- */
+    .ct-form-wrap{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-xl);padding:2.5rem;box-shadow:var(--shadow-sm)}
+    .ct-form-head{margin-bottom:1.8rem}
+    .ct-form-head h3{font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
+    .ct-form-head p{font-size:.82rem;color:var(--muted)}
+    /* form elements */
+    .ct-form{display:flex;flex-direction:column;gap:1.1rem}
+    .ct-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .ct-fg{display:flex;flex-direction:column;gap:.4rem}
+    .ct-fg label{font-size:.78rem;font-weight:600;color:var(--text)}
+    .ct-fg input,.ct-fg select,.ct-fg textarea{
+      width:100%;padding:.7rem .95rem;border:1.5px solid var(--border);border-radius:var(--r-md);background:var(--surface);color:var(--text);font-size:.88rem;font-family:inherit;outline:none;transition:border-color .2s,box-shadow .2s;resize:none;
+    }
+    .ct-fg input:focus,.ct-fg select:focus,.ct-fg textarea:focus{
+      border-color:var(--primary);box-shadow:0 0 0 3px rgba(91,94,244,.12);
+    }
+    .ct-fg input::placeholder,.ct-fg textarea::placeholder{color:var(--faint)}
+    /* budget pills */
+    .ct-budget-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+    .ct-bp{cursor:pointer;font-size:.75rem;font-weight:600;padding:.35rem .9rem;border-radius:999px;border:1.5px solid var(--border);color:var(--muted);background:var(--surface);transition:all .2s;user-select:none}
+    .ct-bp:hover,.ct-bp.active{background:var(--primary);border-color:var(--primary);color:#fff}
+    /* submit */
+    .ct-submit{width:100%;padding:.85rem;border-radius:var(--r-md);background:var(--primary);color:#fff;font-size:.92rem;font-weight:700;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;transition:background .2s,transform .15s,box-shadow .2s}
+    .ct-submit:hover{background:var(--primary-dark,#4a4dd4);transform:translateY(-1px);box-shadow:0 8px 24px rgba(91,94,244,.3)}
+    .ct-submit:active{transform:translateY(0)}
+    /* success state */
+    .ct-success{display:none;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;padding:3rem 1rem;text-align:center}
+    .ct-success-icon{width:64px;height:64px;border-radius:50%;background:rgba(16,185,129,.1);color:#10b981;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+    .ct-success h4{font-size:1.1rem;font-weight:700;color:var(--text)}
+    .ct-success p{font-size:.85rem;color:var(--muted)}
+
+    /* ==============================
+       S3 — PROCESS
+    ============================== */
+    .ct-process{padding:6rem 0;background:var(--bg);position:relative;overflow:hidden}
+    .ct-process::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 50%,rgba(91,94,244,.05),transparent 70%);pointer-events:none}
+    .ct-process-grid{max-width:1100px;margin:3.5rem auto 0;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative}
+    /* connector line */
+    .ct-process-grid::before{content:'';position:absolute;top:2.8rem;left:calc(12.5% + 1px);right:calc(12.5% + 1px);height:2px;background:var(--border);z-index:0}
+    .ct-step{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem 1.4rem;text-align:center;position:relative;z-index:1;transition:transform .25s,box-shadow .25s}
+    .ct-step:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+    .ct-step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r-lg) var(--r-lg) 0 0;background:var(--sc,var(--primary))}
+    .ct-step-num{width:52px;height:52px;border-radius:50%;background:var(--sn-bg,rgba(91,94,244,.1));color:var(--sn-c,var(--primary));display:flex;align-items:center;justify-content:center;font-size:1.15rem;font-weight:800;margin:0 auto 1.1rem;font-family:'Syne',sans-serif;position:relative;z-index:1}
+    .ct-step h4{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+    .ct-step p{font-size:.8rem;color:var(--muted);line-height:1.7}
+    .ct-step-icon{position:absolute;top:-.9rem;right:1rem;width:26px;height:26px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.62rem;color:var(--primary)}
+
+    /* ==============================
+       S4 — FAQ
+    ============================== */
+    .ct-faq{padding:6rem 0 7rem;background:var(--surface2)}
+    .ct-faq-inner{max-width:780px;margin:3.5rem auto 0;padding:0 2rem;display:flex;flex-direction:column;gap:.75rem}
+    .ct-faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:box-shadow .2s}
+    .ct-faq-item.open{box-shadow:var(--shadow-md);border-color:var(--primary)}
+    .ct-faq-q{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.2rem 1.5rem;cursor:pointer;font-size:.92rem;font-weight:600;color:var(--text);user-select:none}
+    .ct-faq-q:hover{color:var(--primary)}
+    .ct-faq-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.68rem;color:var(--muted);flex-shrink:0;transition:all .25s;transform:rotate(0deg)}
+    .ct-faq-item.open .ct-faq-icon{background:var(--primary);border-color:var(--primary);color:#fff;transform:rotate(45deg)}
+    .ct-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+    .ct-faq-item.open .ct-faq-a{max-height:300px}
+    .ct-faq-a-inner{padding:0 1.5rem 1.3rem;font-size:.86rem;color:var(--muted);line-height:1.8}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      .ct-main-inner{grid-template-columns:1fr}
+      .ct-process-grid{grid-template-columns:repeat(2,1fr)}
+      .ct-process-grid::before{display:none}
+    }
+    @media(max-width:600px){
+      .ct-hero{padding:7rem 1.5rem 4rem}
+      .ct-row{grid-template-columns:1fr}
+      .ct-form-wrap{padding:1.8rem 1.5rem}
+      .ct-process-grid{grid-template-columns:1fr;padding:0 1.5rem}
+      .ct-trust{gap:1rem}
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="/" class="logo"><span class="logo-icon">&#9671;</span><span class="logo-text">Nexus<span class="accent">.</span></span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/team">Team</a></li>
-        <li><a href="/contact" class="active">Contact</a></li>
-      </ul>
-      <a href="/contact" class="btn btn-primary nav-cta">Get Started</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="section-tag reveal">Get In Touch</div>
-      <h1 class="page-title reveal">Let's Build Something <span class="gradient-text">Remarkable</span></h1>
-      <p class="page-sub reveal">Tell us about your goals and we'll craft a custom strategy to get you there.</p>
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+        <rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+        <rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+        <rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+      </svg>
+      <span class="logo-text">Nexus<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" style="color:var(--primary)">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="contact.html" class="nav-btn">Get a Proposal</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <section class="contact-section section">
-    <div class="container contact-grid">
-      <div class="contact-info reveal">
-        <h2>Get in <span class="gradient-text">Touch</span></h2>
-        <p>We'd love to hear from you. Whether you have a project in mind or just want to explore possibilities, our team is ready.</p>
-        <div class="contact-detail">
-          <div class="cd-icon"><i class="fa-solid fa-envelope"></i></div>
-          <div><strong>Email Us</strong><p>hello@nexusdigital.io</p></div>
-        </div>
-        <div class="contact-detail">
-          <div class="cd-icon"><i class="fa-solid fa-phone"></i></div>
-          <div><strong>Call Us</strong><p>+91 98765 43210</p></div>
-        </div>
-        <div class="contact-detail">
-          <div class="cd-icon"><i class="fa-solid fa-location-dot"></i></div>
-          <div><strong>Visit Us</strong><p>C-Scheme, Jaipur, Rajasthan 302001</p></div>
-        </div>
-        <div class="contact-detail">
-          <div class="cd-icon"><i class="fa-solid fa-clock"></i></div>
-          <div><strong>Working Hours</strong><p>Mon–Sat: 9:00 AM – 7:00 PM IST</p></div>
+<!-- ====== S1: HERO ====== -->
+<section class="ct-hero">
+  <div class="ct-shapes">
+    <div class="ct-sh ct-sh-1"></div>
+    <div class="ct-sh ct-sh-2"></div>
+    <div class="ct-sh ct-sh-3"></div>
+  </div>
+  <div class="ct-hero-inner reveal">
+    <div class="breadcrumb" style="justify-content:center">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Contact</span>
+    </div>
+    <div class="ct-resp-badge">
+      <div class="ct-resp-dot"></div>
+      We reply within 24 hours — usually much faster
+    </div>
+    <span class="eyebrow">Get In Touch</span>
+    <h1>Let’s build something<br><span class="gradient-text">remarkable</span> together.</h1>
+    <p>Tell us about your brand, your goals, and your timeline. We’ll come back with a tailored plan — no cookie-cutter proposals.</p>
+    <div class="ct-trust">
+      <div class="ct-trust-item"><i class="fa-solid fa-circle-check"></i> Free strategy call</div>
+      <div class="ct-trust-item"><i class="fa-solid fa-circle-check"></i> Proposal in 24 hours</div>
+      <div class="ct-trust-item"><i class="fa-solid fa-circle-check"></i> No commitment needed</div>
+      <div class="ct-trust-item"><i class="fa-solid fa-circle-check"></i> 200+ brands helped</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== S2: CONTACT MAIN ====== -->
+<section class="ct-main">
+  <div class="ct-main-inner">
+
+    <!-- LEFT: Info -->
+    <div class="ct-info reveal">
+      <div class="ct-info-head">
+        <h2>Talk to a real<br><span class="gradient-text">human, today.</span></h2>
+        <p>No bots, no automated replies. When you reach out, a senior team member personally reviews your message and responds.</p>
+      </div>
+
+      <div class="ct-detail">
+        <div class="ct-detail-icon" style="background:rgba(91,94,244,.1);color:#5b5ef4"><i class="fa-solid fa-envelope"></i></div>
+        <div class="ct-detail-body"><strong>Email Us</strong><span>hello@nexusdigital.io</span></div>
+      </div>
+      <div class="ct-detail">
+        <div class="ct-detail-icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fa-solid fa-phone"></i></div>
+        <div class="ct-detail-body"><strong>Call / WhatsApp</strong><span>+91 98765 43210</span></div>
+      </div>
+      <div class="ct-detail">
+        <div class="ct-detail-icon" style="background:rgba(244,63,94,.1);color:#f43f5e"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="ct-detail-body"><strong>Head Office</strong><span>C-Scheme, Jaipur, Rajasthan 302001</span></div>
+      </div>
+      <div class="ct-detail">
+        <div class="ct-detail-icon" style="background:rgba(245,158,11,.1);color:#f59e0b"><i class="fa-solid fa-clock"></i></div>
+        <div class="ct-detail-body"><strong>Working Hours</strong><span>Mon–Sat &nbsp;9 AM – 7 PM IST</span></div>
+      </div>
+
+      <div>
+        <p style="font-size:.8rem;color:var(--faint);margin-bottom:.6rem">Follow us</p>
+        <div class="ct-social-row">
+          <a href="#" class="ct-soc-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="ct-soc-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="ct-soc-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="ct-soc-btn" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+          <a href="#" class="ct-soc-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
-      <div class="contact-form-wrap reveal">
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" placeholder="Rahul" required />
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" placeholder="Sharma" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="rahul@company.com" required />
-          </div>
-          <div class="form-group">
-            <label for="service">Service Interested In</label>
-            <select id="service">
-              <option value="">Select a service...</option>
-              <option>SEO</option>
-              <option>Paid Advertising</option>
-              <option>Social Media</option>
-              <option>Branding</option>
-              <option>Web Design</option>
-              <option>Email Marketing</option>
-              <option>Full Package</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea id="message" rows="5" placeholder="Tell us about your project or goals..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg w-full">Send Message <i class="fa-solid fa-paper-plane"></i></button>
-        </form>
+
+      <!-- mini map -->
+      <div class="ct-map">
+        <img class="ct-map-img" src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=700&q=70" alt="Jaipur map">
+        <div class="ct-map-footer"><i class="fa-solid fa-location-dot"></i> C-Scheme, Jaipur, Rajasthan, India</div>
       </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand"><a href="/" class="logo"><span class="logo-icon">&#9671;</span><span class="logo-text">Nexus<span class="accent">.</span></span></a><p>Growth-driven digital marketing for ambitious brands.</p><div class="social-links"><a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
-      <div class="footer-links"><h4>Pages</h4><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/team">Team</a></li><li><a href="/contact">Contact</a></li></ul></div>
-      <div class="footer-links"><h4>Services</h4><ul><li><a href="/services">SEO</a></li><li><a href="/services">Paid Ads</a></li><li><a href="/services">Social Media</a></li><li><a href="/services">Branding</a></li><li><a href="/services">Web Design</a></li></ul></div>
-      <div class="footer-contact"><h4>Contact</h4><p><i class="fa-solid fa-envelope"></i> hello@nexusdigital.io</p><p><i class="fa-solid fa-phone"></i> +91 98765 43210</p><p><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</p></div>
+    <!-- RIGHT: Form -->
+    <div class="ct-form-wrap reveal" id="formWrap">
+      <div class="ct-form-head">
+        <h3>Send us a message 👋</h3>
+        <p>Fill in the form and we’ll be back in touch within 24 hours.</p>
+      </div>
+      <form class="ct-form" id="ctForm" novalidate>
+        <div class="ct-row">
+          <div class="ct-fg">
+            <label for="cfname">First Name <span style="color:#f43f5e">*</span></label>
+            <input type="text" id="cfname" placeholder="Rahul" required>
+          </div>
+          <div class="ct-fg">
+            <label for="clname">Last Name <span style="color:#f43f5e">*</span></label>
+            <input type="text" id="clname" placeholder="Sharma" required>
+          </div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-fg">
+            <label for="cemail">Email <span style="color:#f43f5e">*</span></label>
+            <input type="email" id="cemail" placeholder="rahul@company.com" required>
+          </div>
+          <div class="ct-fg">
+            <label for="cphone">Phone / WhatsApp</label>
+            <input type="tel" id="cphone" placeholder="+91 98765 43210">
+          </div>
+        </div>
+        <div class="ct-fg">
+          <label for="cservice">Service You’re Interested In</label>
+          <select id="cservice">
+            <option value="">Select a service…</option>
+            <option>Brand Identity &amp; Strategy</option>
+            <option>Web Design &amp; Development</option>
+            <option>Mobile App Development</option>
+            <option>SEO &amp; Content Marketing</option>
+            <option>Paid Ads (Google / Meta)</option>
+            <option>Social Media Management</option>
+            <option>AI &amp; Automation Integration</option>
+            <option>Full-Service Retainer</option>
+            <option>Just exploring options</option>
+          </select>
+        </div>
+        <div class="ct-fg">
+          <label>Estimated Budget</label>
+          <div class="ct-budget-pills">
+            <span class="ct-bp" onclick="selectBudget(this)">Under ₹1L</span>
+            <span class="ct-bp" onclick="selectBudget(this)">₹1L – 5L</span>
+            <span class="ct-bp" onclick="selectBudget(this)">₹5L – 15L</span>
+            <span class="ct-bp" onclick="selectBudget(this)">₹15L – 50L</span>
+            <span class="ct-bp" onclick="selectBudget(this)">₹50L+</span>
+            <span class="ct-bp" onclick="selectBudget(this)">Not sure yet</span>
+          </div>
+        </div>
+        <div class="ct-fg">
+          <label for="cmsg">Tell Us About Your Project <span style="color:#f43f5e">*</span></label>
+          <textarea id="cmsg" rows="4" placeholder="What are you building? What's your goal? Any timeline?" required></textarea>
+        </div>
+        <button type="submit" class="ct-submit">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+      <!-- success -->
+      <div class="ct-success" id="ctSuccess">
+        <div class="ct-success-icon"><i class="fa-solid fa-check"></i></div>
+        <h4>Message sent! 🎉</h4>
+        <p>Thanks for reaching out. A senior team member will get back to you within 24 hours.</p>
+      </div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 Nexus Digital. All rights reserved.</p></div>
-  </footer>
-  <script src="assets/js/main.js"></script>
+
+  </div>
+</section>
+
+<!-- ====== S3: PROCESS ====== -->
+<section class="ct-process">
+  <div style="text-align:center;max-width:600px;margin:0 auto;padding:0 2rem">
+    <span class="eyebrow">What Happens Next</span>
+    <h2 class="section-title">From message to<br>results — in 4 steps.</h2>
+    <p class="section-sub" style="max-width:480px;margin:.6rem auto 0">Here’s exactly what to expect after you hit send — no black boxes, no waiting around wondering.</p>
+  </div>
+  <div class="ct-process-grid">
+    <div class="ct-step reveal" style="--sc:#5b5ef4;--sn-bg:rgba(91,94,244,.1);--sn-c:#5b5ef4">
+      <div class="ct-step-icon"><i class="fa-solid fa-envelope"></i></div>
+      <div class="ct-step-num">01</div>
+      <h4>You Send a Message</h4>
+      <p>Fill out the form with your goals, budget, and timeline. Takes less than 2 minutes. No lengthy RFPs needed.</p>
+    </div>
+    <div class="ct-step reveal" style="--sc:#f43f5e;--sn-bg:rgba(244,63,94,.1);--sn-c:#f43f5e">
+      <div class="ct-step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <div class="ct-step-num">02</div>
+      <h4>We Review &amp; Research</h4>
+      <p>A senior strategist reviews your brand, website, and competitors. We come prepared — not with generic slides.</p>
+    </div>
+    <div class="ct-step reveal" style="--sc:#10b981;--sn-bg:rgba(16,185,129,.1);--sn-c:#10b981">
+      <div class="ct-step-icon"><i class="fa-solid fa-phone"></i></div>
+      <div class="ct-step-num">03</div>
+      <h4>Discovery Call</h4>
+      <p>A 30-min call to understand your goals deeply. No sales pitch — just honest questions and real conversation.</p>
+    </div>
+    <div class="ct-step reveal" style="--sc:#a78bfa;--sn-bg:rgba(167,139,250,.1);--sn-c:#a78bfa">
+      <div class="ct-step-icon"><i class="fa-solid fa-file-lines"></i></div>
+      <div class="ct-step-num">04</div>
+      <h4>Custom Proposal</h4>
+      <p>We send a bespoke proposal with scope, timelines, pricing, and projected outcomes — tailored to your business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== S4: FAQ ====== -->
+<section class="ct-faq">
+  <div style="text-align:center;max-width:600px;margin:0 auto;padding:0 2rem">
+    <span class="eyebrow">FAQ</span>
+    <h2 class="section-title">Questions we get<br>asked all the time.</h2>
+    <p class="section-sub" style="max-width:460px;margin:.6rem auto 0">Still not sure? Here are honest answers to the most common questions before working with us.</p>
+  </div>
+  <div class="ct-faq-inner">
+
+    <div class="ct-faq-item reveal open">
+      <div class="ct-faq-q" onclick="toggleFaq(this)">
+        How quickly will you respond to my message?
+        <div class="ct-faq-icon"><i class="fa-solid fa-plus"></i></div>
+      </div>
+      <div class="ct-faq-a">
+        <div class="ct-faq-a-inner">We respond to every message within 24 business hours — usually within a few hours. If it’s urgent, you can WhatsApp us directly at +91 98765 43210 and we’ll reply immediately.</div>
+      </div>
+    </div>
+
+    <div class="ct-faq-item reveal">
+      <div class="ct-faq-q" onclick="toggleFaq(this)">
+        What’s the minimum budget you work with?
+        <div class="ct-faq-icon"><i class="fa-solid fa-plus"></i></div>
+      </div>
+      <div class="ct-faq-a">
+        <div class="ct-faq-a-inner">Our project-based work typically starts from ₹1,50,000 and monthly retainers from ₹75,000/month. We believe in transparent pricing — no hidden fees, ever. We’ll let you know upfront if we’re not the right fit for your budget.</div>
+      </div>
+    </div>
+
+    <div class="ct-faq-item reveal">
+      <div class="ct-faq-q" onclick="toggleFaq(this)">
+        Do you work with international clients?
+        <div class="ct-faq-icon"><i class="fa-solid fa-plus"></i></div>
+      </div>
+      <div class="ct-faq-a">
+        <div class="ct-faq-a-inner">Absolutely. We work with clients across India, UAE, UK, Singapore, and Australia. We have remote-first processes, async communication systems, and experience handling cross-timezone projects without friction.</div>
+      </div>
+    </div>
+
+    <div class="ct-faq-item reveal">
+      <div class="ct-faq-q" onclick="toggleFaq(this)">
+        How long does a typical project take?
+        <div class="ct-faq-icon"><i class="fa-solid fa-plus"></i></div>
+      </div>
+      <div class="ct-faq-a">
+        <div class="ct-faq-a-inner">It depends on scope. A website redesign takes 3–5 weeks. A full brand identity project takes 4–6 weeks. A mobile app takes 8–16 weeks depending on complexity. We always define timelines clearly in the proposal — and we stick to them.</div>
+      </div>
+    </div>
+
+    <div class="ct-faq-item reveal">
+      <div class="ct-faq-q" onclick="toggleFaq(this)">
+        Will I have a dedicated point of contact?
+        <div class="ct-faq-icon"><i class="fa-solid fa-plus"></i></div>
+      </div>
+      <div class="ct-faq-a">
+        <div class="ct-faq-a-inner">Yes. Every client gets a dedicated Project Lead who’s your single point of contact throughout the engagement. No bouncing between account managers or explaining your brand from scratch every call.</div>
+      </div>
+    </div>
+
+    <div class="ct-faq-item reveal">
+      <div class="ct-faq-q" onclick="toggleFaq(this)">
+        What makes Nexus different from other agencies?
+        <div class="ct-faq-icon"><i class="fa-solid fa-plus"></i></div>
+      </div>
+      <div class="ct-faq-a">
+        <div class="ct-faq-a-inner">Most agencies separate strategy, design, and development into silos. We don’t. Our teams are fully integrated, which means faster decisions, fewer handoff errors, and work that actually makes business sense — not just work that looks good in a portfolio.</div>
+      </div>
+    </div>
+
+    <div class="ct-faq-item reveal">
+      <div class="ct-faq-q" onclick="toggleFaq(this)">
+        Do you offer ongoing support after the project is done?
+        <div class="ct-faq-icon"><i class="fa-solid fa-plus"></i></div>
+      </div>
+      <div class="ct-faq-a">
+        <div class="ct-faq-a-inner">Yes. We offer monthly maintenance retainers for all projects we build. Most clients choose to continue with us for growth, optimisation, and iteration work post-launch. Long-term partnerships are how we do our best work.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+          <rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+          <rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+          <rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+        </svg>
+        <span class="logo-text">Nexus<span class="dot">.</span></span>
+      </a>
+      <p>Building brands that convert since 2017.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+      </div>
+    </div>
+    <div class="footer-nav">
+      <div>
+        <h5>Services</h5>
+        <a href="services.html">Brand Identity</a>
+        <a href="services.html">Web Development</a>
+        <a href="services.html">Mobile Apps</a>
+        <a href="services.html">Growth Marketing</a>
+        <a href="services.html">AI Integration</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
+        <a href="work.html">Our Work</a>
+        <a href="contact.html">Contact</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="return-policy.html">Return Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="sitemap.html">Sitemap</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Nexus Digital. All rights reserved.</p>
+    <div><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookie-policy.html">Cookies</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // navbar
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+  // burger
+  const burger=document.getElementById('burger'),nl=document.getElementById('navLinks');
+  if(burger) burger.addEventListener('click',()=>nl.classList.toggle('open'));
+  // reveal
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  // form submit
+  document.getElementById('ctForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    this.style.display='none';
+    document.querySelector('.ct-form-head').style.display='none';
+    document.getElementById('ctSuccess').style.display='flex';
+  });
+})();
+
+function selectBudget(el){
+  document.querySelectorAll('.ct-bp').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function toggleFaq(el){
+  const item=el.closest('.ct-faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.ct-faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+</script>
 </body>
 </html>
