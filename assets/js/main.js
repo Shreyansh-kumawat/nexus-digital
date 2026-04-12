@@ -48,7 +48,7 @@ if(form) form.addEventListener('submit',e=>{
   setTimeout(()=>{btn.innerHTML='Send Message <i class="fa-solid fa-paper-plane"></i>';btn.style.background='';},3500);
 });
 
-/* ============ THREE.JS — HERO 3D FLOATING CUBES ============ */
+/* ============ THREE.JS — HERO 3D FLOATING SHAPES ============ */
 (function initHero3D(){
   const canvas = document.getElementById('threeHero');
   if(!canvas || typeof THREE==='undefined') return;
@@ -60,14 +60,12 @@ if(form) form.addEventListener('submit',e=>{
   const camera = new THREE.PerspectiveCamera(45,w/h,0.1,100);
   camera.position.set(0,0,8);
 
-  // Lights
   scene.add(new THREE.AmbientLight(0xffffff,0.6));
   const dl = new THREE.DirectionalLight(0x5b5ef4,1.2);
   dl.position.set(5,5,5); scene.add(dl);
   const dl2 = new THREE.DirectionalLight(0xf43f5e,0.4);
   dl2.position.set(-5,-3,2); scene.add(dl2);
 
-  // Create floating geometric shapes
   const shapes = [];
   const geometries = [
     new THREE.BoxGeometry(0.8,0.8,0.8),
@@ -93,7 +91,6 @@ if(form) form.addEventListener('submit',e=>{
     shapes.push({mesh, speed:{x:(Math.random()-.5)*.006, y:(Math.random()-.5)*.006}, float:{offset:Math.random()*Math.PI*2, amp:.15+Math.random()*.1}});
   });
 
-  // Mouse parallax
   let mx=0, my=0;
   window.addEventListener('mousemove',e=>{ mx=(e.clientX/window.innerWidth-.5)*.6; my=(e.clientY/window.innerHeight-.5)*.6; });
 
@@ -119,51 +116,103 @@ if(form) form.addEventListener('submit',e=>{
   });
 })();
 
-/* ============ THREE.JS — TECH SECTION 3D PARTICLES ============ */
+/* ============ THREE.JS — TECH SECTION: PARTICLES + EYE GLB ============ */
 (function initTech3D(){
   const canvas = document.getElementById('techCanvas');
   if(!canvas || typeof THREE==='undefined') return;
-  const w=canvas.parentElement.clientWidth, h=460;
-  const renderer = new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
-  renderer.setSize(w,h); renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  const w = canvas.parentElement.clientWidth, h = 460;
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+  renderer.setSize(w,h);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
   renderer.setClearColor(0xf9f8f5,1);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60,w/h,0.1,200);
+  const camera = new THREE.PerspectiveCamera(60, w/h, 0.1, 200);
   camera.position.set(0,0,30);
 
-  // Particle sphere / constellation
+  // Lighting for the eye model
+  scene.add(new THREE.AmbientLight(0xffffff, 1.2));
+  const keyLight = new THREE.DirectionalLight(0xffffff, 1.5);
+  keyLight.position.set(10,10,10); scene.add(keyLight);
+  const fillLight = new THREE.DirectionalLight(0x5b5ef4, 0.8);
+  fillLight.position.set(-8,-5,5); scene.add(fillLight);
+  const rimLight = new THREE.DirectionalLight(0xa5b4fc, 0.6);
+  rimLight.position.set(0,0,-10); scene.add(rimLight);
+
+  // Particle sphere
   const count = 280;
-  const positions = new Float32Array(count*3);
+  const pos = new Float32Array(count*3);
   for(let i=0;i<count;i++){
     const theta=Math.acos(2*Math.random()-1);
     const phi=2*Math.PI*Math.random();
-    const r = 8+Math.random()*6;
-    positions[i*3]   = r*Math.sin(theta)*Math.cos(phi);
-    positions[i*3+1] = r*Math.sin(theta)*Math.sin(phi);
-    positions[i*3+2] = r*Math.cos(theta);
+    const r=8+Math.random()*6;
+    pos[i*3]  =r*Math.sin(theta)*Math.cos(phi);
+    pos[i*3+1]=r*Math.sin(theta)*Math.sin(phi);
+    pos[i*3+2]=r*Math.cos(theta);
   }
-  const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
-  const mat = new THREE.PointsMaterial({color:0x5b5ef4,size:0.18,transparent:true,opacity:0.7});
-  const points = new THREE.Points(geo,mat);
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const pMat = new THREE.PointsMaterial({color:0x5b5ef4,size:0.18,transparent:true,opacity:0.7});
+  const points = new THREE.Points(pGeo,pMat);
   scene.add(points);
 
-  // Inner ring of floating tech labels (tori)
-  const torusMat = new THREE.MeshBasicMaterial({color:0x5b5ef4,wireframe:true,opacity:.15,transparent:true});
-  const torus = new THREE.Mesh(new THREE.TorusGeometry(10,0.05,8,80),torusMat); scene.add(torus);
-  const torus2 = new THREE.Mesh(new THREE.TorusGeometry(12,0.04,8,80),new THREE.MeshBasicMaterial({color:0xf43f5e,wireframe:true,opacity:.1,transparent:true}));
+  // Torus rings
+  const torus = new THREE.Mesh(
+    new THREE.TorusGeometry(10,0.05,8,80),
+    new THREE.MeshBasicMaterial({color:0x5b5ef4,wireframe:true,opacity:.15,transparent:true})
+  );
+  scene.add(torus);
+  const torus2 = new THREE.Mesh(
+    new THREE.TorusGeometry(12,0.04,8,80),
+    new THREE.MeshBasicMaterial({color:0xf43f5e,wireframe:true,opacity:.1,transparent:true})
+  );
   torus2.rotation.x=Math.PI/3; scene.add(torus2);
+
+  // Load Eye GLB
+  let eyeModel = null;
+  if(typeof THREE.GLTFLoader !== 'undefined') {
+    const loader = new THREE.GLTFLoader();
+    loader.load(
+      './assets/3d/blue_eyeball_free.glb',
+      function(gltf){
+        eyeModel = gltf.scene;
+        // Auto-scale using bounding box
+        const box = new THREE.Box3().setFromObject(eyeModel);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = 5.5 / maxDim;
+        eyeModel.scale.setScalar(scale);
+        // Center it
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+        eyeModel.position.sub(center.multiplyScalar(scale));
+        eyeModel.position.set(0, 0, 0);
+        scene.add(eyeModel);
+      },
+      undefined,
+      function(err){ console.warn('Eye model load error:', err); }
+    );
+  }
 
   let mx=0;
   window.addEventListener('mousemove',e=>{ mx=(e.clientX/window.innerWidth-.5); });
+
   const clock2 = new THREE.Clock();
   function animate(){
     requestAnimationFrame(animate);
     const t=clock2.getElapsedTime();
+    // Rotate particles around eye
     points.rotation.y = t*0.07 + mx*0.3;
     points.rotation.x = t*0.04;
     torus.rotation.z = t*0.05;
     torus2.rotation.y = t*0.06;
+    // Eye slow rotation + subtle float
+    if(eyeModel){
+      eyeModel.rotation.y = t * 0.35;
+      eyeModel.position.y = Math.sin(t*0.7) * 0.3;
+    }
     renderer.render(scene,camera);
   }
   animate();
