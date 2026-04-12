@@ -3,327 +3,311 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexus Digital — Growth-Driven Marketing</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <title>Nexus Digital</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-follower" id="cursorFollower"></div>
-
-  <!-- NAV -->
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="/" class="logo">
-        <span class="logo-icon">&#9671;</span>
-        <span class="logo-text">Nexus<span class="accent">.</span></span>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Nexus Digital logo">
+          <rect x="2" y="2" width="13" height="13" rx="2" fill="var(--color-primary)"/>
+          <rect x="17" y="2" width="13" height="13" rx="2" fill="var(--color-primary)" opacity="0.6"/>
+          <rect x="2" y="17" width="13" height="13" rx="2" fill="var(--color-primary)" opacity="0.6"/>
+          <rect x="17" y="17" width="13" height="13" rx="2" fill="var(--color-primary)"/>
+        </svg>
+        <span>Nexus<span class="accent">.</span></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/team">Team</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="/contact" class="btn btn-primary nav-cta">Get Started</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="nav-cta">Get Started</button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-    </div>
-    <div class="container">
-      <div class="hero-grid">
-        <!-- LEFT -->
-        <div class="hero-left">
-          <div class="hero-badge reveal">
-            <span class="badge-dot"></span>
-            Trusted by 200+ brands worldwide
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Digital Agency of the Year 2025</span>
+        </div>
+        <h1 class="hero-title">
+          We Build
+          <span class="typed-wrapper">
+            <span class="typed-text" id="typedText">Brands</span>
+            <span class="typed-cursor">|</span>
+          </span>
+          <br>That Convert
+        </h1>
+        <p class="hero-desc">Nexus Digital turns ideas into high-performance digital experiences. Strategy, design, and development — all under one roof.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">View Our Work <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="btn-ghost">Let's Talk</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-target="200">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Brands Served</span>
           </div>
-          <h1 class="hero-title reveal">We Turn <span class="gradient-text"><span id="typed"></span><span class="typed-cursor">|</span></span><br/>Into Real Growth</h1>
-          <p class="hero-sub reveal">Nexus Digital is a full-service digital marketing agency that blends data, creativity, and technology to scale your brand to new heights.</p>
-          <div class="hero-actions reveal">
-            <a href="/services" class="btn btn-primary btn-lg">Explore Services</a>
-            <a href="/about" class="btn btn-ghost btn-lg">Our Story <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="98">0</span><span class="stat-suffix">%</span>
+            <span class="stat-label">Client Retention</span>
           </div>
-          <div class="hero-stats reveal">
-            <div class="stat">
-              <div class="stat-val"><span class="stat-num" data-target="200">0</span><span>+</span></div>
-              <span class="stat-label">Brands Scaled</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <div class="stat-val"><span class="stat-num" data-target="98">0</span><span>%</span></div>
-              <span class="stat-label">Client Retention</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-              <div class="stat-val"><span class="stat-num" data-target="12">0</span><span>x</span></div>
-              <span class="stat-label">Average ROI</span>
-            </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="8">0</span><span class="stat-suffix">yr</span>
+            <span class="stat-label">Experience</span>
           </div>
         </div>
-
-        <!-- RIGHT CARD -->
-        <div class="hero-right reveal">
-          <div class="hero-card">
-            <div class="hero-card-title">Campaign Performance &mdash; Q1 2026</div>
-            <div class="hero-card-metrics">
-              <div class="metric-row">
-                <span class="metric-label">Organic Traffic</span>
-                <div class="metric-bar"><div class="metric-fill" style="width:88%"></div></div>
-                <span class="metric-val">+88%</span>
-              </div>
-              <div class="metric-row">
-                <span class="metric-label">Conversion Rate</span>
-                <div class="metric-bar"><div class="metric-fill" style="width:74%"></div></div>
-                <span class="metric-val">+74%</span>
-              </div>
-              <div class="metric-row">
-                <span class="metric-label">Lead Quality</span>
-                <div class="metric-bar"><div class="metric-fill" style="width:92%"></div></div>
-                <span class="metric-val">+92%</span>
-              </div>
-              <div class="metric-row">
-                <span class="metric-label">Brand Awareness</span>
-                <div class="metric-bar"><div class="metric-fill" style="width:65%"></div></div>
-                <span class="metric-val">+65%</span>
-              </div>
-            </div>
-            <div class="hero-card-footer">
-              <div>
-                <div class="hcf-label">Total Revenue Impact</div>
-                <div class="hcf-val">&#8377;2.4 Cr</div>
-              </div>
-              <div class="hcf-badge">+12x ROI</div>
-            </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="card-header">
+            <span class="card-dot green"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot red"></span>
+            <span class="card-title">Live Performance</span>
           </div>
-          <div class="hero-float-badge hfb-1">
-            <i class="fa-solid fa-arrow-trend-up"></i>
-            <span>+340% Traffic</span>
+          <div class="card-metric">
+            <span class="metric-label"><i class="fa-solid fa-chart-line"></i> Conversion Rate</span>
+            <span class="metric-value">+147%</span>
           </div>
-          <div class="hero-float-badge hfb-2">
-            <i class="fa-solid fa-star"></i>
-            <span>4.9 / 5 Rating</span>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%" data-width="87%"></div></div>
+          <div class="card-metric mt">
+            <span class="metric-label"><i class="fa-solid fa-users"></i> Organic Traffic</span>
+            <span class="metric-value">+320%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill accent2" style="width:0%" data-width="92%"></div></div>
+          <div class="card-metric mt">
+            <span class="metric-label"><i class="fa-solid fa-star"></i> Client Rating</span>
+            <span class="metric-value">4.9/5</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill accent3" style="width:0%" data-width="98%"></div></div>
+          <div class="card-footer">
+            <i class="fa-solid fa-circle-check"></i> Updated just now
           </div>
         </div>
       </div>
     </div>
+    <div class="hero-scroll-hint"><span>Scroll to explore</span> <i class="fa-solid fa-chevron-down"></i></div>
+  </section>
 
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-dot"></div>
+  <!-- TRUSTED BY -->
+  <section class="trusted">
+    <p class="trusted-label">Trusted by 200+ brands worldwide</p>
+    <div class="trusted-logos">
+      <span>Zomato</span><span>Razorpay</span><span>Meesho</span><span>CRED</span><span>Groww</span><span>upGrad</span>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <section class="marquee-section">
-    <div class="marquee-track">
-      <div class="marquee-inner">
-        <span>SEO &amp; Content</span><span class="dot">&#9679;</span>
-        <span>Paid Media</span><span class="dot">&#9679;</span>
-        <span>Social Media</span><span class="dot">&#9679;</span>
-        <span>Branding</span><span class="dot">&#9679;</span>
-        <span>Web Design</span><span class="dot">&#9679;</span>
-        <span>Email Marketing</span><span class="dot">&#9679;</span>
-        <span>Performance Analytics</span><span class="dot">&#9679;</span>
-        <span>Video Production</span><span class="dot">&#9679;</span>
-        <span>SEO &amp; Content</span><span class="dot">&#9679;</span>
-        <span>Paid Media</span><span class="dot">&#9679;</span>
-        <span>Social Media</span><span class="dot">&#9679;</span>
-        <span>Branding</span><span class="dot">&#9679;</span>
-        <span>Web Design</span><span class="dot">&#9679;</span>
-        <span>Email Marketing</span><span class="dot">&#9679;</span>
-        <span>Performance Analytics</span><span class="dot">&#9679;</span>
-        <span>Video Production</span><span class="dot">&#9679;</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY US -->
-  <section class="why-us section">
-    <div class="container">
-      <div class="section-tag reveal">Why Nexus</div>
-      <h2 class="section-title reveal">Marketing That Actually <span class="gradient-text">Moves the Needle</span></h2>
-      <div class="cards-grid">
-        <div class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-          <h3>Speed to Impact</h3>
-          <p>We move fast. From strategy to execution, our agile process ensures you see results within the first 30 days.</p>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-container">
+      <div class="section-tag"><i class="fa-solid fa-layer-group"></i> What We Do</div>
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-sub">End-to-end digital solutions built for growth, performance, and results.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Brand Identity</h3>
+          <p>Logo, visual language, and brand systems that make you unforgettable.</p>
+          <a href="#contact" class="service-link">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <h3>Data-First Decisions</h3>
-          <p>Every campaign is backed by deep analytics and real-time insights — no guesswork, only growth.</p>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+          <h3>Web Development</h3>
+          <p>Fast, scalable, and beautiful websites engineered for conversion.</p>
+          <a href="#contact" class="service-link">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-palette"></i></div>
-          <h3>Creative Excellence</h3>
-          <p>Our creatives don't just look good — they convert. Built to stop the scroll and drive action.</p>
+        <div class="service-card featured">
+          <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h3>Mobile Apps</h3>
+          <p>Native and cross-platform apps that users actually enjoy using.</p>
+          <a href="#contact" class="service-link">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="card reveal">
-          <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-          <h3>Transparent Results</h3>
-          <p>Real-time dashboards and monthly reports so you always know exactly where your budget goes.</p>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-chart-bar"></i></div>
+          <h3>Growth Marketing</h3>
+          <p>SEO, paid media, and analytics strategies that drive real ROI.</p>
+          <a href="#contact" class="service-link">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+          <h3>AI Integration</h3>
+          <p>Automate, personalise, and supercharge your product with AI.</p>
+          <a href="#contact" class="service-link">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <h3>Social Media</h3>
+          <p>Content strategy and community management that builds loyal audiences.</p>
+          <a href="#contact" class="service-link">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES PREVIEW -->
-  <section class="services-preview section">
-    <div class="container">
-      <div class="section-tag reveal">What We Do</div>
-      <h2 class="section-title reveal">Our Core <span class="gradient-text">Services</span></h2>
-      <div class="services-list">
-        <a href="/services" class="service-item reveal">
-          <span class="service-num">01</span>
-          <span class="service-name">Search Engine Optimisation</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-        <a href="/services" class="service-item reveal">
-          <span class="service-num">02</span>
-          <span class="service-name">Paid Advertising (PPC &amp; Meta)</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-        <a href="/services" class="service-item reveal">
-          <span class="service-num">03</span>
-          <span class="service-name">Social Media Management</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-        <a href="/services" class="service-item reveal">
-          <span class="service-num">04</span>
-          <span class="service-name">Branding &amp; Identity</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-        <a href="/services" class="service-item reveal">
-          <span class="service-num">05</span>
-          <span class="service-name">Web Design &amp; Development</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-        <a href="/services" class="service-item reveal">
-          <span class="service-num">06</span>
-          <span class="service-name">Email &amp; Automation</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-container about-grid">
+      <div class="about-left">
+        <div class="section-tag"><i class="fa-solid fa-building"></i> Who We Are</div>
+        <h2 class="section-title">Built Different.<br>Driven by Results.</h2>
+        <p>We are a full-service digital agency obsessed with performance. Every pixel, every line of code, every campaign is crafted with one goal: your growth.</p>
+        <ul class="about-list">
+          <li><i class="fa-solid fa-check-circle"></i> 8+ years of industry experience</li>
+          <li><i class="fa-solid fa-check-circle"></i> 200+ successful projects delivered</li>
+          <li><i class="fa-solid fa-check-circle"></i> In-house team of 40+ specialists</li>
+          <li><i class="fa-solid fa-check-circle"></i> 15 countries served globally</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Work With Us <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials section">
-    <div class="container">
-      <div class="section-tag reveal">Client Love</div>
-      <h2 class="section-title reveal">What Our Clients <span class="gradient-text">Say</span></h2>
-      <div class="testi-grid">
-        <div class="testi-card reveal">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Nexus completely transformed our online presence. Our organic traffic grew 340% in just 4 months. Absolutely phenomenal team."</p>
-          <div class="testi-author">
-            <img src="https://i.pravatar.cc/48?img=11" alt="Priya Sharma" loading="lazy" width="46" height="46" />
-            <div>
-              <strong>Priya Sharma</strong>
-              <span>CMO, TechBridge India</span>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card reveal">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Their PPC campaigns consistently deliver a 10x ROAS. They're not just an agency — they're a growth partner."</p>
-          <div class="testi-author">
-            <img src="https://i.pravatar.cc/48?img=32" alt="Arjun Mehta" loading="lazy" width="46" height="46" />
-            <div>
-              <strong>Arjun Mehta</strong>
-              <span>Founder, UrbanNest Decor</span>
-            </div>
-          </div>
-        </div>
-        <div class="testi-card reveal">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"From brand identity to full social strategy — Nexus delivered beyond our expectations. Highly recommend to any serious business."</p>
-          <div class="testi-author">
-            <img src="https://i.pravatar.cc/48?img=54" alt="Sofia Andrade" loading="lazy" width="46" height="46" />
-            <div>
-              <strong>Sofia Andrade</strong>
-              <span>CEO, Lumina Wellness</span>
-            </div>
+      <div class="about-right">
+        <div class="about-img-block">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="Nexus Digital team" width="560" height="420" loading="lazy" />
+          <div class="about-badge">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Top Agency 2025</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA BANNER -->
-  <section class="cta-banner section">
-    <div class="container">
-      <div class="cta-inner reveal">
-        <h2>Ready to <span class="gradient-text">Dominate</span> Your Market?</h2>
-        <p>Let's build a marketing engine that works around the clock for your business.</p>
-        <a href="/contact" class="btn btn-primary btn-lg">Start Your Journey</a>
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="section-container">
+      <div class="section-tag"><i class="fa-solid fa-briefcase"></i> Case Studies</div>
+      <h2 class="section-title">Work We're Proud Of</h2>
+      <div class="work-grid">
+        <div class="work-card">
+          <div class="work-img">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Brand campaign" width="560" height="320" loading="lazy" />
+            <div class="work-overlay"><span>View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">Brand + Web</span>
+            <h3>Zesto Foods — Complete Brand Overhaul</h3>
+            <p>+210% online orders in 3 months.</p>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-img">
+            <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=600&q=80" alt="Mobile app" width="560" height="320" loading="lazy" />
+            <div class="work-overlay"><span>View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">Mobile App</span>
+            <h3>FinTrack — Personal Finance App</h3>
+            <p>50k downloads in the first month.</p>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-img">
+            <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&q=80" alt="Marketing" width="560" height="320" loading="lazy" />
+            <div class="work-overlay"><span>View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">Growth Marketing</span>
+            <h3>EduLeap — 0 to 100k Users</h3>
+            <p>Full-funnel growth in under 6 months.</p>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-container cta-inner">
+      <h2>Ready to Grow?</h2>
+      <p>Let's build something remarkable together.</p>
+      <a href="#contact" class="btn-primary large">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-container contact-grid">
+      <div class="contact-left">
+        <div class="section-tag"><i class="fa-solid fa-envelope"></i> Get In Touch</div>
+        <h2 class="section-title">Let's Start a Conversation</h2>
+        <p>Tell us about your project. We'll get back within 24 hours.</p>
+        <ul class="contact-details">
+          <li><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</li>
+          <li><i class="fa-solid fa-envelope"></i> hello@nexusdigital.in</li>
+          <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
+        </ul>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Email Address" required />
+        </div>
+        <input type="text" placeholder="Subject" />
+        <textarea placeholder="Tell us about your project..." rows="5"></textarea>
+        <button type="submit" class="btn-primary full">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer-inner">
+    <div class="footer-container">
       <div class="footer-brand">
-        <a href="/" class="logo">
-          <span class="logo-icon">&#9671;</span>
-          <span class="logo-text">Nexus<span class="accent">.</span></span>
+        <a href="#" class="nav-logo">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="2" width="13" height="13" rx="2" fill="var(--color-primary)"/>
+            <rect x="17" y="2" width="13" height="13" rx="2" fill="var(--color-primary)" opacity="0.6"/>
+            <rect x="2" y="17" width="13" height="13" rx="2" fill="var(--color-primary)" opacity="0.6"/>
+            <rect x="17" y="17" width="13" height="13" rx="2" fill="var(--color-primary)"/>
+          </svg>
+          <span>Nexus<span class="accent">.</span></span>
         </a>
-        <p>Growth-driven digital marketing for ambitious brands.</p>
-        <div class="social-links">
-          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <p>Building brands that convert since 2017.</p>
+        <div class="footer-social">
           <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
         </div>
       </div>
       <div class="footer-links">
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/team">Team</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="/services">SEO</a></li>
-          <li><a href="/services">Paid Ads</a></li>
-          <li><a href="/services">Social Media</a></li>
-          <li><a href="/services">Branding</a></li>
-          <li><a href="/services">Web Design</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contact</h4>
-        <p><i class="fa-solid fa-envelope"></i> hello@nexusdigital.io</p>
-        <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
-        <p><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</p>
+        <div>
+          <h4>Services</h4>
+          <a href="#services">Brand Identity</a>
+          <a href="#services">Web Development</a>
+          <a href="#services">Mobile Apps</a>
+          <a href="#services">Growth Marketing</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Nexus Digital. All rights reserved.</p>
+      <p>&copy; 2025 Nexus Digital. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="./assets/js/main.js"></script>
 </body>
 </html>
