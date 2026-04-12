@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Work — Nexus Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <style>
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb{font-size:.78rem;color:var(--faint);display:flex;align-items:center;gap:.4rem;margin-bottom:1.2rem}
+    .breadcrumb a{color:var(--faint);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--primary)}
+    .breadcrumb i{font-size:.6rem}
+
+    /* ===== SECTION 1 — HERO ===== */
+    .wk-hero{padding:9rem 2rem 5rem;background:var(--bg);position:relative;overflow:hidden;text-align:center}
+    .wk-hero-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .wk-shape{position:absolute;border-radius:50%;filter:blur(90px);opacity:.22}
+    .wk-shape-1{width:500px;height:500px;background:var(--primary);top:-200px;left:50%;transform:translateX(-50%)}
+    .wk-shape-2{width:260px;height:260px;background:var(--accent);bottom:-80px;left:5%;opacity:.15}
+    .wk-shape-3{width:220px;height:220px;background:#10b981;bottom:-60px;right:5%;opacity:.15}
+    .wk-hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+    .wk-hero-inner .breadcrumb{justify-content:center}
+    .wk-hero-inner h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:1.1rem}
+    .wk-hero-inner p{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:560px;margin:0 auto 2.5rem}
+    .wk-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-bottom:3rem}
+    .wk-filter{padding:.45rem 1.1rem;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--muted);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+    .wk-filter:hover,.wk-filter.active{background:var(--primary);border-color:var(--primary);color:#fff}
+    .wk-hero-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+    .wk-stat strong{display:block;font-size:1.9rem;font-weight:800;color:var(--text);line-height:1}
+    .wk-stat span{font-size:.8rem;color:var(--faint);margin-top:.25rem;display:block}
+
+    /* ===== SECTION 2 — FEATURED CASE STUDIES ===== */
+    .wk-cases{padding:6rem 0;background:var(--bg)}
+    .wk-cases-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;flex-direction:column;gap:6rem}
+    .cs-row{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
+    .cs-row.flip{direction:rtl}.cs-row.flip>*{direction:ltr}
+    .cs-img-wrap{position:relative;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:16/10}
+    .cs-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s ease}
+    .cs-img-wrap:hover img{transform:scale(1.04)}
+    .cs-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 55%);pointer-events:none}
+    .cs-img-tag{position:absolute;top:1.1rem;left:1.1rem;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:.35rem .85rem;font-size:.72rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase}
+    .cs-img-result{position:absolute;bottom:1.1rem;left:1.1rem;display:flex;gap:.6rem}
+    .cs-bubble{background:rgba(255,255,255,.14);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-md);padding:.5rem .85rem;text-align:center}
+    .cs-bubble strong{display:block;font-size:1.05rem;font-weight:800;color:#fff;line-height:1}
+    .cs-bubble span{font-size:.65rem;color:rgba(255,255,255,.75);display:block;margin-top:.1rem}
+    .cs-content .cs-num{font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--faint);text-transform:uppercase;margin-bottom:.6rem;display:block}
+    .cs-content h2{font-size:clamp(1.5rem,2.4vw,2.1rem);font-weight:700;line-height:1.2;color:var(--text);margin-bottom:.9rem}
+    .cs-content p{font-size:.93rem;color:var(--muted);line-height:1.8;margin-bottom:1.4rem}
+    .cs-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.5rem}
+    .cs-tag{font-size:.7rem;font-weight:600;padding:.22rem .7rem;border-radius:999px;background:var(--surface2);border:1px solid var(--border);color:var(--text)}
+    .cs-kpis{display:flex;gap:1.5rem;margin-bottom:1.8rem;flex-wrap:wrap}
+    .cs-kpi{display:flex;flex-direction:column;gap:.15rem}
+    .cs-kpi strong{font-size:1.4rem;font-weight:800;color:var(--primary);line-height:1}
+    .cs-kpi span{font-size:.72rem;color:var(--faint)}
+    .cs-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:700;color:var(--primary);text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .2s}
+    .cs-link:hover{border-color:var(--primary)}
+
+    /* ===== SECTION 3 — PROJECT GRID ===== */
+    .wk-grid{padding:5rem 0 6rem;background:var(--surface)}
+    .wk-grid .section-head{text-align:center;max-width:560px;margin:0 auto 3.5rem}
+    .wk-bento{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    .wk-card{position:relative;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3;cursor:pointer;background:var(--surface2)}
+    .wk-card.tall{grid-row:span 2;aspect-ratio:auto}
+    .wk-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s ease}
+    .wk-card:hover img{transform:scale(1.06)}
+    .wk-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 50%,transparent 100%);opacity:0;transition:opacity .3s}
+    .wk-card:hover .wk-card-overlay{opacity:1}
+    .wk-card-info{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.3rem;transform:translateY(12px);opacity:0;transition:all .3s}
+    .wk-card:hover .wk-card-info{transform:translateY(0);opacity:1}
+    .wk-card-info strong{display:block;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+    .wk-card-info span{font-size:.75rem;color:rgba(255,255,255,.7)}
+    .wk-card-badge{position:absolute;top:.9rem;left:.9rem;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:.28rem .72rem;font-size:.68rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;opacity:1;transition:opacity .3s}
+    .wk-card:hover .wk-card-badge{opacity:0}
+
+    /* ===== SECTION 4 — IMPACT NUMBERS ===== */
+    .wk-impact{padding:6rem 0;background:var(--bg);position:relative;overflow:hidden}
+    .wk-impact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(91,94,244,.06) 0%,transparent 70%);pointer-events:none}
+    .wk-impact .section-head{text-align:center;max-width:560px;margin:0 auto 3.5rem}
+    .wk-impact-grid{max-width:1100px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+    .wk-impact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+    .wk-impact-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+    .wk-impact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--primary))}
+    .wk-impact-icon{width:48px;height:48px;border-radius:12px;background:var(--card-icon-bg,rgba(91,94,244,.1));display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--card-icon-c,var(--primary));margin:0 auto 1rem}
+    .wk-impact-num{font-size:2.4rem;font-weight:800;color:var(--text);line-height:1;margin-bottom:.3rem}
+    .wk-impact-suf{font-size:1.4rem;color:var(--primary)}
+    .wk-impact-label{font-size:.8rem;color:var(--muted)}
+    .wk-impact-bar{margin-top:1.2rem;height:3px;background:var(--border);border-radius:99px;overflow:hidden}
+    .wk-impact-bar-fill{height:100%;border-radius:99px;background:var(--card-accent,var(--primary));width:0;transition:width 1.2s ease}
+
+    /* ===== SECTION 5 — TESTIMONIALS ===== */
+    .wk-testi{padding:6rem 0;background:var(--surface2);overflow:hidden}
+    .wk-testi .section-head{text-align:center;max-width:560px;margin:0 auto 3.5rem}
+    .testi-scroll-wrap{position:relative;overflow:hidden;-webkit-mask:linear-gradient(to right,transparent,black 8%,black 92%,transparent);mask:linear-gradient(to right,transparent,black 8%,black 92%,transparent)}
+    .testi-track{display:flex;gap:1.5rem;width:max-content;animation:testiScroll 40s linear infinite}
+    .testi-track:hover{animation-play-state:paused}
+    @keyframes testiScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .testi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem;width:360px;flex-shrink:0;box-shadow:var(--shadow-sm)}
+    .testi-stars{display:flex;gap:.2rem;margin-bottom:1rem}
+    .testi-stars i{color:#f59e0b;font-size:.8rem}
+    .testi-quote{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:1.4rem;position:relative}
+    .testi-quote::before{content:'\201C';font-size:3rem;color:var(--primary);opacity:.25;position:absolute;top:-1rem;left:-.4rem;font-family:Georgia,serif;line-height:1}
+    .testi-author{display:flex;align-items:center;gap:.85rem}
+    .testi-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0}
+    .testi-author-info strong{display:block;font-size:.85rem;font-weight:700;color:var(--text)}
+    .testi-author-info span{font-size:.75rem;color:var(--faint)}
+    .testi-project{display:inline-block;margin-top:.4rem;font-size:.68rem;font-weight:600;color:var(--primary);background:var(--primary-light);padding:.15rem .55rem;border-radius:999px}
+
+    /* ===== SECTION 6 — CTA ===== */
+    .wk-cta{padding:7rem 2rem;background:var(--bg);position:relative;overflow:hidden}
+    .wk-cta-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .wk-cta-inner{position:relative;z-index:1;max-width:780px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+    .wk-cta-copy h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.18;color:var(--text);margin-bottom:.85rem}
+    .wk-cta-copy p{color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:1.6rem}
+    .wk-cta-copy .cta-btns{display:flex;gap:1rem;flex-wrap:wrap}
+    .wk-cta-badge-wrap{display:flex;flex-direction:column;gap:1rem}
+    .wk-cta-badge{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.4rem 1.6rem;text-align:center;box-shadow:var(--shadow-sm);min-width:160px}
+    .wk-cta-badge strong{display:block;font-size:1.7rem;font-weight:800;color:var(--primary);line-height:1}
+    .wk-cta-badge span{font-size:.75rem;color:var(--muted);margin-top:.25rem;display:block}
+
+    /* GRADIENT TEXT */
+    .gradient-text{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      .cs-row{grid-template-columns:1fr;gap:2.5rem}.cs-row.flip{direction:ltr}
+      .wk-bento{grid-template-columns:repeat(2,1fr)}.wk-card.tall{grid-row:auto}
+      .wk-impact-grid{grid-template-columns:repeat(2,1fr)}
+      .wk-cta-inner{grid-template-columns:1fr}
+      .wk-cta-badge-wrap{flex-direction:row}
+    }
+    @media(max-width:640px){
+      .wk-hero{padding:7rem 1.5rem 4rem}
+      .wk-hero-stats{gap:1.5rem}
+      .wk-bento{grid-template-columns:1fr}
+      .wk-impact-grid{grid-template-columns:1fr 1fr}
+      .wk-cases-inner{padding:0 1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+        <rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+        <rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+        <rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+      </svg>
+      <span class="logo-text">Nexus<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html" style="color:var(--primary)">Work</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="contact.html" class="nav-btn">Get a Proposal</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== SECTION 1 — HERO ===== -->
+<section class="wk-hero">
+  <div class="wk-hero-shapes">
+    <div class="wk-shape wk-shape-1"></div>
+    <div class="wk-shape wk-shape-2"></div>
+    <div class="wk-shape wk-shape-3"></div>
+  </div>
+  <div class="wk-hero-inner reveal">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Work</span>
+    </div>
+    <span class="eyebrow">Case Studies</span>
+    <h1>Work we're <span class="gradient-text">genuinely<br>proud</span> of.</h1>
+    <p>Real projects. Real results. Browse our case studies and see exactly what we built, how we built it, and what it achieved.</p>
+    <div class="wk-filters">
+      <button class="wk-filter active" data-filter="all">All Work</button>
+      <button class="wk-filter" data-filter="branding">Branding</button>
+      <button class="wk-filter" data-filter="web">Web Dev</button>
+      <button class="wk-filter" data-filter="app">Mobile Apps</button>
+      <button class="wk-filter" data-filter="marketing">Marketing</button>
+      <button class="wk-filter" data-filter="ai">AI</button>
+    </div>
+    <div class="wk-hero-stats">
+      <div class="wk-stat"><strong>200+</strong><span>Projects delivered</span></div>
+      <div class="wk-stat"><strong>15+</strong><span>Countries served</span></div>
+      <div class="wk-stat"><strong>98%</strong><span>Client satisfaction</span></div>
+      <div class="wk-stat"><strong>$40M+</strong><span>Revenue generated for clients</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2 — FEATURED CASE STUDIES ===== -->
+<section class="wk-cases">
+  <div class="wk-cases-inner">
+
+    <!-- Case Study 1 -->
+    <div class="cs-row reveal">
+      <div class="cs-img-wrap">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Zesto Foods" loading="lazy"/>
+        <div class="cs-img-overlay"></div>
+        <div class="cs-img-tag">Brand + Web</div>
+        <div class="cs-img-result">
+          <div class="cs-bubble"><strong>+210%</strong><span>Online Orders</span></div>
+          <div class="cs-bubble"><strong>90 days</strong><span>Timeline</span></div>
+          <div class="cs-bubble"><strong>4.9 ★</strong><span>Rating</span></div>
+        </div>
+      </div>
+      <div class="cs-content">
+        <span class="cs-num">Featured Case Study — 01</span>
+        <h2>Zesto Foods — Complete<br>Brand Overhaul</h2>
+        <p>A beloved local food brand stuck with a dated identity and a slow website losing orders daily. We rebuilt their brand from the ground up — new visual identity, custom e-commerce platform, and a 90-day growth marketing campaign.</p>
+        <div class="cs-tags">
+          <span class="cs-tag">Brand Identity</span><span class="cs-tag">E-commerce</span>
+          <span class="cs-tag">SEO</span><span class="cs-tag">Meta Ads</span><span class="cs-tag">UI/UX</span>
+        </div>
+        <div class="cs-kpis">
+          <div class="cs-kpi"><strong>+210%</strong><span>Online orders</span></div>
+          <div class="cs-kpi"><strong>3×</strong><span>More leads/month</span></div>
+          <div class="cs-kpi"><strong>-38%</strong><span>Bounce rate</span></div>
+        </div>
+        <a href="#" class="cs-link">Read Full Case Study <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Case Study 2 -->
+    <div class="cs-row flip reveal">
+      <div class="cs-img-wrap">
+        <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=800&q=80" alt="FinTrack App" loading="lazy"/>
+        <div class="cs-img-overlay"></div>
+        <div class="cs-img-tag">Mobile App</div>
+        <div class="cs-img-result">
+          <div class="cs-bubble"><strong>50k</strong><span>Downloads mo.1</span></div>
+          <div class="cs-bubble"><strong>4.8 ★</strong><span>App Store</span></div>
+          <div class="cs-bubble"><strong>2 mo</strong><span>Build time</span></div>
+        </div>
+      </div>
+      <div class="cs-content">
+        <span class="cs-num">Featured Case Study — 02</span>
+        <h2>FinTrack — Personal<br>Finance App</h2>
+        <p>A solo founder with a vision for smarter personal finance. We designed and built a full React Native app with real-time bank sync, spending analytics, and AI-powered budget suggestions — shipped in 8 weeks.</p>
+        <div class="cs-tags">
+          <span class="cs-tag">React Native</span><span class="cs-tag">iOS</span>
+          <span class="cs-tag">Android</span><span class="cs-tag">Firebase</span><span class="cs-tag">AI</span>
+        </div>
+        <div class="cs-kpis">
+          <div class="cs-kpi"><strong>50k</strong><span>Downloads, month 1</span></div>
+          <div class="cs-kpi"><strong>4.8★</strong><span>App Store rating</span></div>
+          <div class="cs-kpi"><strong>8 wk</strong><span>Zero to launch</span></div>
+        </div>
+        <a href="#" class="cs-link">Read Full Case Study <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Case Study 3 -->
+    <div class="cs-row reveal">
+      <div class="cs-img-wrap">
+        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&q=80" alt="EduLeap" loading="lazy"/>
+        <div class="cs-img-overlay"></div>
+        <div class="cs-img-tag">Growth Marketing</div>
+        <div class="cs-img-result">
+          <div class="cs-bubble"><strong>100k</strong><span>Users in 6mo</span></div>
+          <div class="cs-bubble"><strong>-42%</strong><span>CAC drop</span></div>
+          <div class="cs-bubble"><strong>6×</strong><span>ROAS</span></div>
+        </div>
+      </div>
+      <div class="cs-content">
+        <span class="cs-num">Featured Case Study — 03</span>
+        <h2>EduLeap — 0 to<br>100,000 Users</h2>
+        <p>An ed-tech startup with a great product but no audience. We built a full-funnel growth engine — technical SEO, paid social, content strategy, and email automation — that took them from 0 to 100k users in under 6 months.</p>
+        <div class="cs-tags">
+          <span class="cs-tag">SEO</span><span class="cs-tag">Google Ads</span>
+          <span class="cs-tag">Meta Ads</span><span class="cs-tag">Email Automation</span><span class="cs-tag">Analytics</span>
+        </div>
+        <div class="cs-kpis">
+          <div class="cs-kpi"><strong>100k</strong><span>Users gained</span></div>
+          <div class="cs-kpi"><strong>-42%</strong><span>CAC reduction</span></div>
+          <div class="cs-kpi"><strong>6×</strong><span>Return on ad spend</span></div>
+        </div>
+        <a href="#" class="cs-link">Read Full Case Study <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SECTION 3 — PROJECT GRID ===== -->
+<section class="wk-grid">
+  <div class="section-head">
+    <span class="eyebrow">More Projects</span>
+    <h2 class="section-title">A few more things<br>we've shipped.</h2>
+  </div>
+  <div class="wk-bento">
+    <div class="wk-card tall reveal">
+      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80" alt="LunaWear Branding" loading="lazy"/>
+      <div class="wk-card-overlay"></div>
+      <div class="wk-card-badge">Branding</div>
+      <div class="wk-card-info"><strong>LunaWear — Brand Identity</strong><span>Fashion retail brand relaunch</span></div>
+    </div>
+    <div class="wk-card reveal">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80" alt="Propvault Web" loading="lazy"/>
+      <div class="wk-card-overlay"></div>
+      <div class="wk-card-badge">Web Dev</div>
+      <div class="wk-card-info"><strong>PropVault — Real Estate Platform</strong><span>Custom Next.js + Node.js</span></div>
+    </div>
+    <div class="wk-card reveal">
+      <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="WellPath App" loading="lazy"/>
+      <div class="wk-card-overlay"></div>
+      <div class="wk-card-badge">Mobile App</div>
+      <div class="wk-card-info"><strong>WellPath — Health &amp; Fitness App</strong><span>React Native, 30k users</span></div>
+    </div>
+    <div class="wk-card reveal">
+      <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&q=80" alt="SparkPay Marketing" loading="lazy"/>
+      <div class="wk-card-overlay"></div>
+      <div class="wk-card-badge">Marketing</div>
+      <div class="wk-card-info"><strong>SparkPay — Performance Campaigns</strong><span>+180% conversion rate</span></div>
+    </div>
+    <div class="wk-card tall reveal">
+      <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="NovaMind AI" loading="lazy"/>
+      <div class="wk-card-overlay"></div>
+      <div class="wk-card-badge">AI</div>
+      <div class="wk-card-info"><strong>NovaMind — AI Dashboard SaaS</strong><span>GPT-4 + custom RAG pipeline</span></div>
+    </div>
+    <div class="wk-card reveal">
+      <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80" alt="GlowUp Social" loading="lazy"/>
+      <div class="wk-card-overlay"></div>
+      <div class="wk-card-badge">Social Media</div>
+      <div class="wk-card-info"><strong>GlowUp Cosmetics — Social Growth</strong><span>0 to 200k Instagram followers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4 — IMPACT NUMBERS ===== -->
+<section class="wk-impact">
+  <div class="section-head">
+    <span class="eyebrow">Collective Impact</span>
+    <h2 class="section-title">Numbers that tell<br>the real story.</h2>
+    <p class="section-sub" style="max-width:480px;margin:0 auto">Across all projects, industries, and geographies — here's the aggregate impact we've delivered.</p>
+  </div>
+  <div class="wk-impact-grid">
+    <div class="wk-impact-card reveal" style="--card-accent:#5b5ef4;--card-icon-bg:rgba(91,94,244,.1);--card-icon-c:#5b5ef4">
+      <div class="wk-impact-icon"><i class="fa-solid fa-rocket"></i></div>
+      <div class="wk-impact-num"><span class="count" data-target="200">0</span><span class="wk-impact-suf">+</span></div>
+      <div class="wk-impact-label">Projects successfully delivered</div>
+      <div class="wk-impact-bar"><div class="wk-impact-bar-fill" style="--bw:92%"></div></div>
+    </div>
+    <div class="wk-impact-card reveal" style="--card-accent:#f43f5e;--card-icon-bg:rgba(244,63,94,.1);--card-icon-c:#f43f5e">
+      <div class="wk-impact-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+      <div class="wk-impact-num">$<span class="count" data-target="40">0</span><span class="wk-impact-suf">M+</span></div>
+      <div class="wk-impact-label">Revenue generated for clients</div>
+      <div class="wk-impact-bar"><div class="wk-impact-bar-fill" style="--bw:85%;background:#f43f5e"></div></div>
+    </div>
+    <div class="wk-impact-card reveal" style="--card-accent:#10b981;--card-icon-bg:rgba(16,185,129,.1);--card-icon-c:#10b981">
+      <div class="wk-impact-icon"><i class="fa-solid fa-heart"></i></div>
+      <div class="wk-impact-num"><span class="count" data-target="98">0</span><span class="wk-impact-suf">%</span></div>
+      <div class="wk-impact-label">Client retention rate</div>
+      <div class="wk-impact-bar"><div class="wk-impact-bar-fill" style="--bw:98%;background:#10b981"></div></div>
+    </div>
+    <div class="wk-impact-card reveal" style="--card-accent:#a78bfa;--card-icon-bg:rgba(167,139,250,.1);--card-icon-c:#a78bfa">
+      <div class="wk-impact-icon"><i class="fa-solid fa-globe"></i></div>
+      <div class="wk-impact-num"><span class="count" data-target="15">0</span><span class="wk-impact-suf">+</span></div>
+      <div class="wk-impact-label">Countries served worldwide</div>
+      <div class="wk-impact-bar"><div class="wk-impact-bar-fill" style="--bw:55%;background:#a78bfa"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5 — TESTIMONIALS ===== -->
+<section class="wk-testi">
+  <div class="section-head">
+    <span class="eyebrow">Client Love</span>
+    <h2 class="section-title">Don't take our<br>word for it.</h2>
+    <p class="section-sub" style="max-width:480px;margin:0 auto 3.5rem">Real words from real clients — across projects, industries, and timezones.</p>
+  </div>
+  <div class="testi-scroll-wrap">
+    <div class="testi-track" id="testiTrack">
+      <!-- 8 cards duplicated for infinite scroll -->
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">Nexus took our brand from generic to genuinely compelling. The new site drives 3× more leads every single month. Worth every rupee.</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#5b5ef4">RK</div>
+          <div class="testi-author-info"><strong>Rohit Khanna</strong><span>CEO, Zesto Foods</span><div class="testi-project">Brand + Web</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">The FinTrack app exceeded every expectation. Communicative, fast, and incredibly talented. Our users couldn't believe it launched in 8 weeks.</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#10b981">AP</div>
+          <div class="testi-author-info"><strong>Ananya Patel</strong><span>Founder, FinTrack</span><div class="testi-project">Mobile App</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">From strategy to execution, Nexus felt like an extension of our own team. 100k users in 6 months — numbers we only dreamed about before.</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#f59e0b">MS</div>
+          <div class="testi-author-info"><strong>Manish Sharma</strong><span>Growth Lead, EduLeap</span><div class="testi-project">Growth Marketing</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">Best agency we've worked with in 10 years. Responsive, creative, always on time. The PropVault platform handles 10k listings without a hiccup.</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#ef4444">SV</div>
+          <div class="testi-author-info"><strong>Sneha Verma</strong><span>CMO, PropVault</span><div class="testi-project">Web Dev</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">The AI integration Nexus built saves my team 20 hours a week. The RAG pipeline they designed is cleaner than anything I've seen from bigger shops.</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#a78bfa">VR</div>
+          <div class="testi-author-info"><strong>Vikram Rao</strong><span>CTO, NovaMind</span><div class="testi-project">AI Integration</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">GlowUp went from 2k to 200k Instagram followers in 5 months. The content calendar and influencer strategy they built was absolutely surgical.</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#e1306c">PK</div>
+          <div class="testi-author-info"><strong>Priya Kapoor</strong><span>Founder, GlowUp Cosmetics</span><div class="testi-project">Social Media</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">I was skeptical of agencies after two bad experiences. Nexus changed my mind completely. Delivered on every promise, ahead of schedule.</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#0077b5">AJ</div>
+          <div class="testi-author-info"><strong>Arjun Joshi</strong><span>Director, SparkPay</span><div class="testi-project">Performance Ads</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">WellPath went from a Figma file to 30,000 active users in 3 months. The team at Nexus is genuinely world-class. I'd hire them again tomorrow.</div>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#06b6d4">ND</div>
+          <div class="testi-author-info"><strong>Neha Dubey</strong><span>Co-Founder, WellPath</span><div class="testi-project">Mobile App</div></div>
+        </div>
+      </div>
+      <!-- DUPLICATE for seamless loop -->
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">Nexus took our brand from generic to genuinely compelling. The new site drives 3× more leads every single month. Worth every rupee.</div>
+        <div class="testi-author"><div class="testi-av" style="background:#5b5ef4">RK</div><div class="testi-author-info"><strong>Rohit Khanna</strong><span>CEO, Zesto Foods</span><div class="testi-project">Brand + Web</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">The FinTrack app exceeded every expectation. Communicative, fast, and incredibly talented. Our users couldn't believe it launched in 8 weeks.</div>
+        <div class="testi-author"><div class="testi-av" style="background:#10b981">AP</div><div class="testi-author-info"><strong>Ananya Patel</strong><span>Founder, FinTrack</span><div class="testi-project">Mobile App</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">From strategy to execution, Nexus felt like an extension of our own team. 100k users in 6 months — numbers we only dreamed about before.</div>
+        <div class="testi-author"><div class="testi-av" style="background:#f59e0b">MS</div><div class="testi-author-info"><strong>Manish Sharma</strong><span>Growth Lead, EduLeap</span><div class="testi-project">Growth Marketing</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">Best agency we've worked with in 10 years. Responsive, creative, always on time. The PropVault platform handles 10k listings without a hiccup.</div>
+        <div class="testi-author"><div class="testi-av" style="background:#ef4444">SV</div><div class="testi-author-info"><strong>Sneha Verma</strong><span>CMO, PropVault</span><div class="testi-project">Web Dev</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">The AI integration Nexus built saves my team 20 hours a week. The RAG pipeline they designed is cleaner than anything I've seen from bigger shops.</div>
+        <div class="testi-author"><div class="testi-av" style="background:#a78bfa">VR</div><div class="testi-author-info"><strong>Vikram Rao</strong><span>CTO, NovaMind</span><div class="testi-project">AI Integration</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">GlowUp went from 2k to 200k Instagram followers in 5 months. The content calendar and influencer strategy they built was absolutely surgical.</div>
+        <div class="testi-author"><div class="testi-av" style="background:#e1306c">PK</div><div class="testi-author-info"><strong>Priya Kapoor</strong><span>Founder, GlowUp Cosmetics</span><div class="testi-project">Social Media</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">I was skeptical of agencies after two bad experiences. Nexus changed my mind completely. Delivered on every promise, ahead of schedule.</div>
+        <div class="testi-author"><div class="testi-av" style="background:#0077b5">AJ</div><div class="testi-author-info"><strong>Arjun Joshi</strong><span>Director, SparkPay</span><div class="testi-project">Performance Ads</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <div class="testi-quote">WellPath went from a Figma file to 30,000 active users in 3 months. The team at Nexus is genuinely world-class. I'd hire them again tomorrow.</div>
+        <div class="testi-author"><div class="testi-av" style="background:#06b6d4">ND</div><div class="testi-author-info"><strong>Neha Dubey</strong><span>Co-Founder, WellPath</span><div class="testi-project">Mobile App</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6 — CTA ===== -->
+<section class="wk-cta">
+  <div class="wk-cta-shapes">
+    <div class="wk-shape wk-shape-1" style="opacity:.08"></div>
+    <div class="wk-shape wk-shape-2" style="opacity:.1"></div>
+  </div>
+  <div class="wk-cta-inner reveal">
+    <div class="wk-cta-copy">
+      <span class="eyebrow">Your Project, Next</span>
+      <h2>Ready to become<br>our next <span class="gradient-text">success story?</span></h2>
+      <p>Every project in this portfolio started with a single conversation. Let's have yours — we'll send you a tailored proposal within 24 hours.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn-solid">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="services.html" class="btn-outline">Explore Services</a>
+      </div>
+    </div>
+    <div class="wk-cta-badge-wrap">
+      <div class="wk-cta-badge"><strong>24h</strong><span>Proposal turnaround</span></div>
+      <div class="wk-cta-badge"><strong>Free</strong><span>Strategy call</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+          <rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+          <rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+          <rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+        </svg>
+        <span class="logo-text">Nexus<span class="dot">.</span></span>
+      </a>
+      <p>Building brands that convert since 2017.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+      </div>
+    </div>
+    <div class="footer-nav">
+      <div>
+        <h5>Services</h5>
+        <a href="services.html">Brand Identity</a>
+        <a href="services.html">Web Development</a>
+        <a href="services.html">Mobile Apps</a>
+        <a href="services.html">Growth Marketing</a>
+        <a href="services.html">AI Integration</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
+        <a href="work.html">Our Work</a>
+        <a href="contact.html">Contact</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="return-policy.html">Return Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="sitemap.html">Sitemap</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Nexus Digital. All rights reserved.</p>
+    <div><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookie-policy.html">Cookies</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Navbar scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+  // Burger
+  const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+  if(burger) burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+  // Reveal
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  // Count-up for impact numbers
+  const countObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el=e.target;
+        const target=+el.dataset.target;
+        let start=0;
+        const step=target/60;
+        const timer=setInterval(()=>{
+          start=Math.min(start+step,target);
+          el.textContent=Math.floor(start);
+          if(start>=target)clearInterval(timer);
+        },20);
+        // animate bars
+        e.target.closest('.wk-impact-card')?.querySelectorAll('.wk-impact-bar-fill').forEach(b=>{
+          b.style.width=b.style.getPropertyValue('--bw');
+        });
+        countObs.unobserve(el);
+      }
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.count').forEach(el=>countObs.observe(el));
+  // Filter buttons (visual only)
+  document.querySelectorAll('.wk-filter').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.wk-filter').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+})();
+</script>
+</body>
+</html>
