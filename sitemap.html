@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sitemap — Nexus Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    .gradient-text{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .breadcrumb{font-size:.78rem;color:var(--faint);display:flex;align-items:center;gap:.4rem;margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--faint);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--primary)}
+    .breadcrumb i{font-size:.6rem}
+
+    /* HERO */
+    .sm-hero{padding:9rem 2rem 5rem;background:var(--bg);position:relative;overflow:hidden;text-align:center}
+    .sm-hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:500px;height:500px;border-radius:50%;background:var(--primary);opacity:.08;filter:blur(100px);pointer-events:none}
+    .sm-hero-inner{max-width:620px;margin:0 auto;position:relative;z-index:1}
+    .sm-hero-inner h1{font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--text);margin-bottom:.7rem}
+    .sm-hero-inner p{font-size:.92rem;color:var(--muted);line-height:1.75}
+    .sm-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(91,94,244,.08);border:1px solid rgba(91,94,244,.18);border-radius:999px;padding:.3rem .85rem;font-size:.74rem;font-weight:600;color:var(--primary);margin-bottom:1.4rem}
+
+    /* MAIN */
+    .sm-main{max-width:1100px;margin:0 auto;padding:4rem 2rem 7rem;display:flex;flex-direction:column;gap:3.5rem}
+
+    /* CATEGORY */
+    .sm-cat-label{display:flex;align-items:center;gap:.75rem;margin-bottom:1.3rem}
+    .sm-cat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+    .sm-cat-label h2{font-size:1rem;font-weight:700;color:var(--text)}
+    .sm-cat-label p{font-size:.78rem;color:var(--faint);margin-top:.1rem}
+
+    /* CARDS GRID */
+    .sm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+    .sm-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.3rem 1.4rem;text-decoration:none;display:flex;flex-direction:column;gap:.35rem;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+    .sm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cc,var(--primary));border-radius:var(--r-lg) var(--r-lg) 0 0}
+    .sm-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--cc,var(--primary))}
+    .sm-card-icon{font-size:.88rem;color:var(--cc,var(--primary));margin-bottom:.2rem}
+    .sm-card h3{font-size:.9rem;font-weight:700;color:var(--text)}
+    .sm-card p{font-size:.78rem;color:var(--muted);line-height:1.6}
+    .sm-card-url{font-size:.72rem;color:var(--faint);margin-top:.3rem;display:flex;align-items:center;gap:.3rem}
+    .sm-card-url i{font-size:.6rem}
+    .sm-card-badge{position:absolute;top:.8rem;right:.9rem;font-size:.65rem;font-weight:700;padding:.15rem .5rem;border-radius:999px}
+    .badge-main{background:rgba(91,94,244,.1);color:var(--primary);border:1px solid rgba(91,94,244,.2)}
+    .badge-legal{background:rgba(16,185,129,.08);color:#10b981;border:1px solid rgba(16,185,129,.2)}
+
+    /* divider */
+    .sm-divider{height:1px;background:var(--border)}
+
+    @media(max-width:600px){.sm-hero{padding:7rem 1.5rem 4rem}.sm-main{padding:3rem 1.5rem 5rem}.sm-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:420px){.sm-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/><rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/></svg>
+      <span class="logo-text">Nexus<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="contact.html" class="nav-btn">Get a Proposal</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="sm-hero">
+  <div class="sm-hero-inner reveal">
+    <div class="breadcrumb" style="justify-content:center">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Sitemap</span>
+    </div>
+    <div class="sm-badge"><i class="fa-solid fa-map"></i> Complete Site Map</div>
+    <h1>All <span class="gradient-text">Pages</span></h1>
+    <p>A complete overview of every page on nexusdigital.io — find what you’re looking for quickly, or explore everything we have to offer.</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="sm-main">
+
+  <!-- MAIN PAGES -->
+  <div class="reveal">
+    <div class="sm-cat-label">
+      <div class="sm-cat-icon" style="background:rgba(91,94,244,.1);color:#5b5ef4"><i class="fa-solid fa-house"></i></div>
+      <div><h2>Main Pages</h2><p>Core navigation pages of the website</p></div>
+    </div>
+    <div class="sm-grid">
+      <a href="index.html" class="sm-card" style="--cc:#5b5ef4">
+        <span class="sm-card-badge badge-main">Home</span>
+        <div class="sm-card-icon"><i class="fa-solid fa-house"></i></div>
+        <h3>Home</h3>
+        <p>Our main landing page — hero, services overview, work highlights, testimonials & CTA.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /index.html</div>
+      </a>
+      <a href="about.html" class="sm-card" style="--cc:#5b5ef4">
+        <div class="sm-card-icon"><i class="fa-solid fa-users"></i></div>
+        <h3>About Us</h3>
+        <p>Our story, values, timeline, stats, press mentions, and team culture.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /about.html</div>
+      </a>
+      <a href="services.html" class="sm-card" style="--cc:#f43f5e">
+        <div class="sm-card-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <h3>Services</h3>
+        <p>Full breakdown of our digital marketing, design, development, and AI services.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /services.html</div>
+      </a>
+      <a href="work.html" class="sm-card" style="--cc:#10b981">
+        <div class="sm-card-icon"><i class="fa-solid fa-folder-open"></i></div>
+        <h3>Our Work</h3>
+        <p>Portfolio of case studies and projects across industries and service areas.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /work.html</div>
+      </a>
+      <a href="team.html" class="sm-card" style="--cc:#a78bfa">
+        <div class="sm-card-icon"><i class="fa-solid fa-id-card"></i></div>
+        <h3>Our Team</h3>
+        <p>Meet the people behind Nexus Digital — strategists, designers, developers & marketers.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /team.html</div>
+      </a>
+      <a href="contact.html" class="sm-card" style="--cc:#f59e0b">
+        <div class="sm-card-icon"><i class="fa-solid fa-envelope"></i></div>
+        <h3>Contact</h3>
+        <p>Get in touch, send us a message, explore our process, and read FAQs.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /contact.html</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="sm-divider"></div>
+
+  <!-- LEGAL PAGES -->
+  <div class="reveal">
+    <div class="sm-cat-label">
+      <div class="sm-cat-icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fa-solid fa-shield-halved"></i></div>
+      <div><h2>Legal &amp; Policy Pages</h2><p>Transparency, compliance, and your rights</p></div>
+    </div>
+    <div class="sm-grid">
+      <a href="privacy-policy.html" class="sm-card" style="--cc:#10b981">
+        <span class="sm-card-badge badge-legal">Legal</span>
+        <div class="sm-card-icon"><i class="fa-solid fa-user-shield"></i></div>
+        <h3>Privacy Policy</h3>
+        <p>How we collect, use, store, and protect your personal data. Your rights under applicable law.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /privacy-policy.html</div>
+      </a>
+      <a href="return-policy.html" class="sm-card" style="--cc:#f43f5e">
+        <span class="sm-card-badge badge-legal">Legal</span>
+        <div class="sm-card-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <h3>Return &amp; Refund Policy</h3>
+        <p>Refund eligibility, cancellation terms, and our refund schedule by project stage.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /return-policy.html</div>
+      </a>
+      <a href="terms.html" class="sm-card" style="--cc:#a78bfa">
+        <span class="sm-card-badge badge-legal">Legal</span>
+        <div class="sm-card-icon"><i class="fa-solid fa-file-contract"></i></div>
+        <h3>Terms of Service</h3>
+        <p>Rules for using our website and services, including payments, IP, and liability.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /terms.html</div>
+      </a>
+      <a href="cookie-policy.html" class="sm-card" style="--cc:#f59e0b">
+        <span class="sm-card-badge badge-legal">Legal</span>
+        <div class="sm-card-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+        <h3>Cookie Policy</h3>
+        <p>What cookies we use, why we use them, and how you can manage your preferences.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /cookie-policy.html</div>
+      </a>
+      <a href="sitemap.html" class="sm-card" style="--cc:#14b8a6">
+        <span class="sm-card-badge badge-legal">Meta</span>
+        <div class="sm-card-icon"><i class="fa-solid fa-map"></i></div>
+        <h3>Sitemap</h3>
+        <p>This page — a complete visual overview of all pages on the Nexus Digital website.</p>
+        <div class="sm-card-url"><i class="fa-solid fa-link"></i> /sitemap.html</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><svg width="26" height="26" viewBox="0 0 30 30" fill="none"><rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/><rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/></svg><span class="logo-text">Nexus<span class="dot">.</span></span></a>
+      <p>Building brands that convert since 2017.</p>
+      <div class="footer-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-linkedin"></i></a><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-dribbble"></i></a></div>
+    </div>
+    <div class="footer-nav">
+      <div><h5>Services</h5><a href="services.html">Brand Identity</a><a href="services.html">Web Development</a><a href="services.html">Mobile Apps</a><a href="services.html">Growth Marketing</a></div>
+      <div><h5>Company</h5><a href="about.html">About Us</a><a href="team.html">Our Team</a><a href="work.html">Our Work</a><a href="contact.html">Contact</a></div>
+      <div><h5>Legal</h5><a href="privacy-policy.html">Privacy Policy</a><a href="return-policy.html">Return Policy</a><a href="terms.html">Terms of Service</a><a href="cookie-policy.html">Cookie Policy</a><a href="sitemap.html" style="color:var(--primary)">Sitemap</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2026 Nexus Digital. All rights reserved.</p><div><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookie-policy.html">Cookies</a><a href="sitemap.html">Sitemap</a></div></div>
+</footer>
+
+<script>
+(function(){
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+  const burger=document.getElementById('burger'),nl=document.getElementById('navLinks');
+  if(burger)burger.addEventListener('click',()=>nl.classList.toggle('open'));
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+})();
+</script>
+</body>
+</html>

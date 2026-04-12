@@ -41,7 +41,6 @@
     .pp-box strong{color:var(--text)}
     .pp-box.yellow{border-left-color:#f59e0b}
     .pp-box.green{border-left-color:#10b981}
-    /* cookie type cards */
     .cookie-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin:1.2rem 0}
     .cookie-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem;transition:box-shadow .2s,border-color .2s}
     .cookie-card:hover{box-shadow:var(--shadow-md);border-color:var(--primary)}
@@ -51,7 +50,6 @@
     .tag{display:inline-block;font-size:.68rem;font-weight:700;padding:.15rem .55rem;border-radius:999px;margin-top:.6rem}
     .tag-req{background:rgba(91,94,244,.1);color:var(--primary);border:1px solid rgba(91,94,244,.2)}
     .tag-opt{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.2)}
-    /* browser table */
     .pp-table{width:100%;border-collapse:collapse;font-size:.84rem;margin:1rem 0}
     .pp-table th{background:var(--surface);padding:.7rem 1rem;text-align:left;font-weight:700;color:var(--text);border:1px solid var(--border)}
     .pp-table td{padding:.65rem 1rem;border:1px solid var(--border);color:var(--muted)}
@@ -64,38 +62,21 @@
 <body>
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/><rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/></svg>
-      <span class="logo-text">Nexus<span class="dot">.</span></span>
-    </a>
+    <a href="index.html" class="logo"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/><rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/></svg><span class="logo-text">Nexus<span class="dot">.</span></span></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="work.html">Work</a></li><li><a href="team.html">Team</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="nav-right">
-      <a href="contact.html" class="nav-btn">Get a Proposal</a>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
+    <div class="nav-right"><a href="contact.html" class="nav-btn">Get a Proposal</a><button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button></div>
   </div>
 </nav>
-
 <section class="pp-hero">
   <div class="pp-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Cookie Policy</span></div>
     <div class="pp-updated"><i class="fa-solid fa-circle-check"></i> Last updated: April 12, 2026</div>
     <h1>Cookie <span class="gradient-text">Policy</span></h1>
-    <div class="pp-meta">
-      <span><i class="fa-solid fa-building"></i> Nexus Digital</span>
-      <span><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</span>
-      <span><i class="fa-solid fa-envelope"></i> hello@nexusdigital.io</span>
-    </div>
+    <div class="pp-meta"><span><i class="fa-solid fa-building"></i> Nexus Digital</span><span><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</span><span><i class="fa-solid fa-envelope"></i> hello@nexusdigital.io</span></div>
   </div>
 </section>
-
 <div class="pp-layout">
   <aside class="pp-toc">
     <h4>Contents</h4>
@@ -112,167 +93,29 @@
       <li><a href="#contact">Contact Us</a></li>
     </ul>
   </aside>
-
   <main class="pp-content">
-
-    <div class="pp-section" id="what">
-      <h2><i class="fa-solid fa-cookie-bite"></i> What Are Cookies?</h2>
-      <p>Cookies are small text files that are placed on your device (computer, tablet, or phone) when you visit a website. They are widely used to make websites work efficiently and to provide useful information to website owners.</p>
-      <p>Cookies do not contain any personally identifiable information on their own — they typically store a unique identifier that allows the website to recognise your browser on repeat visits.</p>
-      <div class="pp-box yellow"><strong>Think of cookies like a name tag:</strong> They help the website remember who you are so it doesn’t treat you like a stranger every time you visit.</div>
-    </div>
-
-    <div class="pp-section" id="why">
-      <h2><i class="fa-solid fa-question-circle"></i> Why We Use Cookies</h2>
-      <p>We use cookies on <strong>nexusdigital.io</strong> to:</p>
-      <ul>
-        <li>Ensure the website functions correctly (essential operations)</li>
-        <li>Remember your preferences across sessions (e.g., theme, language)</li>
-        <li>Analyse how visitors use our website to improve the experience</li>
-        <li>Measure the effectiveness of our marketing campaigns</li>
-        <li>Deliver relevant content and ads based on your interests (with your consent)</li>
-        <li>Prevent fraud and ensure the security of our platform</li>
-      </ul>
-    </div>
-
-    <div class="pp-section" id="types">
-      <h2><i class="fa-solid fa-layer-group"></i> Types of Cookies We Use</h2>
-      <div class="cookie-cards">
-        <div class="cookie-card">
-          <div class="cookie-card-icon" style="background:rgba(91,94,244,.1);color:#5b5ef4"><i class="fa-solid fa-bolt"></i></div>
-          <h4>Essential Cookies</h4>
-          <p>Required for the website to function. Cannot be switched off. No personal data stored.</p>
-          <span class="tag tag-req">Always Active</span>
-        </div>
-        <div class="cookie-card">
-          <div class="cookie-card-icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fa-solid fa-sliders"></i></div>
-          <h4>Preference Cookies</h4>
-          <p>Remember your settings like dark/light mode and language preferences.</p>
-          <span class="tag tag-opt">Optional</span>
-        </div>
-        <div class="cookie-card">
-          <div class="cookie-card-icon" style="background:rgba(245,158,11,.1);color:#f59e0b"><i class="fa-solid fa-chart-bar"></i></div>
-          <h4>Analytics Cookies</h4>
-          <p>Help us understand how visitors navigate the site. We use Google Analytics (data is anonymised).</p>
-          <span class="tag tag-opt">Optional</span>
-        </div>
-        <div class="cookie-card">
-          <div class="cookie-card-icon" style="background:rgba(244,63,94,.1);color:#f43f5e"><i class="fa-solid fa-bullhorn"></i></div>
-          <h4>Marketing Cookies</h4>
-          <p>Used for retargeting via Google Ads &amp; Meta Ads. Only set with your explicit consent.</p>
-          <span class="tag tag-opt">Optional</span>
-        </div>
-        <div class="cookie-card">
-          <div class="cookie-card-icon" style="background:rgba(167,139,250,.1);color:#a78bfa"><i class="fa-solid fa-share-nodes"></i></div>
-          <h4>Social Media Cookies</h4>
-          <p>Placed by platforms like LinkedIn &amp; Instagram when you use share buttons or embedded content.</p>
-          <span class="tag tag-opt">Optional</span>
-        </div>
-        <div class="cookie-card">
-          <div class="cookie-card-icon" style="background:rgba(20,184,166,.1);color:#14b8a6"><i class="fa-solid fa-shield-halved"></i></div>
-          <h4>Security Cookies</h4>
-          <p>Help detect and prevent fraudulent activity, bot traffic, and malicious requests.</p>
-          <span class="tag tag-req">Always Active</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="pp-section" id="third-party">
-      <h2><i class="fa-solid fa-arrow-up-right-from-square"></i> Third-Party Cookies</h2>
-      <p>Some cookies on our site are set by third-party services we use. These include:</p>
-      <ul>
-        <li><strong>Google Analytics</strong> — Website traffic analysis (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>)</li>
-        <li><strong>Google Ads</strong> — Conversion tracking and remarketing</li>
-        <li><strong>Meta Pixel</strong> — Facebook &amp; Instagram ad performance tracking</li>
-        <li><strong>LinkedIn Insight Tag</strong> — LinkedIn campaign attribution</li>
-        <li><strong>Hotjar</strong> — Heatmaps and session recordings (anonymised)</li>
-        <li><strong>Intercom / Crisp</strong> — Live chat functionality</li>
-      </ul>
-      <p>These third parties have their own privacy and cookie policies. We recommend reviewing them if you have concerns about how they handle your data.</p>
-    </div>
-
-    <div class="pp-section" id="duration">
-      <h2><i class="fa-solid fa-hourglass-half"></i> Cookie Duration</h2>
-      <p>Cookies on our website fall into two duration categories:</p>
-      <ul>
-        <li><strong>Session cookies</strong> — Temporary cookies that expire when you close your browser. Used for essential site functions like form submissions and page navigation.</li>
-        <li><strong>Persistent cookies</strong> — Remain on your device for a set period (typically 30 days to 2 years) or until you delete them. Used for preferences, analytics, and marketing.</li>
-      </ul>
-      <div class="pp-box">Most of our analytics cookies expire within <strong>14 months</strong>. Marketing cookies from Google and Meta typically persist for up to <strong>90 days</strong>.</div>
-    </div>
-
-    <div class="pp-section" id="manage">
-      <h2><i class="fa-solid fa-toggles"></i> Managing Cookies</h2>
-      <p>You have full control over which cookies you accept. You can manage your preferences in the following ways:</p>
-      <ul>
-        <li><strong>Cookie consent banner</strong> — When you first visit our site, a banner will ask for your consent for non-essential cookies. You can accept all, reject optional ones, or customise your choices.</li>
-        <li><strong>Update preferences anytime</strong> — Click the cookie icon in the bottom-left corner of our site to revisit your preferences.</li>
-        <li><strong>Browser settings</strong> — You can block or delete cookies directly through your browser (see the table below).</li>
-        <li><strong>Opt-out tools</strong> — Use <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a> or <a href="https://www.youronlinechoices.com" target="_blank" rel="noopener">YourOnlineChoices</a> for ad cookies.</li>
-      </ul>
-      <div class="pp-box yellow"><strong>Note:</strong> Disabling essential cookies may break core functionality of the site (e.g., contact forms, navigation).</div>
-    </div>
-
-    <div class="pp-section" id="browser">
-      <h2><i class="fa-solid fa-globe"></i> Browser Cookie Settings</h2>
-      <p>You can manage cookies through your browser’s built-in settings. Here are links to instructions for the most popular browsers:</p>
-      <table class="pp-table">
-        <thead><tr><th>Browser</th><th>Cookie Settings Link</th></tr></thead>
-        <tbody>
-          <tr><td>Google Chrome</td><td><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Manage cookies in Chrome</a></td></tr>
-          <tr><td>Mozilla Firefox</td><td><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Manage cookies in Firefox</a></td></tr>
-          <tr><td>Apple Safari</td><td><a href="https://support.apple.com/en-gb/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Manage cookies in Safari</a></td></tr>
-          <tr><td>Microsoft Edge</td><td><a href="https://support.microsoft.com/en-us/windows/manage-cookies-in-microsoft-edge" target="_blank" rel="noopener">Manage cookies in Edge</a></td></tr>
-          <tr><td>Opera</td><td><a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener">Manage cookies in Opera</a></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="pp-section" id="consent">
-      <h2><i class="fa-solid fa-circle-check"></i> Your Consent</h2>
-      <p>When you first visit nexusdigital.io, we will ask for your consent to place non-essential cookies (analytics, marketing, and social media cookies).</p>
-      <ul>
-        <li>Clicking <strong>“Accept All”</strong> enables all cookies including optional ones</li>
-        <li>Clicking <strong>“Reject Optional”</strong> allows only essential and security cookies</li>
-        <li>Clicking <strong>“Customise”</strong> lets you choose which categories to enable</li>
-      </ul>
-      <p>Your consent is stored for <strong>12 months</strong>, after which we will ask for it again. You can change your preferences at any time via the cookie settings icon.</p>
-      <div class="pp-box green">We never pre-tick optional cookies or use dark patterns to trick you into accepting more than you’re comfortable with.</div>
-    </div>
-
-    <div class="pp-section" id="updates">
-      <h2><i class="fa-solid fa-pen-to-square"></i> Policy Updates</h2>
-      <p>We may update this Cookie Policy periodically to reflect changes in technology, regulations, or the tools we use. When we make significant changes, we will update the “Last updated” date at the top of this page.</p>
-      <p>We recommend checking this page occasionally to stay informed about how we use cookies.</p>
-    </div>
-
-    <div class="pp-section" id="contact">
-      <h2><i class="fa-solid fa-envelope"></i> Contact Us</h2>
-      <p>If you have any questions about our use of cookies, please contact us:</p>
-      <ul>
-        <li><strong>Email:</strong> <a href="mailto:hello@nexusdigital.io">hello@nexusdigital.io</a></li>
-        <li><strong>Phone / WhatsApp:</strong> +91 98765 43210</li>
-        <li><strong>Address:</strong> Nexus Digital, C-Scheme, Jaipur, Rajasthan 302001, India</li>
-      </ul>
-    </div>
-
+    <div class="pp-section" id="what"><h2><i class="fa-solid fa-cookie-bite"></i> What Are Cookies?</h2><p>Cookies are small text files that are placed on your device (computer, tablet, or phone) when you visit a website. They are widely used to make websites work efficiently and to provide useful information to website owners.</p><p>Cookies do not contain any personally identifiable information on their own — they typically store a unique identifier that allows the website to recognise your browser on repeat visits.</p><div class="pp-box yellow"><strong>Think of cookies like a name tag:</strong> They help the website remember who you are so it doesn’t treat you like a stranger every time you visit.</div></div>
+    <div class="pp-section" id="why"><h2><i class="fa-solid fa-question-circle"></i> Why We Use Cookies</h2><p>We use cookies on <strong>nexusdigital.io</strong> to:</p><ul><li>Ensure the website functions correctly (essential operations)</li><li>Remember your preferences across sessions (e.g., theme, language)</li><li>Analyse how visitors use our website to improve the experience</li><li>Measure the effectiveness of our marketing campaigns</li><li>Deliver relevant content and ads based on your interests (with your consent)</li><li>Prevent fraud and ensure the security of our platform</li></ul></div>
+    <div class="pp-section" id="types"><h2><i class="fa-solid fa-layer-group"></i> Types of Cookies We Use</h2><div class="cookie-cards"><div class="cookie-card"><div class="cookie-card-icon" style="background:rgba(91,94,244,.1);color:#5b5ef4"><i class="fa-solid fa-bolt"></i></div><h4>Essential Cookies</h4><p>Required for the website to function. Cannot be switched off. No personal data stored.</p><span class="tag tag-req">Always Active</span></div><div class="cookie-card"><div class="cookie-card-icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fa-solid fa-sliders"></i></div><h4>Preference Cookies</h4><p>Remember your settings like dark/light mode and language preferences.</p><span class="tag tag-opt">Optional</span></div><div class="cookie-card"><div class="cookie-card-icon" style="background:rgba(245,158,11,.1);color:#f59e0b"><i class="fa-solid fa-chart-bar"></i></div><h4>Analytics Cookies</h4><p>Help us understand how visitors navigate the site. We use Google Analytics (data is anonymised).</p><span class="tag tag-opt">Optional</span></div><div class="cookie-card"><div class="cookie-card-icon" style="background:rgba(244,63,94,.1);color:#f43f5e"><i class="fa-solid fa-bullhorn"></i></div><h4>Marketing Cookies</h4><p>Used for retargeting via Google Ads &amp; Meta Ads. Only set with your explicit consent.</p><span class="tag tag-opt">Optional</span></div><div class="cookie-card"><div class="cookie-card-icon" style="background:rgba(167,139,250,.1);color:#a78bfa"><i class="fa-solid fa-share-nodes"></i></div><h4>Social Media Cookies</h4><p>Placed by platforms like LinkedIn &amp; Instagram when you use share buttons or embedded content.</p><span class="tag tag-opt">Optional</span></div><div class="cookie-card"><div class="cookie-card-icon" style="background:rgba(20,184,166,.1);color:#14b8a6"><i class="fa-solid fa-shield-halved"></i></div><h4>Security Cookies</h4><p>Help detect and prevent fraudulent activity, bot traffic, and malicious requests.</p><span class="tag tag-req">Always Active</span></div></div></div>
+    <div class="pp-section" id="third-party"><h2><i class="fa-solid fa-arrow-up-right-from-square"></i> Third-Party Cookies</h2><p>Some cookies on our site are set by third-party services we use. These include:</p><ul><li><strong>Google Analytics</strong> — Website traffic analysis (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>)</li><li><strong>Google Ads</strong> — Conversion tracking and remarketing</li><li><strong>Meta Pixel</strong> — Facebook &amp; Instagram ad performance tracking</li><li><strong>LinkedIn Insight Tag</strong> — LinkedIn campaign attribution</li><li><strong>Hotjar</strong> — Heatmaps and session recordings (anonymised)</li><li><strong>Intercom / Crisp</strong> — Live chat functionality</li></ul><p>These third parties have their own privacy and cookie policies. We recommend reviewing them if you have concerns about how they handle your data.</p></div>
+    <div class="pp-section" id="duration"><h2><i class="fa-solid fa-hourglass-half"></i> Cookie Duration</h2><p>Cookies on our website fall into two duration categories:</p><ul><li><strong>Session cookies</strong> — Temporary cookies that expire when you close your browser. Used for essential site functions like form submissions and page navigation.</li><li><strong>Persistent cookies</strong> — Remain on your device for a set period (typically 30 days to 2 years) or until you delete them. Used for preferences, analytics, and marketing.</li></ul><div class="pp-box">Most of our analytics cookies expire within <strong>14 months</strong>. Marketing cookies from Google and Meta typically persist for up to <strong>90 days</strong>.</div></div>
+    <div class="pp-section" id="manage"><h2><i class="fa-solid fa-toggles"></i> Managing Cookies</h2><p>You have full control over which cookies you accept. You can manage your preferences in the following ways:</p><ul><li><strong>Cookie consent banner</strong> — When you first visit our site, a banner will ask for your consent for non-essential cookies.</li><li><strong>Update preferences anytime</strong> — Click the cookie icon in the bottom-left corner of our site to revisit your preferences.</li><li><strong>Browser settings</strong> — You can block or delete cookies directly through your browser (see the table below).</li><li><strong>Opt-out tools</strong> — Use <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a> or <a href="https://www.youronlinechoices.com" target="_blank" rel="noopener">YourOnlineChoices</a> for ad cookies.</li></ul><div class="pp-box yellow"><strong>Note:</strong> Disabling essential cookies may break core functionality of the site.</div></div>
+    <div class="pp-section" id="browser"><h2><i class="fa-solid fa-globe"></i> Browser Cookie Settings</h2><p>You can manage cookies through your browser’s built-in settings. Here are links to instructions for the most popular browsers:</p><table class="pp-table"><thead><tr><th>Browser</th><th>Cookie Settings Link</th></tr></thead><tbody><tr><td>Google Chrome</td><td><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Manage cookies in Chrome</a></td></tr><tr><td>Mozilla Firefox</td><td><a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener">Manage cookies in Firefox</a></td></tr><tr><td>Apple Safari</td><td><a href="https://support.apple.com/en-gb/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Manage cookies in Safari</a></td></tr><tr><td>Microsoft Edge</td><td><a href="https://support.microsoft.com/en-us/windows/manage-cookies-in-microsoft-edge" target="_blank" rel="noopener">Manage cookies in Edge</a></td></tr><tr><td>Opera</td><td><a href="https://help.opera.com/en/latest/web-preferences/#cookies" target="_blank" rel="noopener">Manage cookies in Opera</a></td></tr></tbody></table></div>
+    <div class="pp-section" id="consent"><h2><i class="fa-solid fa-circle-check"></i> Your Consent</h2><p>When you first visit nexusdigital.io, we will ask for your consent to place non-essential cookies (analytics, marketing, and social media cookies).</p><ul><li>Clicking <strong>“Accept All”</strong> enables all cookies including optional ones</li><li>Clicking <strong>“Reject Optional”</strong> allows only essential and security cookies</li><li>Clicking <strong>“Customise”</strong> lets you choose which categories to enable</li></ul><p>Your consent is stored for <strong>12 months</strong>, after which we will ask for it again.</p><div class="pp-box green">We never pre-tick optional cookies or use dark patterns to trick you into accepting more than you’re comfortable with.</div></div>
+    <div class="pp-section" id="updates"><h2><i class="fa-solid fa-pen-to-square"></i> Policy Updates</h2><p>We may update this Cookie Policy periodically to reflect changes in technology, regulations, or the tools we use. When we make significant changes, we will update the “Last updated” date at the top of this page.</p><p>We recommend checking this page occasionally to stay informed about how we use cookies.</p></div>
+    <div class="pp-section" id="contact"><h2><i class="fa-solid fa-envelope"></i> Contact Us</h2><p>If you have any questions about our use of cookies, please contact us:</p><ul><li><strong>Email:</strong> <a href="mailto:hello@nexusdigital.io">hello@nexusdigital.io</a></li><li><strong>Phone / WhatsApp:</strong> +91 98765 43210</li><li><strong>Address:</strong> Nexus Digital, C-Scheme, Jaipur, Rajasthan 302001, India</li></ul></div>
   </main>
 </div>
-
 <footer class="footer">
   <div class="footer-top">
-    <div class="footer-brand">
-      <a href="index.html" class="logo"><svg width="26" height="26" viewBox="0 0 30 30" fill="none"><rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/><rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/></svg><span class="logo-text">Nexus<span class="dot">.</span></span></a>
-      <p>Building brands that convert since 2017.</p>
-      <div class="footer-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-linkedin"></i></a><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-dribbble"></i></a></div>
-    </div>
+    <div class="footer-brand"><a href="index.html" class="logo"><svg width="26" height="26" viewBox="0 0 30 30" fill="none"><rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/><rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/><rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/></svg><span class="logo-text">Nexus<span class="dot">.</span></span></a><p>Building brands that convert since 2017.</p><div class="footer-socials"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-linkedin"></i></a><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-dribbble"></i></a></div></div>
     <div class="footer-nav">
       <div><h5>Services</h5><a href="services.html">Brand Identity</a><a href="services.html">Web Development</a><a href="services.html">Mobile Apps</a><a href="services.html">Growth Marketing</a></div>
       <div><h5>Company</h5><a href="about.html">About Us</a><a href="team.html">Our Team</a><a href="work.html">Our Work</a><a href="contact.html">Contact</a></div>
-      <div><h5>Legal</h5><a href="privacy-policy.html">Privacy Policy</a><a href="return-policy.html">Return Policy</a><a href="terms.html">Terms of Service</a><a href="cookie-policy.html" style="color:var(--primary)">Cookie Policy</a></div>
+      <div><h5>Legal</h5><a href="privacy-policy.html">Privacy Policy</a><a href="return-policy.html">Return Policy</a><a href="terms.html">Terms of Service</a><a href="cookie-policy.html" style="color:var(--primary)">Cookie Policy</a><a href="sitemap.html">Sitemap</a></div>
     </div>
   </div>
-  <div class="footer-bottom"><p>&copy; 2026 Nexus Digital. All rights reserved.</p><div><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookie-policy.html">Cookies</a></div></div>
+  <div class="footer-bottom"><p>&copy; 2026 Nexus Digital. All rights reserved.</p><div><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookie-policy.html">Cookies</a><a href="sitemap.html">Sitemap</a></div></div>
 </footer>
 <script>
 (function(){
