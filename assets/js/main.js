@@ -48,7 +48,7 @@ const ncObs = new IntersectionObserver(entries=>{
     const step=ts=>{
       if(!s) s=ts;
       const p = Math.min((ts-s)/2000,1);
-      const ease = 1 - Math.pow(1-p, 4); // easeOutQuart
+      const ease = 1 - Math.pow(1-p, 4);
       document.getElementById(c.el).textContent = Math.floor(ease * c.target);
       if(p<1) requestAnimationFrame(step);
     };
@@ -112,22 +112,22 @@ if(form) form.addEventListener('submit',e=>{
   window.addEventListener('resize',()=>{ const nw=canvas.parentElement.clientWidth,nh=canvas.parentElement.clientHeight||480; camera.aspect=nw/nh; camera.updateProjectionMatrix(); renderer.setSize(nw,nh); });
 })();
 
-/* ============ THREE.JS — TECH SECTION ============ */
-(function initTech3D(){
-  const canvas = document.getElementById('techCanvas');
-  if(!canvas || typeof THREE==='undefined') return;
-  const w=canvas.parentElement.clientWidth, h=460;
-  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true}); renderer.setSize(w,h); renderer.setPixelRatio(Math.min(window.devicePixelRatio,2)); renderer.setClearColor(0x000000,0);
-  const scene=new THREE.Scene(), camera=new THREE.PerspectiveCamera(60,w/h,0.1,200); camera.position.set(0,0,30);
-  const count=280, pos=new Float32Array(count*3);
-  for(let i=0;i<count;i++){ const theta=Math.acos(2*Math.random()-1),phi=2*Math.PI*Math.random(),r=8+Math.random()*6; pos[i*3]=r*Math.sin(theta)*Math.cos(phi); pos[i*3+1]=r*Math.sin(theta)*Math.sin(phi); pos[i*3+2]=r*Math.cos(theta); }
-  const pGeo=new THREE.BufferGeometry(); pGeo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-  const points=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0x5b5ef4,size:0.18,transparent:true,opacity:0.7})); scene.add(points);
-  const torus=new THREE.Mesh(new THREE.TorusGeometry(10,0.05,8,80),new THREE.MeshBasicMaterial({color:0x5b5ef4,wireframe:true,opacity:.15,transparent:true})); scene.add(torus);
-  const torus2=new THREE.Mesh(new THREE.TorusGeometry(12,0.04,8,80),new THREE.MeshBasicMaterial({color:0xf43f5e,wireframe:true,opacity:.1,transparent:true})); torus2.rotation.x=Math.PI/3; scene.add(torus2);
-  let mx=0; window.addEventListener('mousemove',e=>{ mx=(e.clientX/window.innerWidth-.5); });
-  const clock2=new THREE.Clock();
-  function animate(){ requestAnimationFrame(animate); const t=clock2.getElapsedTime(); points.rotation.y=t*0.07+mx*0.3; points.rotation.x=t*0.04; torus.rotation.z=t*0.05; torus2.rotation.y=t*0.06; renderer.render(scene,camera); }
-  animate();
-  window.addEventListener('resize',()=>{ const nw=canvas.parentElement.clientWidth; camera.aspect=nw/h; camera.updateProjectionMatrix(); renderer.setSize(nw,h); });
+/* ============ TECH CARDS — 3D TILT ============ */
+(function initTechCards(){
+  const cards = document.querySelectorAll('.tc-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const rotX = ((y - cy) / cy) * -12;
+      const rotY = ((x - cx) / cx) * 12;
+      card.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.07)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+  });
 })();
