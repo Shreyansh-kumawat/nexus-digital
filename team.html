@@ -1,149 +1,648 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Team — Nexus Digital</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <style>
+
+    /* ---- BREADCRUMB ---- */
+    .breadcrumb{font-size:.78rem;color:var(--faint);display:flex;align-items:center;gap:.4rem;margin-bottom:1.2rem;justify-content:center}
+    .breadcrumb a{color:var(--faint);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--primary)}
+    .breadcrumb i{font-size:.6rem}
+
+    /* ==============================
+       SECTION 1 — HERO
+    ============================== */
+    .tm-hero{padding:9rem 2rem 6rem;background:var(--bg);position:relative;overflow:hidden;text-align:center}
+    .tm-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .tm-shape{position:absolute;border-radius:50%;filter:blur(90px)}
+    .tm-shape-1{width:540px;height:540px;background:var(--primary);opacity:.14;top:-220px;left:50%;transform:translateX(-50%)}
+    .tm-shape-2{width:280px;height:280px;background:#f43f5e;opacity:.1;bottom:-60px;left:8%}
+    .tm-shape-3{width:240px;height:240px;background:#10b981;opacity:.1;bottom:-50px;right:8%}
+    .tm-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+    .tm-hero-inner h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:1.1rem}
+    .tm-hero-inner p{font-size:1rem;color:var(--muted);line-height:1.8;max-width:520px;margin:0 auto 2.5rem}
+    /* floating avatar strip */
+    .tm-avatar-strip{display:flex;align-items:center;justify-content:center;margin-bottom:2.8rem}
+    .tm-av{width:48px;height:48px;border-radius:50%;border:3px solid var(--bg);object-fit:cover;margin-left:-14px;transition:transform .2s,z-index .2s;position:relative}
+    .tm-av:first-child{margin-left:0}
+    .tm-av:hover{transform:scale(1.15) translateY(-4px);z-index:10}
+    .tm-av-more{width:48px;height:48px;border-radius:50%;border:3px solid var(--bg);background:var(--primary);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-left:-14px}
+    .tm-strip-label{margin-left:1rem;font-size:.82rem;color:var(--muted);text-align:left;line-height:1.4}
+    .tm-strip-label strong{display:block;font-weight:700;color:var(--text);font-size:.88rem}
+    /* hero stat row */
+    .tm-hero-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+    .tm-hstat strong{display:block;font-size:2rem;font-weight:800;color:var(--text);line-height:1}
+    .tm-hstat span{font-size:.78rem;color:var(--faint);margin-top:.2rem;display:block}
+    /* diagonal divider */
+    .tm-divider{width:100%;overflow:hidden;line-height:0;margin-top:-1px}
+    .tm-divider svg{display:block;width:100%;height:60px}
+
+    /* ==============================
+       SECTION 2 — LEADERSHIP
+    ============================== */
+    .tm-leaders{padding:5.5rem 0 4rem;background:var(--surface)}
+    .tm-leaders-grid{max-width:1100px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
+    .leader-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;position:relative}
+    .leader-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .leader-img{position:relative;aspect-ratio:4/3.2;overflow:hidden}
+    .leader-img img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .6s}
+    .leader-card:hover .leader-img img{transform:scale(1.05)}
+    .leader-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 55%);pointer-events:none}
+    .leader-dept{position:absolute;top:.9rem;left:.9rem;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:.3rem .8rem;font-size:.68rem;font-weight:700;color:#fff;letter-spacing:.07em;text-transform:uppercase}
+    .leader-body{padding:1.4rem 1.5rem}
+    .leader-body h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+    .leader-role{font-size:.78rem;font-weight:600;color:var(--primary);margin-bottom:.7rem;display:block}
+    .leader-body p{font-size:.83rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+    .leader-skills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+    .leader-skill{font-size:.68rem;font-weight:600;padding:.18rem .62rem;border-radius:999px;background:var(--surface2);border:1px solid var(--border);color:var(--text)}
+    .leader-socials{display:flex;gap:.55rem}
+    .leader-socials a{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:var(--muted);text-decoration:none;transition:all .2s}
+    .leader-socials a:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+    /* accent top bar */
+    .leader-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--lc,var(--primary));z-index:1}
+
+    /* ==============================
+       SECTION 3 — FULL TEAM GRID
+    ============================== */
+    .tm-grid-sec{padding:5rem 0 6rem;background:var(--bg)}
+    .tm-grid-sec .section-head{text-align:center;max-width:520px;margin:0 auto 3.5rem}
+    .tm-member-grid{max-width:1200px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+    .tm-member{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .25s,box-shadow .25s}
+    .tm-member:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .tm-member-img{position:relative;aspect-ratio:1;overflow:hidden}
+    .tm-member-img img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+    .tm-member:hover .tm-member-img img{transform:scale(1.08)}
+    .tm-member-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(91,94,244,.3),transparent 60%);opacity:0;transition:opacity .3s}
+    .tm-member:hover .tm-member-img-overlay{opacity:1}
+    .tm-member-body{padding:1.1rem 1.2rem}
+    .tm-member-body h4{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.15rem}
+    .tm-member-body span{font-size:.76rem;color:var(--primary);font-weight:600;display:block;margin-bottom:.55rem}
+    .tm-member-body p{font-size:.78rem;color:var(--muted);line-height:1.65;margin-bottom:.8rem}
+    .tm-member-links{display:flex;gap:.45rem}
+    .tm-member-links a{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.64rem;color:var(--muted);text-decoration:none;transition:all .2s}
+    .tm-member-links a:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+    /* dept label badge inside grid card */
+    .tm-dept{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .6rem;border-radius:999px;border:1px solid var(--border);color:var(--faint);margin-bottom:.5rem}
+
+    /* ==============================
+       SECTION 4 — CULTURE & PERKS
+    ============================== */
+    .tm-culture{padding:6rem 0;background:var(--surface2);position:relative;overflow:hidden}
+    .tm-culture::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 50%,rgba(91,94,244,.05) 0%,transparent 70%);pointer-events:none}
+    .tm-culture-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .tm-culture-copy .section-head{text-align:left}
+    .tm-culture-copy .section-head .section-title{margin-bottom:.8rem}
+    .tm-culture-copy p{font-size:.93rem;color:var(--muted);line-height:1.8;margin-bottom:2rem}
+    .tm-perks{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .tm-perk{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.4rem;transition:transform .2s,box-shadow .2s}
+    .tm-perk:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .tm-perk-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.88rem;background:var(--pi-bg,rgba(91,94,244,.1));color:var(--pi-c,var(--primary))}
+    .tm-perk h5{font-size:.85rem;font-weight:700;color:var(--text)}
+    .tm-perk span{font-size:.76rem;color:var(--muted);line-height:1.5}
+    /* culture visual */
+    .tm-culture-visual{position:relative}
+    .tm-culture-img-wrap{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3.4;position:relative}
+    .tm-culture-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+    .tm-culture-visual:hover .tm-culture-img-wrap img{transform:scale(1.04)}
+    .tm-culture-badge{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:.75rem 1.1rem;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:.55rem;font-size:.8rem;font-weight:600;color:var(--text);white-space:nowrap}
+    .tm-culture-badge.bl{bottom:-1rem;left:-1.4rem}
+    .tm-culture-badge.tr{top:-1rem;right:-1.4rem}
+    .tm-culture-badge i{color:var(--primary)}
+    .tm-blob{position:absolute;border-radius:50%;filter:blur(60px);z-index:-1;pointer-events:none}
+
+    /* ==============================
+       SECTION 5 — HIRING CTA
+    ============================== */
+    .tm-hire{padding:7rem 2rem;background:var(--bg);position:relative;overflow:hidden}
+    .tm-hire-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .tm-hire-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+    .tm-hire-copy h2{font-size:clamp(1.8rem,3vw,2.7rem);font-weight:700;line-height:1.18;color:var(--text);margin-bottom:.9rem}
+    .tm-hire-copy p{font-size:.93rem;color:var(--muted);line-height:1.8;margin-bottom:1.8rem}
+    .tm-hire-copy .cta-btns{display:flex;gap:1rem;flex-wrap:wrap}
+    .tm-openings{display:flex;flex-direction:column;gap:.85rem}
+    .tm-open-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .tm-open-card:hover{transform:translateX(4px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+    .tm-open-left{display:flex;flex-direction:column;gap:.3rem}
+    .tm-open-left strong{font-size:.92rem;font-weight:700;color:var(--text)}
+    .tm-open-meta{display:flex;gap:.5rem;flex-wrap:wrap}
+    .tm-open-badge{font-size:.67rem;font-weight:600;padding:.17rem .6rem;border-radius:999px;background:var(--surface2);border:1px solid var(--border);color:var(--muted)}
+    .tm-open-badge.green{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25);color:#10b981}
+    .tm-open-badge.purple{background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.25);color:#a78bfa}
+    .tm-open-badge.red{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.25);color:#f43f5e}
+    .tm-open-arrow{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.72rem;flex-shrink:0;transition:all .2s}
+    .tm-open-card:hover .tm-open-arrow{background:var(--primary);border-color:var(--primary);color:#fff}
+
+    /* GRADIENT TEXT */
+    .gradient-text{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      .tm-leaders-grid{grid-template-columns:1fr 1fr}
+      .tm-member-grid{grid-template-columns:repeat(2,1fr)}
+      .tm-culture-inner{grid-template-columns:1fr;gap:3rem}
+      .tm-hire-inner{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .tm-hero{padding:7rem 1.5rem 4rem}
+      .tm-leaders-grid{grid-template-columns:1fr;padding:0 1.5rem}
+      .tm-member-grid{grid-template-columns:1fr 1fr;padding:0 1.5rem}
+      .tm-perks{grid-template-columns:1fr}
+      .tm-hero-stats{gap:1.5rem}
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="/" class="logo"><span class="logo-icon">&#9671;</span><span class="logo-text">Nexus<span class="accent">.</span></span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/team" class="active">Team</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-      <a href="/contact" class="btn btn-primary nav-cta">Get Started</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="section-tag reveal">The People</div>
-      <h1 class="page-title reveal">Meet the <span class="gradient-text">Minds Behind</span> the Magic</h1>
-      <p class="page-sub reveal">A passionate team of strategists, creatives, and technologists dedicated to your growth.</p>
+<!-- ======== NAVBAR ======== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+        <rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+        <rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+        <rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+      </svg>
+      <span class="logo-text">Nexus<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="team.html" style="color:var(--primary)">Team</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="contact.html" class="nav-btn">Get a Proposal</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <section class="team-section section">
-    <div class="container">
-      <div class="team-grid">
-        <div class="team-card reveal">
-          <div class="team-img-wrap">
-            <img src="https://i.pravatar.cc/300?img=12" alt="Rahul Verma" loading="lazy" />
-          </div>
-          <div class="team-info">
-            <h3>Rahul Verma</h3>
-            <span class="team-role">Co-Founder &amp; CEO</span>
-            <p>12+ years driving digital growth strategies for Fortune 500s and startups alike.</p>
-            <div class="team-social">
-              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-          </div>
+<!-- ======== SECTION 1 — HERO ======== -->
+<section class="tm-hero">
+  <div class="tm-shapes">
+    <div class="tm-shape tm-shape-1"></div>
+    <div class="tm-shape tm-shape-2"></div>
+    <div class="tm-shape tm-shape-3"></div>
+  </div>
+  <div class="tm-hero-inner reveal">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Team</span>
+    </div>
+    <span class="eyebrow">The People</span>
+    <h1>Meet the <span class="gradient-text">minds</span><br>behind the magic.</h1>
+    <p>40+ strategists, designers, engineers, and growth hackers — united by one obsession: making your brand impossible to ignore.</p>
+    <div class="tm-avatar-strip">
+      <img class="tm-av" src="https://i.pravatar.cc/96?img=12" alt=""/>
+      <img class="tm-av" src="https://i.pravatar.cc/96?img=47" alt=""/>
+      <img class="tm-av" src="https://i.pravatar.cc/96?img=33" alt=""/>
+      <img class="tm-av" src="https://i.pravatar.cc/96?img=49" alt=""/>
+      <img class="tm-av" src="https://i.pravatar.cc/96?img=15" alt=""/>
+      <img class="tm-av" src="https://i.pravatar.cc/96?img=44" alt=""/>
+      <img class="tm-av" src="https://i.pravatar.cc/96?img=52" alt=""/>
+      <img class="tm-av" src="https://i.pravatar.cc/96?img=60" alt=""/>
+      <div class="tm-av-more">+32</div>
+      <div class="tm-strip-label">
+        <strong>40+ Team Members</strong>
+        Across 6 cities in India
+      </div>
+    </div>
+    <div class="tm-hero-stats">
+      <div class="tm-hstat"><strong>40+</strong><span>Specialists on staff</span></div>
+      <div class="tm-hstat"><strong>6</strong><span>Cities in India</span></div>
+      <div class="tm-hstat"><strong>8 yrs</strong><span>Avg. experience</span></div>
+      <div class="tm-hstat"><strong>12+</strong><span>Industry certifications</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SECTION 2 — LEADERSHIP ======== -->
+<section class="tm-leaders">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;text-align:center">
+    <span class="eyebrow">Leadership</span>
+    <h2 class="section-title">The people who<br>set the direction.</h2>
+    <p class="section-sub" style="max-width:500px;margin:.6rem auto 0">Founders and department heads who've each spent 10+ years mastering their craft.</p>
+  </div>
+  <div class="tm-leaders-grid">
+
+    <div class="leader-card reveal" style="--lc:#5b5ef4">
+      <div class="leader-img">
+        <img src="https://i.pravatar.cc/480?img=12" alt="Rahul Verma" loading="lazy"/>
+        <div class="leader-img-overlay"></div>
+        <div class="leader-dept">Leadership</div>
+      </div>
+      <div class="leader-body">
+        <h3>Rahul Verma</h3>
+        <span class="leader-role">Co-Founder &amp; CEO</span>
+        <p>12+ years scaling digital products for Fortune 500s and fast-growing startups. Obsessed with strategy, systems, and sustainable growth.</p>
+        <div class="leader-skills">
+          <span class="leader-skill">Growth Strategy</span><span class="leader-skill">P&amp;L Management</span><span class="leader-skill">Fundraising</span>
         </div>
-        <div class="team-card reveal">
-          <div class="team-img-wrap">
-            <img src="https://i.pravatar.cc/300?img=47" alt="Anika Singhania" loading="lazy" />
-          </div>
-          <div class="team-info">
-            <h3>Anika Singhania</h3>
-            <span class="team-role">Co-Founder &amp; CMO</span>
-            <p>Brand architect with a passion for storytelling and consumer psychology.</p>
-            <div class="team-social">
-              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-img-wrap">
-            <img src="https://i.pravatar.cc/300?img=33" alt="Dev Kapoor" loading="lazy" />
-          </div>
-          <div class="team-info">
-            <h3>Dev Kapoor</h3>
-            <span class="team-role">Head of Performance</span>
-            <p>PPC specialist managing ₹50Cr+ in ad spend annually with consistent 10x ROAS.</p>
-            <div class="team-social">
-              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-img-wrap">
-            <img src="https://i.pravatar.cc/300?img=49" alt="Meera Joshi" loading="lazy" />
-          </div>
-          <div class="team-info">
-            <h3>Meera Joshi</h3>
-            <span class="team-role">Creative Director</span>
-            <p>Visual storyteller who transforms brand visions into compelling creative campaigns.</p>
-            <div class="team-social">
-              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-img-wrap">
-            <img src="https://i.pravatar.cc/300?img=15" alt="Siddharth Nair" loading="lazy" />
-          </div>
-          <div class="team-info">
-            <h3>Siddharth Nair</h3>
-            <span class="team-role">SEO Lead</span>
-            <p>Technical SEO expert with a track record of ranking competitive keywords in record time.</p>
-            <div class="team-social">
-              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-img-wrap">
-            <img src="https://i.pravatar.cc/300?img=44" alt="Zara Khan" loading="lazy" />
-          </div>
-          <div class="team-info">
-            <h3>Zara Khan</h3>
-            <span class="team-role">Social Media Strategist</span>
-            <p>Content creator and community builder who has grown brands to 1M+ followers organically.</p>
-            <div class="team-social">
-              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
+        <div class="leader-socials">
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="join-us section">
-    <div class="container">
-      <div class="cta-inner reveal">
-        <h2>Want to Join Our <span class="gradient-text">Dream Team?</span></h2>
-        <p>We're always looking for exceptional talent. If you're passionate about digital marketing, let's talk.</p>
-        <a href="/contact" class="btn btn-primary btn-lg">View Openings</a>
+    <div class="leader-card reveal" style="--lc:#f43f5e">
+      <div class="leader-img">
+        <img src="https://i.pravatar.cc/480?img=47" alt="Anika Singhania" loading="lazy"/>
+        <div class="leader-img-overlay"></div>
+        <div class="leader-dept">Marketing</div>
+      </div>
+      <div class="leader-body">
+        <h3>Anika Singhania</h3>
+        <span class="leader-role">Co-Founder &amp; CMO</span>
+        <p>Brand architect and consumer psychologist. Has led campaigns for 50+ brands across India, UAE, and the UK. Storytelling is her superpower.</p>
+        <div class="leader-skills">
+          <span class="leader-skill">Brand Strategy</span><span class="leader-skill">Consumer Psychology</span><span class="leader-skill">Campaigns</span>
+        </div>
+        <div class="leader-socials">
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand"><a href="/" class="logo"><span class="logo-icon">&#9671;</span><span class="logo-text">Nexus<span class="accent">.</span></span></a><p>Growth-driven digital marketing for ambitious brands.</p><div class="social-links"><a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a></div></div>
-      <div class="footer-links"><h4>Pages</h4><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/team">Team</a></li><li><a href="/contact">Contact</a></li></ul></div>
-      <div class="footer-links"><h4>Services</h4><ul><li><a href="/services">SEO</a></li><li><a href="/services">Paid Ads</a></li><li><a href="/services">Social Media</a></li><li><a href="/services">Branding</a></li><li><a href="/services">Web Design</a></li></ul></div>
-      <div class="footer-contact"><h4>Contact</h4><p><i class="fa-solid fa-envelope"></i> hello@nexusdigital.io</p><p><i class="fa-solid fa-phone"></i> +91 98765 43210</p><p><i class="fa-solid fa-location-dot"></i> Jaipur, Rajasthan, India</p></div>
+    <div class="leader-card reveal" style="--lc:#10b981">
+      <div class="leader-img">
+        <img src="https://i.pravatar.cc/480?img=33" alt="Dev Kapoor" loading="lazy"/>
+        <div class="leader-img-overlay"></div>
+        <div class="leader-dept">Engineering</div>
+      </div>
+      <div class="leader-body">
+        <h3>Dev Kapoor</h3>
+        <span class="leader-role">CTO &amp; Head of Engineering</span>
+        <p>Full-stack architect with deep expertise in React, Node.js, and cloud systems. Shipped 80+ production apps across industries.</p>
+        <div class="leader-skills">
+          <span class="leader-skill">React / Next.js</span><span class="leader-skill">System Design</span><span class="leader-skill">DevOps</span>
+        </div>
+        <div class="leader-socials">
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 Nexus Digital. All rights reserved.</p></div>
-  </footer>
-  <script src="assets/js/main.js"></script>
+
+  </div>
+</section>
+
+<!-- ======== SECTION 3 — FULL TEAM GRID ======== -->
+<section class="tm-grid-sec">
+  <div class="section-head">
+    <span class="eyebrow">The Full Crew</span>
+    <h2 class="section-title">Everyone who makes<br>the magic happen.</h2>
+  </div>
+  <div class="tm-member-grid">
+
+    <div class="tm-member reveal">
+      <div class="tm-member-img">
+        <img src="https://i.pravatar.cc/400?img=49" alt="Meera Joshi" loading="lazy"/>
+        <div class="tm-member-img-overlay"></div>
+      </div>
+      <div class="tm-member-body">
+        <div class="tm-dept">Creative</div>
+        <h4>Meera Joshi</h4>
+        <span>Creative Director</span>
+        <p>Visual storyteller with an eye for detail. Leads brand campaigns that win awards and convert customers.</p>
+        <div class="tm-member-links">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-member reveal">
+      <div class="tm-member-img">
+        <img src="https://i.pravatar.cc/400?img=15" alt="Siddharth Nair" loading="lazy"/>
+        <div class="tm-member-img-overlay"></div>
+      </div>
+      <div class="tm-member-body">
+        <div class="tm-dept">SEO</div>
+        <h4>Siddharth Nair</h4>
+        <span>SEO Lead</span>
+        <p>Technical SEO wizard who's ranked competitive keywords in under 60 days consistently.</p>
+        <div class="tm-member-links">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-member reveal">
+      <div class="tm-member-img">
+        <img src="https://i.pravatar.cc/400?img=44" alt="Zara Khan" loading="lazy"/>
+        <div class="tm-member-img-overlay"></div>
+      </div>
+      <div class="tm-member-body">
+        <div class="tm-dept">Social</div>
+        <h4>Zara Khan</h4>
+        <span>Social Media Strategist</span>
+        <p>Grown 12 brand accounts to 100k+ followers each. Content that converts, not just entertains.</p>
+        <div class="tm-member-links">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-member reveal">
+      <div class="tm-member-img">
+        <img src="https://i.pravatar.cc/400?img=52" alt="Aryan Mehta" loading="lazy"/>
+        <div class="tm-member-img-overlay"></div>
+      </div>
+      <div class="tm-member-body">
+        <div class="tm-dept">Engineering</div>
+        <h4>Aryan Mehta</h4>
+        <span>Senior Frontend Engineer</span>
+        <p>React &amp; Three.js specialist. Builds interfaces so smooth clients ask if it's a prototype.</p>
+        <div class="tm-member-links">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-member reveal">
+      <div class="tm-member-img">
+        <img src="https://i.pravatar.cc/400?img=60" alt="Priya Desai" loading="lazy"/>
+        <div class="tm-member-img-overlay"></div>
+      </div>
+      <div class="tm-member-body">
+        <div class="tm-dept">Performance</div>
+        <h4>Priya Desai</h4>
+        <span>Paid Ads Manager</span>
+        <p>Manages ₹50Cr+ in annual ad spend. ROAS-obsessed, data-driven, never burns a budget.</p>
+        <div class="tm-member-links">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-member reveal">
+      <div class="tm-member-img">
+        <img src="https://i.pravatar.cc/400?img=64" alt="Karan Bose" loading="lazy"/>
+        <div class="tm-member-img-overlay"></div>
+      </div>
+      <div class="tm-member-body">
+        <div class="tm-dept">Mobile</div>
+        <h4>Karan Bose</h4>
+        <span>React Native Developer</span>
+        <p>Cross-platform app architect. 15+ apps shipped to the App Store and Play Store combined.</p>
+        <div class="tm-member-links">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-member reveal">
+      <div class="tm-member-img">
+        <img src="https://i.pravatar.cc/400?img=32" alt="Nisha Agarwal" loading="lazy"/>
+        <div class="tm-member-img-overlay"></div>
+      </div>
+      <div class="tm-member-body">
+        <div class="tm-dept">AI</div>
+        <h4>Nisha Agarwal</h4>
+        <span>AI &amp; Automation Lead</span>
+        <p>LLM integration expert. Builds RAG pipelines and AI workflows that actually work in production.</p>
+        <div class="tm-member-links">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-member reveal">
+      <div class="tm-member-img">
+        <img src="https://i.pravatar.cc/400?img=25" alt="Rohan Tiwari" loading="lazy"/>
+        <div class="tm-member-img-overlay"></div>
+      </div>
+      <div class="tm-member-body">
+        <div class="tm-dept">Design</div>
+        <h4>Rohan Tiwari</h4>
+        <span>UI/UX Designer</span>
+        <p>Figma-first designer who prototypes, tests, and ships interfaces users refuse to stop using.</p>
+        <div class="tm-member-links">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== SECTION 4 — CULTURE & PERKS ======== -->
+<section class="tm-culture">
+  <div class="tm-culture-inner">
+    <div class="tm-culture-copy reveal">
+      <div class="section-head">
+        <span class="eyebrow">Life at Nexus</span>
+        <h2 class="section-title">A place where great<br>work gets done.</h2>
+      </div>
+      <p>We're not a 9-to-5 agency. We're a team of passionate people who care deeply about craft, clients, and each other. We work hard, celebrate wins, and build a culture worth showing up for every day.</p>
+      <div class="tm-perks">
+        <div class="tm-perk reveal" style="--pi-bg:rgba(91,94,244,.1);--pi-c:#5b5ef4">
+          <div class="tm-perk-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h5>Remote Friendly</h5>
+          <span>Work from anywhere in India. We judge output, not hours.</span>
+        </div>
+        <div class="tm-perk reveal" style="--pi-bg:rgba(16,185,129,.1);--pi-c:#10b981">
+          <div class="tm-perk-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h5>Learning Budget</h5>
+          <span>₹50k/yr per person for courses, books, and conferences.</span>
+        </div>
+        <div class="tm-perk reveal" style="--pi-bg:rgba(244,63,94,.1);--pi-c:#f43f5e">
+          <div class="tm-perk-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h5>Health &amp; Wellness</h5>
+          <span>Full health insurance + mental wellness allowance for every team member.</span>
+        </div>
+        <div class="tm-perk reveal" style="--pi-bg:rgba(245,158,11,.1);--pi-c:#f59e0b">
+          <div class="tm-perk-icon"><i class="fa-solid fa-trophy"></i></div>
+          <h5>Performance Bonuses</h5>
+          <span>Quarterly bonuses tied to team wins and client results — not just OKRs.</span>
+        </div>
+        <div class="tm-perk reveal" style="--pi-bg:rgba(167,139,250,.1);--pi-c:#a78bfa">
+          <div class="tm-perk-icon"><i class="fa-solid fa-rocket"></i></div>
+          <h5>Own Your Work</h5>
+          <span>Ship real things. Every team member's work reaches real clients and real audiences.</span>
+        </div>
+        <div class="tm-perk reveal" style="--pi-bg:rgba(6,182,212,.1);--pi-c:#06b6d4">
+          <div class="tm-perk-icon"><i class="fa-solid fa-users"></i></div>
+          <h5>Team Retreats</h5>
+          <span>Bi-annual team offsite. Past locations: Goa, Coorg, Udaipur.</span>
+        </div>
+      </div>
+    </div>
+    <div class="tm-culture-visual reveal">
+      <div class="tm-culture-img-wrap">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Nexus team at work" loading="lazy"/>
+      </div>
+      <div class="tm-culture-badge bl"><i class="fa-solid fa-face-laugh-beam"></i> 97% team happiness score</div>
+      <div class="tm-culture-badge tr"><i class="fa-solid fa-award"></i> Best Place to Work 2025</div>
+      <div class="tm-blob" style="width:300px;height:300px;background:var(--primary);bottom:-60px;right:-40px;opacity:.06"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SECTION 5 — HIRING CTA ======== -->
+<section class="tm-hire">
+  <div class="tm-hire-shapes">
+    <div class="tm-shape tm-shape-1" style="opacity:.08"></div>
+    <div class="tm-shape tm-shape-2" style="opacity:.08"></div>
+  </div>
+  <div class="tm-hire-inner">
+    <div class="tm-hire-copy reveal">
+      <span class="eyebrow">We're Hiring</span>
+      <h2>Think you belong<br>on this team? <span class="gradient-text">Let's talk.</span></h2>
+      <p>We're always looking for exceptional talent who care about craft and love building things that matter. Open roles across engineering, design, and growth.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn-solid">Apply Now <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn-outline">Send Your Portfolio</a>
+      </div>
+    </div>
+    <div class="tm-openings reveal">
+      <div class="tm-open-card">
+        <div class="tm-open-left">
+          <strong>Senior React Developer</strong>
+          <div class="tm-open-meta">
+            <span class="tm-open-badge green">Full-time</span>
+            <span class="tm-open-badge purple">Remote</span>
+            <span class="tm-open-badge">Engineering</span>
+          </div>
+        </div>
+        <div class="tm-open-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="tm-open-card">
+        <div class="tm-open-left">
+          <strong>UI/UX Designer</strong>
+          <div class="tm-open-meta">
+            <span class="tm-open-badge green">Full-time</span>
+            <span class="tm-open-badge purple">Hybrid — Jaipur</span>
+            <span class="tm-open-badge">Design</span>
+          </div>
+        </div>
+        <div class="tm-open-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="tm-open-card">
+        <div class="tm-open-left">
+          <strong>Performance Marketing Manager</strong>
+          <div class="tm-open-meta">
+            <span class="tm-open-badge green">Full-time</span>
+            <span class="tm-open-badge purple">Remote</span>
+            <span class="tm-open-badge">Growth</span>
+          </div>
+        </div>
+        <div class="tm-open-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="tm-open-card">
+        <div class="tm-open-left">
+          <strong>AI &amp; Automation Engineer</strong>
+          <div class="tm-open-meta">
+            <span class="tm-open-badge red">Contract</span>
+            <span class="tm-open-badge purple">Remote</span>
+            <span class="tm-open-badge">AI / ML</span>
+          </div>
+        </div>
+        <div class="tm-open-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+      <div class="tm-open-card">
+        <div class="tm-open-left">
+          <strong>Content Strategist &amp; Copywriter</strong>
+          <div class="tm-open-meta">
+            <span class="tm-open-badge green">Full-time</span>
+            <span class="tm-open-badge purple">Remote</span>
+            <span class="tm-open-badge">Content</span>
+          </div>
+        </div>
+        <div class="tm-open-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+          <rect x="17" y="1" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+          <rect x="1" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4" opacity=".45"/>
+          <rect x="17" y="17" width="12" height="12" rx="2.5" fill="#5b5ef4"/>
+        </svg>
+        <span class="logo-text">Nexus<span class="dot">.</span></span>
+      </a>
+      <p>Building brands that convert since 2017.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
+      </div>
+    </div>
+    <div class="footer-nav">
+      <div>
+        <h5>Services</h5>
+        <a href="services.html">Brand Identity</a>
+        <a href="services.html">Web Development</a>
+        <a href="services.html">Mobile Apps</a>
+        <a href="services.html">Growth Marketing</a>
+        <a href="services.html">AI Integration</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="about.html">About Us</a>
+        <a href="team.html">Our Team</a>
+        <a href="work.html">Our Work</a>
+        <a href="contact.html">Contact</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="return-policy.html">Return Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="sitemap.html">Sitemap</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Nexus Digital. All rights reserved.</p>
+    <div><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="cookie-policy.html">Cookies</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+  const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+  if(burger) burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+})();
+</script>
 </body>
 </html>
