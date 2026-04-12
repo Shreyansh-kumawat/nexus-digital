@@ -38,7 +38,7 @@
   </div>
 </nav>
 
-<!-- ============ SECTION 1: HERO ============ -->
+<!-- ============ HERO ============ -->
 <section class="hero" id="home">
   <div class="hero-inner">
     <div class="hero-copy">
@@ -64,7 +64,7 @@
   <div class="scroll-cue"><span>Scroll</span> <i class="fa-solid fa-arrow-down"></i></div>
 </section>
 
-<!-- ============ SECTION 2: MARQUEE ============ -->
+<!-- ============ MARQUEE ============ -->
 <section class="marquee-section">
   <div class="marquee-track">
     <div class="marquee-inner" id="marqueeInner">
@@ -86,7 +86,7 @@
   </div>
 </section>
 
-<!-- ============ SECTION 3: SERVICES ============ -->
+<!-- ============ SERVICES ============ -->
 <section class="services" id="services">
   <div class="container">
     <div class="section-head">
@@ -95,48 +95,91 @@
       <p class="section-sub">From the first spark of an idea to a live product used by thousands — we handle every step.</p>
     </div>
     <div class="services-bento">
+
+      <!-- Brand Identity — large card -->
       <div class="sb-card sb-large reveal">
-        <div class="sb-icon"><i class="fa-solid fa-pen-nib"></i></div>
-        <h3>Brand Identity</h3>
-        <p>Visual systems, logos, typography and tone of voice that make your brand instantly recognisable.</p>
-        <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="sb-img">
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80" alt="Brand Identity" loading="lazy" />
+        </div>
+        <div class="sb-content">
+          <div class="sb-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Brand Identity</h3>
+          <p>Visual systems, logos, typography and tone of voice that make your brand instantly recognisable.</p>
+          <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
         <div class="sb-decor"></div>
       </div>
+
+      <!-- Web Development -->
       <div class="sb-card reveal">
-        <div class="sb-icon"><i class="fa-solid fa-code"></i></div>
-        <h3>Web Development</h3>
-        <p>Pixel-perfect, fast-loading websites engineered for conversion.</p>
-        <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="sb-img">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80" alt="Web Development" loading="lazy" />
+        </div>
+        <div class="sb-content">
+          <div class="sb-icon"><i class="fa-solid fa-code"></i></div>
+          <h3>Web Development</h3>
+          <p>Pixel-perfect, fast-loading websites engineered for conversion.</p>
+          <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
+
+      <!-- Mobile Apps -->
       <div class="sb-card reveal">
-        <div class="sb-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-        <h3>Mobile Apps</h3>
-        <p>Cross-platform React Native apps users love to open every day.</p>
-        <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="sb-img">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="Mobile Apps" loading="lazy" />
+        </div>
+        <div class="sb-content">
+          <div class="sb-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h3>Mobile Apps</h3>
+          <p>Cross-platform React Native apps users love to open every day.</p>
+          <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
+
+      <!-- Growth Marketing -->
       <div class="sb-card reveal">
-        <div class="sb-icon"><i class="fa-solid fa-chart-bar"></i></div>
-        <h3>Growth Marketing</h3>
-        <p>SEO, performance ads, and analytics that compound over time.</p>
-        <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="sb-img">
+          <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&q=80" alt="Growth Marketing" loading="lazy" />
+        </div>
+        <div class="sb-content">
+          <div class="sb-icon"><i class="fa-solid fa-chart-bar"></i></div>
+          <h3>Growth Marketing</h3>
+          <p>SEO, performance ads, and analytics that compound over time.</p>
+          <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
+
+      <!-- AI Integration — wide card -->
       <div class="sb-card sb-wide reveal">
-        <div class="sb-icon"><i class="fa-solid fa-robot"></i></div>
-        <h3>AI Integration</h3>
-        <p>Automate workflows, personalise experiences and ship smarter products with embedded AI — from LLM APIs to custom model pipelines.</p>
-        <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="sb-img">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=900&q=80" alt="AI Integration" loading="lazy" />
+        </div>
+        <div class="sb-content">
+          <div class="sb-icon"><i class="fa-solid fa-robot"></i></div>
+          <h3>AI Integration</h3>
+          <p>Automate workflows, personalise experiences and ship smarter products with embedded AI — from LLM APIs to custom model pipelines.</p>
+          <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
+
+      <!-- Social Media -->
       <div class="sb-card reveal">
-        <div class="sb-icon"><i class="fa-solid fa-bullhorn"></i></div>
-        <h3>Social Media</h3>
-        <p>Content strategy and community that builds loyal audiences.</p>
-        <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="sb-img">
+          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80" alt="Social Media" loading="lazy" />
+        </div>
+        <div class="sb-content">
+          <div class="sb-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <h3>Social Media</h3>
+          <p>Content strategy and community that builds loyal audiences.</p>
+          <a href="#contact" class="card-link">Get started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============ SECTION 4: NUMBERS ============ -->
+<!-- ============ NUMBERS ============ -->
 <section class="numbers-section">
   <div class="container">
     <div class="numbers-grid">
@@ -160,7 +203,7 @@
   </div>
 </section>
 
-<!-- ============ SECTION 5: PROCESS ============ -->
+<!-- ============ PROCESS ============ -->
 <section class="process" id="process">
   <div class="container">
     <div class="section-head">
@@ -200,7 +243,7 @@
   </div>
 </section>
 
-<!-- ============ SECTION 6: 3D TECH SECTION ============ -->
+<!-- ============ 3D TECH SECTION ============ -->
 <section class="three-section" id="tech">
   <div class="container">
     <div class="section-head">
@@ -221,7 +264,7 @@
   </div>
 </section>
 
-<!-- ============ SECTION 7: WORK ============ -->
+<!-- ============ WORK ============ -->
 <section class="work" id="work">
   <div class="container">
     <div class="section-head">
@@ -281,7 +324,7 @@
   </div>
 </section>
 
-<!-- ============ SECTION 8: TESTIMONIALS ============ -->
+<!-- ============ TESTIMONIALS ============ -->
 <section class="testimonials" id="testimonials">
   <div class="container">
     <div class="section-head">
@@ -313,7 +356,7 @@
   </div>
 </section>
 
-<!-- ============ SECTION 9: ABOUT ============ -->
+<!-- ============ ABOUT ============ -->
 <section class="about" id="about">
   <div class="container about-grid">
     <div class="about-left reveal">
@@ -337,7 +380,7 @@
   </div>
 </section>
 
-<!-- ============ SECTION 10: CONTACT ============ -->
+<!-- ============ CONTACT ============ -->
 <section class="contact" id="contact">
   <div class="container contact-grid">
     <div class="contact-left reveal">
