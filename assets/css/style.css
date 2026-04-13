@@ -344,6 +344,15 @@ body { font-family: 'Inter', sans-serif; background: #f9f8f5; color: #1a1a2e; ov
   .nav-links.open a { font-size: 1.4rem; font-weight: 600; color: var(--text); text-decoration: none; }
   .nav-links.open a:hover { color: var(--primary); }
 
+  /* FIX 4: When menu is open, neutralize navbar.scrolled styles so bg/shadow don't bleed through */
+  .navbar.scrolled:has(+ * .nav-links.open),
+  .navbar:has(.nav-links.open) {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    padding: 1.1rem 0 !important;
+  }
+
   .services-bento { grid-template-columns: 1fr; }
   .sb-large, .sb-wide { grid-column: span 1; }
   .sb-img-bg, .sb-crack { display: none; }
